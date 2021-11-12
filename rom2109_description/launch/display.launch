@@ -1,0 +1,19 @@
+<!--
+ *******************************************************************************
+ *                    ROM ROBOTICS Co,.Ltd ( Myanmar )    										 *
+ *			(ɔ) COPYLEFT 2021		| www.romrobots.com | (+95) 9-259-288-229 				 *
+ *******************************************************************************
+-->
+<launch>
+  <arg name="model" />
+  <param name="robot_description" textfile="$(find rom2109_description)/urdf/rom2109_description.urdf" />
+  
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rom2109_description)/rviz/urdf.rviz" />
+
+  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link odom 40" />
+  
+</launch>

@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/robot/dev/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/robot/dev/catkin_ws/src/serial-release/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
