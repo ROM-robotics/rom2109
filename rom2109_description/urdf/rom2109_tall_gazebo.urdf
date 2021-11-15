@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rom2109">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00186459738015919 0.000626635338433127 0.0136001945845632"
+        rpy="0 0 0" />
+      <mass
+        value="2.41256345237752" />
+      <inertia
+        ixx="0.0122810097155156"
+        ixy="5.53307996230404E-06"
+        ixz="2.51693308616156E-07"
+        iyy="0.0153613549038176"
+        iyz="-7.22002379595489E-06"
+        izz="0.0243992872153625" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="right_wheel">
+    <inertial>
+      <origin
+        xyz="5.20417042793042E-18 -0.000948803306401971 -1.11022302462516E-16"
+        rpy="0 0 0" />
+      <mass
+        value="2.88257784610314" />
+      <inertia
+        ixx="0.00290151800513175"
+        ixy="8.84502977326821E-19"
+        ixz="1.39522208280544E-19"
+        iyy="0.00524996334223768"
+        iyz="8.13662610978686E-18"
+        izz="0.00290151800513175" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/right_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.098333 0.02605"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="left_wheel">
+    <inertial>
+      <origin
+        xyz="1.70257904996696E-13 0.00094880330597584 5.84532422465145E-14"
+        rpy="0 0 0" />
+      <mass
+        value="2.88257784807586" />
+      <inertia
+        ixx="0.00290151800584147"
+        ixy="-9.17143030523157E-15"
+        ixz="6.05063239556893E-15"
+        iyy="0.00524996334354857"
+        iyz="-2.70785746307962E-15"
+        izz="0.00290151800582675" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/left_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.098333 0.02605"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="plate1">
+    <inertial>
+      <origin
+        xyz="0.00237736961809817 -0.00318479486350609 0.0037769125523156"
+        rpy="0 0 0" />
+      <mass
+        value="0.376303345586596" />
+      <inertia
+        ixx="0.00140681231884876"
+        ixy="3.65375356586583E-05"
+        ixz="1.48909531942506E-17"
+        iyy="0.00141154373447315"
+        iyz="-5.24270104378998E-18"
+        izz="0.00281452124473489" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/plate1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/plate1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="plate1_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0038733 0 0.15505"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="plate1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera">
+    <inertial>
+      <origin
+        xyz="-0.0130484995207856 -0.000246197582931583 6.05673029592246E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.0447522001138537" />
+      <inertia
+        ixx="2.72775296429911E-05"
+        ixy="-2.44340812198361E-07"
+        ixz="1.17404187006381E-09"
+        iyy="3.94471813824651E-06"
+        iyz="-2.80191137964519E-09"
+        izz="2.73620934234079E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.1095 0.00557736269756118 -0.0125000000000011"
+      rpy="0 0 0" />
+    <parent
+      link="plate1" />
+    <child
+      link="camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="-0.00745026268241726 -0.000710181573741274 0.0106681277328404"
+        rpy="0 0 0" />
+      <mass
+        value="1.33076913637071" />
+      <inertia
+        ixx="0.000617412562574113"
+        ixy="-2.92747154921624E-05"
+        ixz="0.000157957059991761"
+        iyy="0.000958202713497202"
+        iyz="9.99903112863995E-06"
+        izz="0.00109815200027136" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0.0159981253913104 -0.00158018301594729 0.0325999999999999"
+      rpy="0 0 0" />
+    <parent
+      link="plate1" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="plate2">
+    <inertial>
+      <origin
+        xyz="6.20389355422569E-05 5.59518823213534E-05 0.004"
+        rpy="0 0 0" />
+      <mass
+        value="0.358814063727848" />
+      <inertia
+        ixx="0.0014023220408834"
+        ixy="3.65146028554898E-05"
+        ixz="1.45406848670724E-17"
+        iyy="0.00140104017322449"
+        iyz="-5.35101457494216E-18"
+        izz="0.00279953486409479" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/plate2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/plate2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="plate2_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0038733 0 0.2668"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="plate2" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="plate3">
+    <inertial>
+      <origin
+        xyz="6.20389355422551E-05 5.59518823213465E-05 0.00399999999999989"
+        rpy="0 0 0" />
+      <mass
+        value="0.358814063727848" />
+      <inertia
+        ixx="0.0014023220408834"
+        ixy="3.65146028554897E-05"
+        ixz="1.45405925638202E-17"
+        iyy="0.00140104017322449"
+        iyz="-5.35152796511198E-18"
+        izz="0.00279953486409479" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/plate3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/plate3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="plate3_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00387334814860704 0 0.424802362186551"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="plate3" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <!--GAZEBO ADD BY ROM ROBOTICS-->
+  
+  <!-- here is the gazebo plug-in to simulate a lidar sensor -->
+  <gazebo reference="lidar">
+    <sensor type="ray" name="head_hokuyo_sensor">
+    <!--sensor type="gpu_ray" name="sick_lidar_sensor"-->
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <!--plugin name="gazebo_ros_lidar_controller" filename="libgazebo_ros_gpu_laser.so"-->
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>lidar</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>  
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_contol.so">
+  </plugin>
+</gazebo>
+
+ <!-- Colour -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="plate1">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+   <gazebo reference="plate2">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+   <gazebo reference="plate3">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>true</alwaysOn>
+      <legacyMode>true</legacyMode>
+      <updateRate>100</updateRate>
+      <leftJoint>right_wheel_joint</leftJoint>
+      <rightJoint>left_wheel_joint</rightJoint>
+      <wheelSeparation>0.27</wheelSeparation>
+      <wheelDiameter>0.07</wheelDiameter>
+      <torque>200</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <!--don't publish wheel TF, so it does not conflict with robot_state_publisher -->
+      <publishWheelTF>false</publishWheelTF>
+      <publishWheelJointState>true</publishWheelJointState>
+    </plugin>
+ </gazebo> 
+</robot>

@@ -1,0 +1,2 @@
+int64 right_ticks
+int64 left_ticks
