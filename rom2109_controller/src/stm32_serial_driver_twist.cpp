@@ -101,32 +101,30 @@ int main(int argc, char** argv)
                 // can add velocity part
                 odom_msg.twist.twist.linear.x = 0;
                 odom_msg.twist.twist.angular.z = 0;
-                ROS_INFO_STREAM(" you : ");
+                //ROS_INFO_STREAM(" you : ");
             }
             // ----------------------------------------------------------- start serial write
             std::string to_mcu;
             if(transmit) 
             {
-                int linX_len = snprintf( NULL, 0, "%f", lin_x);
+                int linX_len = snprintf( NULL, 0, "%.3f", lin_x);
                 char* linX = (char*)malloc( linX_len+1 );
                 snprintf( linX, linX_len+1, "%f", lin_x);
 
-                int angZ_len = snprintf( NULL, 0, "%f", ang_z);
+                int angZ_len = snprintf( NULL, 0, "%.3f", ang_z);
                 char* angZ = (char*)malloc( angZ_len+1 );
                 snprintf( angZ, angZ_len+1, "%f", ang_z);
 
-                strcat(linX," ");   strcat(linX,angZ); //strcat(linX,"A");
-                
-                to_mcu = linX; // check \r\n ?
                 transmit = false;
+                mySerial.write(linX);
+                mySerial.write(" ");
+                mySerial.write(angZ);
                 free(linX); free(angZ);
             }else {
                 to_mcu = "0.0 0.0";
+                mySerial.write(to_mcu);
             }
-            mySerial.write(to_mcu);
             // ----------------------------------------------------------- end serial write
-
-
             odom_pub.publish(odom_msg);
             ros::spinOnce();
             r.sleep();

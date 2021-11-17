@@ -211,11 +211,7 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(my_serial src/stm32_serial_driver.cpp)
-target_link_libraries(my_serial ${catkin_LIBRARIES})
-#target_link_libraries(my_serial serial)
-
-add_executable(ros_driver src/stm32_serial_driver_twist.cpp)
-target_link_libraries(ros_driver ${catkin_LIBRARIES})
+add_executable(stm32_driver src/stm32_serial_driver_twist.cpp)
+target_link_libraries(stm32_driver ${catkin_LIBRARIES})
 
 
