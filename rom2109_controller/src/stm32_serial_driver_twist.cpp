@@ -16,6 +16,7 @@ uint32_t baud = 115200;
 const std::string port = "/dev/ttyUSB0";
 uint32_t inter_byte_timeout = 0, read_timeout = 1, read_timeout_mul = 1, write_timeout = 0, write_timeout_mul = 0;
 serial::Timeout timeout_(inter_byte_timeout, read_timeout, read_timeout_mul, write_timeout, write_timeout_mul);
+int receive_Byte_Size = 32;
 
 int loop_rate = 20;
 float_t lin_x = 0;
@@ -38,7 +39,7 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "serial_driver");
     ros::NodeHandle nh_;
-    ros::Publisher odom_pub = nh_.advertise<nav_msgs::Odometry>("odom", 50);
+    ros::Publisher odom_pub = nh_.advertise<nav_msgs::Odometry>("/odom", 50);
     tf::TransformBroadcaster broadcaster;
     ros::Subscriber sub = nh_.subscribe("/cmd_vel", 50, twistCallback);
 
@@ -59,6 +60,7 @@ int main(int argc, char** argv)
         odom_msg.twist.twist.linear.z = 0.0;
         odom_msg.twist.twist.angular.x = 0.0;
         odom_msg.twist.twist.angular.y = 0.0;
+
     geometry_msgs::TransformStamped t;
         t.header.frame_id = odom;
         t.child_frame_id = base_link;
@@ -73,7 +75,7 @@ int main(int argc, char** argv)
             // ---------------------------------------------------------- start serial read
             if( mySerial.waitReadable() )
             {   
-                std::string read_buffer = mySerial.readline(32, "\r"); mySerial.flushInput(); // 32 not sure.check firmware
+                std::string read_buffer = mySerial.readline(receive_Byte_Size, "\r"); mySerial.flushInput(); // 32 not sure.check firmware
                 float x_pos = 0.0, y_pos = 0.0, theta = 0.0;
                 std::size_t position_x = read_buffer.find("x");
                 std::size_t position_y = read_buffer.find("y");
@@ -101,7 +103,7 @@ int main(int argc, char** argv)
                 // can add velocity part
                 odom_msg.twist.twist.linear.x = 0;
                 odom_msg.twist.twist.angular.z = 0;
-                //ROS_INFO_STREAM(" you : ");
+                ROS_INFO_STREAM("x: "<< x_pos << ", y: "<< y_pos << ", theta: "<< theta);
             }
             // ----------------------------------------------------------- start serial write
             std::string to_mcu;

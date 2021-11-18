@@ -214,4 +214,14 @@ include_directories(
 add_executable(stm32_driver src/stm32_serial_driver_twist.cpp)
 target_link_libraries(stm32_driver ${catkin_LIBRARIES})
 
+add_executable(forward_1meter src/forward.cpp)
+target_link_libraries(forward_1meter ${catkin_LIBRARIES})
+
+add_executable(backward_1meter src/backward.cpp)
+target_link_libraries(backward_1meter ${catkin_LIBRARIES})
+
+add_executable(rotate_2pi src/twoPIspin.cpp)
+target_link_libraries(rotate_2pi ${catkin_LIBRARIES})
+
+
 

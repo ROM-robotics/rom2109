@@ -57,5 +57,13 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "bit": "cpp"
-    }
+    },
+    "python.autoComplete.extraPaths": [
+        "/home/mr_robot/dev/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/mr_robot/dev/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
 }
