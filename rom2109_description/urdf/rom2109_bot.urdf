@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rom2109">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0098259 2.9314E-05 -0.19879"
+        rpy="0 0 0" />
+      <mass
+        value="2.0151" />
+      <inertia
+        ixx="0.010181"
+        ixy="-7.0241E-07"
+        ixz="-3.1652E-11"
+        iyy="0.014178"
+        iyz="3.3486E-12"
+        izz="0.024287" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="left_wheel_link">
+    <inertial>
+      <origin
+        xyz="2.7756E-17 4.3162E-05 8.3267E-17"
+        rpy="0 0 0" />
+      <mass
+        value="2.8826" />
+      <inertia
+        ixx="0.0029015"
+        ixy="-2.7507E-19"
+        ixz="-1.4886E-19"
+        iyy="0.00525"
+        iyz="1.1331E-20"
+        izz="0.0029015" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/left_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/left_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.016132 0.098369 -0.17478"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="right_whel_link">
+    <inertial>
+      <origin
+        xyz="5.5511E-17 -0.09829 0.02605"
+        rpy="0 0 0" />
+      <mass
+        value="2.8826" />
+      <inertia
+        ixx="0.0029015"
+        ixy="1.9808E-19"
+        ixz="-1.8749E-19"
+        iyy="0.00525"
+        iyz="9.6825E-20"
+        izz="0.0029015" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/right_whel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/right_whel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.016132 3.6141E-05 -0.20083"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_whel_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="rp_lidar_link">
+    <inertial>
+      <origin
+        xyz="0.0067664 -0.00010084 -0.022432"
+        rpy="0 0 0" />
+      <mass
+        value="0.17402" />
+      <inertia
+        ixx="8.0412E-05"
+        ixy="-4.5283E-08"
+        ixz="2.0693E-05"
+        iyy="0.00012563"
+        iyz="-4.3156E-07"
+        izz="0.0001436" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/rp_lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/rp_lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rp_lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rp_lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="frame_link">
+    <inertial>
+      <origin
+        xyz="-0.0070676 -3.6814E-05 0.11019"
+        rpy="0 0 0" />
+      <mass
+        value="2.3643" />
+      <inertia
+        ixx="0.016744"
+        ixy="4.303E-07"
+        ixz="0.00012055"
+        iyy="0.0074688"
+        iyz="2.3796E-06"
+        izz="0.017437" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/frame_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/frame_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="frame_joint"
+    type="fixed">
+    <origin
+      xyz="0.016132 3.6141E-05 -0.20083"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="frame_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="wifi_Link">
+    <inertial>
+      <origin
+        xyz="-0.11391 0.00050098 0.059664"
+        rpy="0 0 0" />
+      <mass
+        value="0.46643" />
+      <inertia
+        ixx="0.0014606"
+        ixy="-9.2975E-12"
+        ixz="6.678E-05"
+        iyy="0.00061425"
+        iyz="4.7514E-10"
+        izz="0.00093003" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/wifi_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rom2109_description/meshes/bot/wifi_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wifi_joint"
+    type="fixed">
+    <origin
+      xyz="0.016132 3.6141E-05 -0.20083"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wifi_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

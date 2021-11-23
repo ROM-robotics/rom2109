@@ -3,22 +3,22 @@
      Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
-  name="rom2109_description">
+  name="rom2109">
   <link
     name="base_link">
     <inertial>
       <origin
-        xyz="0.0020117 0.0006427 0.0063855"
+        xyz="0.0020289 0.0006482 0.0064293"
         rpy="0 0 0" />
       <mass
-        value="2.3522" />
+        value="2.3323" />
       <inertia
-        ixx="0.010811"
-        ixy="5.5331E-06"
-        ixz="2.5169E-07"
-        iyy="0.013891"
+        ixx="0.010807"
+        ixy="5.4399E-06"
+        ixz="2.5167E-07"
+        iyy="0.013849"
         iyz="-7.22E-06"
-        izz="0.024399" />
+        izz="0.024355" />
     </inertial>
     <visual>
       <origin
@@ -26,7 +26,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/base_link.STL" />
+          filename="package://rom2109_description/meshes/short/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -40,7 +40,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/base_link.STL" />
+          filename="package://rom2109_description/meshes/short/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -48,16 +48,16 @@
     name="right_wheel">
     <inertial>
       <origin
-        xyz="5.2042E-18 -0.0009488 -1.1102E-16"
+        xyz="5.2042E-18 -0.0009488 -5.5511E-17"
         rpy="0 0 0" />
       <mass
         value="2.8826" />
       <inertia
         ixx="0.0029015"
-        ixy="8.8533E-19"
-        ixz="1.4034E-19"
+        ixy="8.8633E-19"
+        ixz="1.3928E-19"
         iyy="0.00525"
-        iyz="8.1372E-18"
+        iyz="8.1358E-18"
         izz="0.0029015" />
     </inertial>
     <visual>
@@ -66,7 +66,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/right_wheel.STL" />
+          filename="package://rom2109_description/meshes/short/right_wheel.STL" />
       </geometry>
       <material
         name="">
@@ -80,7 +80,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/right_wheel.STL" />
+          filename="package://rom2109_description/meshes/short/right_wheel.STL" />
       </geometry>
     </collision>
   </link>
@@ -101,17 +101,17 @@
     name="left_wheel">
     <inertial>
       <origin
-        xyz="1.7026E-13 0.0009488 5.8453E-14"
+        xyz="1.70257904996696E-13 0.000948803305975882 5.8564264548977E-14"
         rpy="0 0 0" />
       <mass
-        value="2.8826" />
+        value="2.88257784807586" />
       <inertia
-        ixx="0.0029015"
-        ixy="-9.1714E-15"
-        ixz="6.0506E-15"
-        iyy="0.00525"
-        iyz="-2.7079E-15"
-        izz="0.0029015" />
+        ixx="0.00290151800584147"
+        ixy="-9.17143280659263E-15"
+        ixz="6.05064531282138E-15"
+        iyy="0.00524996334354857"
+        iyz="-2.70785797323357E-15"
+        izz="0.00290151800582675" />
     </inertial>
     <visual>
       <origin
@@ -119,12 +119,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/left_wheel.STL" />
+          filename="package://rom2109_description/meshes/short/left_wheel.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.79608 0.82353 0.93725 1" />
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
       </material>
     </visual>
     <collision>
@@ -133,7 +133,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/left_wheel.STL" />
+          filename="package://rom2109_description/meshes/short/left_wheel.STL" />
       </geometry>
     </collision>
   </link>
@@ -141,7 +141,7 @@
     name="left_wheel_joint"
     type="continuous">
     <origin
-      xyz="0 0.098333 0.02605"
+      xyz="0 0.098332880094503 0.0260500000000002"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -154,17 +154,17 @@
     name="plate1">
     <inertial>
       <origin
-        xyz="0 0 0"
+        xyz="0.00237736961809826 -0.00318479486350618 0.00377691255231566"
         rpy="0 0 0" />
       <mass
-        value="0" />
+        value="0.376303345586596" />
       <inertia
-        ixx="0"
-        ixy="0"
-        ixz="0"
-        iyy="0"
-        iyz="0"
-        izz="0" />
+        ixx="0.00140681231884876"
+        ixy="3.65375356586576E-05"
+        ixz="1.4886526756259E-17"
+        iyy="0.00141154373447315"
+        iyz="-5.38461714563585E-18"
+        izz="0.00281452124473489" />
     </inertial>
     <visual>
       <origin
@@ -172,7 +172,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/plate1.STL" />
+          filename="package://rom2109_description/meshes/short/plate1.STL" />
       </geometry>
       <material
         name="">
@@ -186,7 +186,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/plate1.STL" />
+          filename="package://rom2109_description/meshes/short/plate1.STL" />
       </geometry>
     </collision>
   </link>
@@ -207,17 +207,17 @@
     name="camera">
     <inertial>
       <origin
-        xyz="-0.0130484998320407 -0.000246196588719889 6.05673649020089E-05"
+        xyz="-0.013048 -0.0002462 6.0567E-05"
         rpy="0 0 0" />
       <mass
-        value="0.0447522011433413" />
+        value="0.044752" />
       <inertia
-        ixx="2.72775274941292E-05"
-        ixy="-2.44341098404076E-07"
-        ixz="1.17396546030412E-09"
-        iyy="3.94471809619555E-06"
-        iyz="-2.80139315621639E-09"
-        izz="2.73620912571408E-05" />
+        ixx="2.7278E-05"
+        ixy="-2.4434E-07"
+        ixz="1.174E-09"
+        iyy="3.9447E-06"
+        iyz="-2.8014E-09"
+        izz="2.7362E-05" />
     </inertial>
     <visual>
       <origin
@@ -225,12 +225,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/camera.STL" />
+          filename="package://rom2109_description/meshes/short/camera.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0.79216 0.81961 0.93333 1" />
       </material>
     </visual>
     <collision>
@@ -239,7 +239,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/camera.STL" />
+          filename="package://rom2109_description/meshes/short/camera.STL" />
       </geometry>
     </collision>
   </link>
@@ -247,7 +247,7 @@
     name="camera_joint"
     type="fixed">
     <origin
-      xyz="0.1095 0.0055774 -0.0125"
+      xyz="0.1095 0.00557736269756123 -0.0125000000000011"
       rpy="0 0 0" />
     <parent
       link="plate1" />
@@ -260,17 +260,17 @@
     name="lidar">
     <inertial>
       <origin
-        xyz="-0.00745026268241725 -0.000710181573741281 0.0106681277328403"
+        xyz="-0.0074503 -0.00071018 0.010668"
         rpy="0 0 0" />
       <mass
-        value="1.33076913637071" />
+        value="1.3308" />
       <inertia
-        ixx="0.000617412562574112"
-        ixy="-2.9274715492163E-05"
-        ixz="0.000157957059991761"
-        iyy="0.000958202713497201"
-        iyz="9.99903112864014E-06"
-        izz="0.00109815200027136" />
+        ixx="0.00061741"
+        ixy="-2.9275E-05"
+        ixz="0.00015796"
+        iyy="0.0009582"
+        iyz="9.999E-06"
+        izz="0.0010982" />
     </inertial>
     <visual>
       <origin
@@ -278,12 +278,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/lidar.STL" />
+          filename="package://rom2109_description/meshes/short/lidar.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+          rgba="0.79216 0.81961 0.93333 1" />
       </material>
     </visual>
     <collision>
@@ -292,7 +292,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://rom2109_description/meshes/lidar.STL" />
+          filename="package://rom2109_description/meshes/short/lidar.STL" />
       </geometry>
     </collision>
   </link>
