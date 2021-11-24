@@ -1,8 +1,8 @@
 mTrajectoryPlannerROS:
 #controller frequency: 3.0
 # Robot Configuration Parameters
-  max_vel_x: 0.36
-  min_vel_x: -0.36
+  max_vel_x: 1.0
+  min_vel_x: -1.0
 
   max_vel_theta:  1.0
   min_vel_theta: -1.0
