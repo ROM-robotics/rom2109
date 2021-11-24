@@ -2,9 +2,7 @@
   <arg name="model" value="tall"/> <!-- bot, tall, short -->
 
   <param name="robot_description" textfile="$(find rom2109_description)/urdf/rom2109_$(arg model).urdf" />
-  <!--param name="robot_description" textfile="$(find rom2109_description)/urdf/rom2109_short.urdf" /-->
-  <!--param name="robot_description" textfile="$(find rom2109_description)/urdf/rom2109_tall.urdf" /-->
-
+  
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="use_tf_static" value="true" type="bool" />
   </node>
