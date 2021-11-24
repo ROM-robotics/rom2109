@@ -16,7 +16,7 @@
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 uint32_t baud = 115200;
-const std::string port = "/dev/ttyUSB0";
+const std::string port = "/dev/ttyUSB1";
 uint32_t inter_byte_timeout = 0, read_timeout = 1, read_timeout_mul = 1, write_timeout = 0, write_timeout_mul = 0;
 serial::Timeout timeout_(inter_byte_timeout, read_timeout, read_timeout_mul, write_timeout, write_timeout_mul);
 int receive_Byte_Size = 32;
@@ -92,21 +92,30 @@ int main(int argc, char** argv)
                 y_pos = strtof(y_pos_str.c_str(), NULL);
                 theta = strtof(theta_str.c_str(), NULL);
                 
-                //geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
-                tf2::Quaternion odom_quat_tf;
-                odom_quat_tf.setRPY(0.0,0.0,theta); odom_quat_tf.normalize();
-                geometry_msgs::Quaternion odom_quat;
-                tf2::convert( odom_quat , odom_quat_tf );
+                geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
+                double q0, q1, q2, q3;
+                q0 = odom_quat.w; q1 = odom_quat.x; q2 = odom_quat.y; q3 = odom_quat.z;
+                double d = sqrt(q0*q0+q1*q1+q2*q2+q3*q3); // it might be unsafe when d=0;
+                //tf2::Quaternion odom_quat_tf;
+                //odom_quat_tf.setRPY(0.0,0.0,theta); odom_quat_tf.normalize();
+                //geometry_msgs::Quaternion odom_quat;
+                //tf2::convert( odom_quat , odom_quat_tf );
                 t.transform.translation.x = x_pos;
                 t.transform.translation.y = y_pos;
-                t.transform.rotation = odom_quat;
+                t.transform.rotation.w = q0/d;
+                t.transform.rotation.x = q1/d;
+                t.transform.rotation.y = q2/d;
+                t.transform.rotation.z = q3/d;
                 t.header.stamp = current_time;
                 broadcaster.sendTransform(t);
                 
                 odom_msg.header.stamp = current_time;
                 odom_msg.pose.pose.position.x = x_pos;
                 odom_msg.pose.pose.position.y = y_pos;
-                odom_msg.pose.pose.orientation = odom_quat;
+                odom_msg.pose.pose.orientation.w = q0/d;
+                odom_msg.pose.pose.orientation.x = q1/d;
+                odom_msg.pose.pose.orientation.y = q2/d;
+                odom_msg.pose.pose.orientation.z = q3/d;
                 // can add velocity part
                 odom_msg.twist.twist.linear.x = 0;
                 odom_msg.twist.twist.angular.z = 0;
