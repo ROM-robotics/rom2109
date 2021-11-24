@@ -1,5 +1,7 @@
 <launch>
-  <param name="robot_description" textfile="$(find rom2109_description)/urdf/rom2109_bot.urdf" />
+  <arg name="model" value="tall"/> <!-- bot, tall, short -->
+
+  <param name="robot_description" textfile="$(find rom2109_description)/urdf/rom2109_$(arg model).urdf" />
   <!--param name="robot_description" textfile="$(find rom2109_description)/urdf/rom2109_short.urdf" /-->
   <!--param name="robot_description" textfile="$(find rom2109_description)/urdf/rom2109_tall.urdf" /-->
 
