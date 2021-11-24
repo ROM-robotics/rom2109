@@ -12,6 +12,9 @@
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/TransformStamped.h>
 
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+
 uint32_t baud = 115200;
 const std::string port = "/dev/ttyUSB0";
 uint32_t inter_byte_timeout = 0, read_timeout = 1, read_timeout_mul = 1, write_timeout = 0, write_timeout_mul = 0;
@@ -89,7 +92,11 @@ int main(int argc, char** argv)
                 y_pos = strtof(y_pos_str.c_str(), NULL);
                 theta = strtof(theta_str.c_str(), NULL);
                 
-                geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
+                //geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
+                tf2::Quaternion odom_quat_tf;
+                odom_quat_tf.setRPY(0.0,0.0,theta); odom_quat_tf.normalize();
+                geometry_msgs::Quaternion odom_quat;
+                tf2::convert( odom_quat , odom_quat_tf );
                 t.transform.translation.x = x_pos;
                 t.transform.translation.y = y_pos;
                 t.transform.rotation = odom_quat;
