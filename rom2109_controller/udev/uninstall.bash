@@ -6,8 +6,8 @@ echo "      Uninstall"
 echo "      This will remove /etc/udev/rules.d/99-rom-robot-controller.rules"
 echo ""
 
-sudo rm  /etc/udev/rules.d/99-rom-robot-controller.rules
-
+sudo rm /etc/udev/rules.d/99-rom-robot-controller.rules
+sudo rm /etc/udev/rules.d/rplidar.rules
 
 echo ""
 echo "Restarting udev"
