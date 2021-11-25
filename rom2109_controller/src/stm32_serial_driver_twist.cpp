@@ -119,7 +119,7 @@ int main(int argc, char** argv)
                 // can add velocity part
                 odom_msg.twist.twist.linear.x = 0;
                 odom_msg.twist.twist.angular.z = 0;
-                ROS_INFO_STREAM("x: "<< x_pos << ", y: "<< y_pos << ", theta: "<< theta);
+                //ROS_INFO_STREAM("x: "<< x_pos << ", y: "<< y_pos << ", theta: "<< theta);
             }
             // ----------------------------------------------------------- start serial write
             std::string to_mcu;
