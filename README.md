@@ -5,8 +5,8 @@ rom2109_controller/udev/install.bash ကို run ပါ။ ပြန်ဖျ�
 
 ssh မှ login ဝင်ရာတွင် ~/.bashrc ကို run မပေးပါ။ login ဝင်တိုင်း source ~/.bashrc လုပ်ရပါမယ်။မလုပ်ချင်ရင် .bash_profile သို့မဟုတ် .profile မှာ အောက်ပါအတိုင်းရေးပါ။
 
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
+if [ -f ~/.bashrc ]; then <br>
+  . ~/.bashrc <br>
+fi <br>
 
 
