@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo ""
+echo "ROM ROBOTICS LTD"
+echo "      This script copies a udev rule to /etc/udev/rules.d/ "
+echo "      You Can Use /dev/robotController instead of /dev/ttyUSB* and "
+echo "      You Can Use /dev/rplidarA2 instead of /dev/ttyUSB* and "
+echo ""
+
+sudo cp 99-rom-robot-controller.rules /etc/udev/rules.d
+
+echo ""
+echo "Restarting udev"
+echo ""
+sudo service udev reload
+sudo service udev restart
+sudo udevadm control --reload
+#sudo udevadm trigger --action=change
