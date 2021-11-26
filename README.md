@@ -1,6 +1,6 @@
 # rom2109 Autonomous Mobile Robot
 
-- လိုအပ်သော package များကို install လုပ်ရန် install_all.bash ကို run ပါ။
+- လိုအပ်သော package များကို install လုပ်ရန် 
 
 - robot controller နှင့် lidar port များကို robot computer တွင် /home/rom/robotController , /dev/rplidar အဖြစ် ရရှိစေရန်
   rom2109_controller/udev/install.bash ကို run ပါ။ ပြန်ဖျက်လိုပါက ./uninstall.bash ကို run ပါ။
