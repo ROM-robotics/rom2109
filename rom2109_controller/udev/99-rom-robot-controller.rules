@@ -1,4 +1,6 @@
 SUBSYSTEM=="tty",
 ATTRS{idVendor}=="1a86",
 ATTRS{idProduct}=="7523",
+OWNER:="root", 
+GROUP:="dialout",
 SYMLINK+="robotController"
