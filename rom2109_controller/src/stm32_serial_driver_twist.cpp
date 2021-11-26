@@ -16,7 +16,7 @@
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 uint32_t baud = 115200;
-const std::string port = "/dev/robotController";
+const std::string port = "/home/mr_robot/robotController";
 uint32_t inter_byte_timeout = 0, read_timeout = 1, read_timeout_mul = 1, write_timeout = 0, write_timeout_mul = 0;
 serial::Timeout timeout_(inter_byte_timeout, read_timeout, read_timeout_mul, write_timeout, write_timeout_mul);
 int receive_Byte_Size = 32;

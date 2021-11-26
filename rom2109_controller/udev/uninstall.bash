@@ -1,13 +1,14 @@
 #!/bin/bash
 
 echo ""
-echo "ROM ROBOTICS LTD"
+echo "          ROM ROBOTICS LTD     "
 echo "      Uninstall"
 echo "      This will remove /etc/udev/rules.d/99-rom-robot-controller.rules"
 echo ""
 
-sudo rm /etc/udev/rules.d/99-rom-robot-controller.rules
+#sudo rm /etc/udev/rules.d/99-rom-robot-controller.rules
 sudo rm /etc/udev/rules.d/rplidar.rules
+sudo rm /home/mr_robot/robotController
 
 echo ""
 echo "Restarting udev"
