@@ -11,9 +11,9 @@ sudo apt update && sudo apt upgrade
 
 # INSTALL ROS PACKAGES
 echo " ROM ROBOTICS LTD:: installing required ros packages ............"
-sudo apt install ros-noetic-robot ros-noetic-navigation ros-noetic-depthimage-to-laserscan
-
-
+sudo apt install ros-noetic-depthimage-to-laserscan
+# git clone 
+cd ~/ROS/catkin_ws/ && catkin_make
 
 # CONFIGURE NETWORK
 echo " ROM ROBOTICS LTD:: writing Network Setting to ~/.bashrc ........"
@@ -33,6 +33,7 @@ sudo cp `rospack find rom2109_controller`/udev/rplidar.rules /etc/udev/rules.d
 sudo ln -s /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0 ~/robotController
 
 # COMPILE ROBOT DRIVER
-cd ~/ROM/catkin_ws/
+cp -r ~/rom2109 ~/ROS/catkin_ws/src
+cd ~/ROS/catkin_ws/
 catkin_make
 
