@@ -22,6 +22,7 @@ sudo apt -y upgrade
 # INSTALL network-manager service
 sudo apt install -y network-manager
 sudo nmtui
+sudo hostnamectl set-hostname robot
 
 # this will logout
 sudo pkill -u ubuntu 

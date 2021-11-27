@@ -42,7 +42,7 @@ cd ~/ROS/catkin_ws/src
 catkin_init_workspace
 cd ~/ROS/catkin_ws
 catkin_make
-echo "source /home/ROS/catkin_ws/devel/setup.bash">> ~/.bashrc
+echo "source /home/mr_robot/ROS/catkin_ws/devel/setup.bash">> ~/.bashrc
 
 
 # SET TIME ZONE AND REBOOT

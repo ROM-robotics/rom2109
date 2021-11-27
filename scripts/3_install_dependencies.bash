@@ -9,22 +9,26 @@ echo ""
 echo " ROM ROBOTICS LTD:: updating ...................................."
 echo ""
 source ~/.bashrc
-sudo apt update && sudo apt upgrade
+sudo apt update 
 
 # INSTALL ROS PACKAGES
 echo ""
 echo " ROM ROBOTICS LTD:: installing required ros packages ............"
 echo ""
-sudo apt install ros-noetic-depthimage-to-laserscan
+sudo apt install -y ros-noetic-depthimage-to-laserscan ros-noetic-slam-toolbox*
+sudo apt install -y ros-noetic-slam-gmapping ros-noetic-amcl ros-noetic-move-base*
 # git clone 
+source ~/.bashrc
+cd ~/ROS/catkin_ws/src
+git clone https://github.com/Slamtec/rplidar_ros.git
 cd ~/ROS/catkin_ws/ && catkin_make
 
 # CONFIGURE NETWORK
 echo ""
 echo " ROM ROBOTICS LTD:: writing Network Setting to ~/.bashrc ........"
 echo ""
-echo "export ROS_IP=192.169.100.158" >> ~/.bashrc
-echo "export ROS_HOSTNAME=192.168.100.158" >> ~/.bashrc
+echo "export ROS_IP=192.169.100.57" >> ~/.bashrc
+echo "export ROS_HOSTNAME=192.168.100.57" >> ~/.bashrc
 echo "export ROS_MASTER_URI=http://192.168.100.57:11311" >> ~/.bashrc
 
 # SOURCE BASHRC
@@ -48,5 +52,7 @@ echo " ROM ROBOTICS LTD:: Trying to ROM2109 ROBOT DRIVER ..............."
 echo ""
 cp -r ~/rom2109 ~/ROS/catkin_ws/src
 cd ~/ROS/catkin_ws/
+rm -rf ~/ROS/catkin_ws/src/rom2109/rom2109_gazebo
 catkin_make
+rm -rf ~/rom2109
 
