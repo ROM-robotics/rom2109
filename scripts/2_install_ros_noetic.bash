@@ -8,7 +8,8 @@ echo ""
 # DELETE user
 sudo pkill -u ubuntu
 sudo userdel -r ubuntu
-
+cd ~
+git clone https://github.com/greenghostman/rom2109.git
 
 # UPDATE, UPGRADE
 echo ""

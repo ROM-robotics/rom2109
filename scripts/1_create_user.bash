@@ -12,10 +12,9 @@ sudo usermod -aG sudo mr_robot
 sudo usermod -aG dialout mr_robot
 sudo usermod -s /bin/bash mr_robot
 
-cd ~
+
 sudo apt update 
 sudo apt install -y curl git vim
-git clone https://github.com/greenghostman/rom2109.git
 sudo apt -y upgrade
 
 # INSTALL network-manager service
