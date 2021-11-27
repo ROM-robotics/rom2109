@@ -59,4 +59,6 @@ echo ""
 source ~/.bashrc
 sudo cp `rospack find rom2109_controller`/udev/rplidar.rules /etc/udev/rules.d
 sudo ln -s /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0 ~/robotController
+sudo reboot
+
 

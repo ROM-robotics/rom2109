@@ -25,6 +25,6 @@ sudo nmtui
 sudo hostnamectl set-hostname robot
 
 # this will logout
-sudo pkill -u ubuntu 
+sudo reboot 
 #sudo userdel -r ubuntu
 

@@ -15,6 +15,7 @@ fi <br>
 
 
 ## အာ့တွေ တစ်ခုချင်း လုပ်ဖို့ ပျင်းတယ်ဆိုရင် 
-### sudo ./install_ros_noetic.bash // ပြီးရင် auto reboot ကျပါမယ်။
-### sudo ./install_dependencies.bash  // reboot နောက်တကြိမ်။
+### sudo ./1_create_user.bash               // ပြီးရင် auto reboot ကျပါမယ်။
+### sudo ./install_ros_noetic.bash          
+### sudo ./3_install_dependencies.bash      // reboot နောက်တကြိမ်။
 ### ဒါဆို username mr_robot နဲ့ password ဖြင့် login ဝင်ရောက်ကာ robot ကို အသုံးပြုနိင်ပါပြီ။ 
