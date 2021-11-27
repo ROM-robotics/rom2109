@@ -26,12 +26,12 @@ int main(int argc, char** argv)
 
     ros::init(argc, argv, "forward");
     ros::NodeHandle n;
+    ros::NodeHandle nh_private_("~");
     ros::Publisher pub=n.advertise<geometry_msgs::Twist>("/cmd_vel",50);
     tf::TransformListener listener;
     tf::StampedTransform transform;
     int rate = 20;
-    float linear_velocity = vel; // ms
-    float goal_distance = cm_to_meter(dis);   // meter
+    float linear_velocity = vel;                                // ms
     
     geometry_msgs::Twist move_cmd;
     move_cmd.linear.x = linear_velocity;
@@ -39,6 +39,12 @@ int main(int argc, char** argv)
     ros::Rate r(rate);
 
     ros::Duration(1).sleep();
+
+    double linear_scale = 0.0;
+    nh_private_.getParam("linear_scale", linear_scale);
+    
+    float goal_distance = cm_to_meter(dis) * linear_scale;    // meter
+
     try
     {
         listener.waitForTransform("odom","base_link", ros::Time(0), ros::Duration(1.0));

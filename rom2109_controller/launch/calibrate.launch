@@ -1,0 +1,12 @@
+<launch>
+    <!-- go to 100cm (1 meter) with 0.2 m/s -->
+    <node name="calibrate" pkg="rom2109_controller" type="forward" args="0.2 100">
+	    <param name="linear_scale" value="1.0" />
+    </node>
+    
+    <!-- rotate 180 degree with 1.0 rad/s 
+    <node name="calibrate" pkg="rom2109_controller" type="rotate" args="1.0 180">
+	    <param name="angular_scale" value="1.0" />
+    </node>
+    -->
+</launch>

@@ -39,6 +39,7 @@ int main(int argc, char** argv)
     //ROS_INFO_STREAM("vel"<< vel << " , dis"<< dis);
     ros::init(argc, argv, "forward");
     ros::NodeHandle n;
+    ros::NodeHandle nh_private_("~");
     ros::Publisher pub=n.advertise<geometry_msgs::Twist>("/cmd_vel",50);
     tf::TransformListener listener;
     tf::StampedTransform transform;
@@ -46,14 +47,20 @@ int main(int argc, char** argv)
     ros::Rate r(rate);
 
     float angular_velocity = vel;  // rs
-    float goal_angel = degree_to_radian(dis); // pi/2
-    float angular_tolarance=0.0175; // 1 degree
 
     geometry_msgs::Twist move_cmd;
     move_cmd.linear.x = 0.0;
     move_cmd.angular.z = angular_velocity;
 
     ros::Duration(1).sleep();
+
+    double angular_scale = 0.0;
+    nh_private_.getParam("angular_scale", angular_scale);
+
+        
+    float goal_angel = degree_to_radian(dis) * angular_scale;               // pi/2
+    float angular_tolarance=0.0175;                         // 1 degree
+    
     try
     {
         listener.waitForTransform("odom","base_link", ros::Time(0), ros::Duration(1.0));

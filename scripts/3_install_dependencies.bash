@@ -39,20 +39,24 @@ echo "if [ -f ~/.bashrc ]; then " >> ~/.profile
 echo "  . ~/.bashrc " >> ~/.profile
 echo "fi " >> ~/.profile
 
-# INSTALL UDEV RULES
-echo ""
-echo " ROM ROBOTICS LTD:: install udev rules .........................."
-echo ""
-sudo cp `rospack find rom2109_controller`/udev/rplidar.rules /etc/udev/rules.d
-sudo ln -s /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0 ~/robotController
+
 
 # COMPILE ROBOT DRIVER
 echo ""
 echo " ROM ROBOTICS LTD:: Trying to ROM2109 ROBOT DRIVER ..............."
 echo ""
+source ~/.bashrc
 cp -r ~/rom2109 ~/ROS/catkin_ws/src
 cd ~/ROS/catkin_ws/
 rm -rf ~/ROS/catkin_ws/src/rom2109/rom2109_gazebo
 catkin_make
 rm -rf ~/rom2109
+
+# INSTALL UDEV RULES
+echo ""
+echo " ROM ROBOTICS LTD:: install udev rules .........................."
+echo ""
+source ~/.bashrc
+sudo cp `rospack find rom2109_controller`/udev/rplidar.rules /etc/udev/rules.d
+sudo ln -s /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0 ~/robotController
 
