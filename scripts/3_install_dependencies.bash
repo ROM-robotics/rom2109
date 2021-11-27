@@ -21,7 +21,8 @@ sudo apt install -y ros-noetic-slam-gmapping ros-noetic-amcl ros-noetic-move-bas
 source ~/.bashrc
 cd ~/ROS/catkin_ws/src
 git clone https://github.com/Slamtec/rplidar_ros.git
-cd ~/ROS/catkin_ws/ && catkin_make
+cd ~/ROS/catkin_ws/
+catkin_make
 
 # CONFIGURE NETWORK
 echo ""
@@ -50,15 +51,17 @@ cp -r ~/rom2109 ~/ROS/catkin_ws/src
 cd ~/ROS/catkin_ws/
 rm -rf ~/ROS/catkin_ws/src/rom2109/rom2109_gazebo
 catkin_make
-rm -rf ~/rom2109
+
 
 # INSTALL UDEV RULES
 echo ""
 echo " ROM ROBOTICS LTD:: install udev rules .........................."
 echo ""
 source ~/.bashrc
-sudo cp `rospack find rom2109_controller`/udev/rplidar.rules /etc/udev/rules.d
+sudo cp ~/rom2109/rom2109_controller/udev/rplidar.rules /etc/udev/rules.d
 sudo ln -s /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0 ~/robotController
-sudo reboot
+rm -rf ~/rom2109
+sudo shutdown 0
+
 
 
