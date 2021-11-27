@@ -11,7 +11,6 @@ sudo passwd mr_robot
 sudo usermod -aG sudo mr_robot
 sudo usermod -aG dialout mr_robot
 sudo usermod -s /bin/bash mr_robot
-su mr_robot
 
 cd ~
 sudo apt update 

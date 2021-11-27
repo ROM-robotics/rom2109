@@ -15,7 +15,8 @@ fi <br>
 
 
 ## အာ့တွေ တစ်ခုချင်း လုပ်ဖို့ ပျင်းတယ်ဆိုရင် 
-### sudo ./1_create_user.bash               // ပြီးရင် auto reboot ကျပါမယ်။
+### sudo ./1_create_user.bash               // mr_robot အတွက် password အသစ်တောင်းမယ်။ ပြီးရင် auto reboot ကျပါမယ်။
+### ssh mr_robot@your_ip                    // user name mr_robot နှင့် ssh login ဝင်ပါ။
 ### sudo ./install_ros_noetic.bash          
 ### sudo ./3_install_dependencies.bash      // reboot နောက်တကြိမ်။
 ### ဒါဆို username mr_robot နဲ့ password ဖြင့် login ဝင်ရောက်ကာ robot ကို အသုံးပြုနိင်ပါပြီ။ 
