@@ -24,6 +24,7 @@ sudo hostnamectl set-hostname robot
 
 # banner
 sudo cp banner /etc/
+sudo cp motd /etc/
 echo "Banner /etc/banner" | sudo tee -a /etc/ssh/sshd_config > /dev/null
 
 sudo reboot
