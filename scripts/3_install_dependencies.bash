@@ -17,6 +17,7 @@ echo " ROM ROBOTICS LTD:: installing required ros packages ............"
 echo ""
 sudo apt install -y ros-noetic-depthimage-to-laserscan ros-noetic-slam-toolbox*
 sudo apt install -y ros-noetic-slam-gmapping ros-noetic-amcl ros-noetic-move-base*
+sudo apt install -y ros-noetic-hector-slam*
 # git clone 
 source ~/.bashrc
 cd ~/ROS/catkin_ws/src

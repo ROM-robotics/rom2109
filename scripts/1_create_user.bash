@@ -22,7 +22,8 @@ sudo apt install -y network-manager
 sudo nmtui
 sudo hostnamectl set-hostname robot
 
-# this will logout
-sudo reboot 
-#sudo userdel -r ubuntu
+# banner
+sudo cp banner /etc/
+echo "Banner /etc/banner" | sudo tee -a sshd_config > /dev/null
 
+sudo reboot
