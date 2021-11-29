@@ -37,7 +37,7 @@ int main(int argc, char** argv)
     float vel = atof(argv[1]);
     float dis = atof(argv[2]);
     //ROS_INFO_STREAM("vel"<< vel << " , dis"<< dis);
-    ros::init(argc, argv, "forward");
+    ros::init(argc, argv, "rotate");
     ros::NodeHandle n;
     ros::NodeHandle nh_private_("~");
     ros::Publisher pub=n.advertise<geometry_msgs::Twist>("/cmd_vel",50);
