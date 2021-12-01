@@ -45,6 +45,8 @@ cd ~/ROS/catkin_ws
 catkin_make
 echo "source /home/mr_robot/ROS/catkin_ws/devel/setup.bash">> ~/.bashrc
 
+# CHANGE USER@HOST COLOR
+echo "PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u&\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> ~/.bashrc
 
 # SET TIME ZONE AND REBOOT
 echo ""
