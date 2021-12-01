@@ -1,5 +1,5 @@
 <launch>
-   <arg name="laser_scan" value="false"/>
+   <arg name="laser_scan" value="true"/>
 
    <include file="$(find rom2109_description)/launch/urdf.launch" />
 
