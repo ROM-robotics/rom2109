@@ -17,7 +17,7 @@ int main(int argc, char** argv)
         std::cout<<"ERROR!"<<std::endl;
         std::cout<<"[ Usage: ]"<<std::endl;
         std::cout<<"    rosrun rom2109_controller forward [+,- m/s] [+cm]"<<std::endl<<std::endl;
-        std::cout<<"    example: rosrun rom2109_controller forward 0.7 1"<<std::endl;
+        std::cout<<"    example: rosrun rom2109_controller forward 0.2 100"<<std::endl;
         return -1; 
     }
     float vel = atof(argv[1]);

@@ -3,11 +3,7 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded:
-        - /Global Options1
-        - /Status1
-        - /LaserScan1
-        - /PoseWithCovariance1
+      Expanded: ~
       Splitter Ratio: 0.5
     Tree Height: 719
   - Class: rviz/Selection
@@ -284,7 +280,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: odom
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -316,17 +312,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 5.899693012237549
-        Y: 2.221731424331665
-        Z: -5.151771545410156
+        X: 4.476420879364014
+        Y: -0.6832049489021301
+        Z: -4.444044589996338
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.3553982973098755
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 1.12539803981781
+      Yaw: 2.665397882461548
     Saved: ~
 Window Geometry:
   Displays:
