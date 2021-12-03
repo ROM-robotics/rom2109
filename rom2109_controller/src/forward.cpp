@@ -7,6 +7,7 @@
 #include <tf/transform_listener.h>
 
 float min_velocity = 0.009;                     // ms
+int speed_reduce_percent = 20.0;
 
 float cm_to_meter(float cm)
 {
@@ -34,6 +35,8 @@ int main(int argc, char** argv)
     tf::StampedTransform transform;
     int rate = 20;
     float linear_velocity = vel;                                // ms
+    bool reverse = false;
+    if( linear_velocity < 0) { reverse=true; }
     
     geometry_msgs::Twist move_cmd;
     move_cmd.linear.x = 0.0;                                   // for smooth
@@ -70,16 +73,18 @@ int main(int argc, char** argv)
         float distance = 0;
     while(distance < goal_distance)
     { //-----------------------------------------------------------------------------------------------------------------
-        if( distance < goal_distance/10.0 ) 
+        if( distance < goal_distance/speed_reduce_percent ) 
         {
             move_cmd.linear.x += min_velocity;
             if( move_cmd.linear.x > linear_velocity) { move_cmd.linear.x = linear_velocity; }
+            if(reverse) { move_cmd.linear.x *= -1.0; }
             
         }
-        else if( distance > ( goal_distance-(goal_distance/10.0) ) )
+        else if( distance > ( goal_distance-(goal_distance/speed_reduce_percent) ) )
         {
             move_cmd.linear.x -= min_velocity;
             if( move_cmd.linear.x < min_velocity) { move_cmd.linear.x = min_velocity; }
+            if(reverse) { move_cmd.linear.x *= -1.0; }
         }
         
         pub.publish(move_cmd);

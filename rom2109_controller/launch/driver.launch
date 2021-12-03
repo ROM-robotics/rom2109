@@ -1,10 +1,9 @@
 <launch>
    <arg name="laser_scan" value="false"/>
-
-   <include file="$(find rom2109_description)/launch/urdf.launch" />
-
    <param name="/forward/linear_scale" value="1.0" />
    <param name="/rotate/angular_scale" value="1.0" />
+
+   <include file="$(find rom2109_description)/launch/urdf.launch" />
    
    <node name="stm32_driver" pkg="rom2109_controller" type="stm32_driver" output="screen"/>
 
