@@ -6,6 +6,8 @@
 #include <tf/tf.h>
 #include <tf/transform_listener.h>
 
+float min_velocity = 0.009;                     // ms
+
 float cm_to_meter(float cm)
 {
     return (cm/100.0);
@@ -34,7 +36,7 @@ int main(int argc, char** argv)
     float linear_velocity = vel;                                // ms
     
     geometry_msgs::Twist move_cmd;
-    move_cmd.linear.x = linear_velocity;
+    move_cmd.linear.x = 0.0;                                   // for smooth
     
     ros::Rate r(rate);
 
@@ -67,7 +69,19 @@ int main(int argc, char** argv)
         float y_start = transform.getOrigin().y();
         float distance = 0;
     while(distance < goal_distance)
-    {
+    { //-----------------------------------------------------------------------------------------------------------------
+        if( distance < goal_distance/10.0 ) 
+        {
+            move_cmd.linear.x += min_velocity;
+            if( move_cmd.linear.x > linear_velocity) { move_cmd.linear.x = linear_velocity; }
+            
+        }
+        else if( distance > ( goal_distance-(goal_distance/10.0) ) )
+        {
+            move_cmd.linear.x -= min_velocity;
+            if( move_cmd.linear.x < min_velocity) { move_cmd.linear.x = min_velocity; }
+        }
+        
         pub.publish(move_cmd);
         r.sleep();
 
@@ -81,7 +95,9 @@ int main(int argc, char** argv)
         } 
 
         distance = sqrt(pow(transform.getOrigin().x() - x_start, 2) + pow(transform.getOrigin().y() - y_start, 2) );
-    }
+
+     
+    } //-----------------------------------------------------------------------------------------------------------------
         
    
     // stop

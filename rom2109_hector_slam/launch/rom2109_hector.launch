@@ -1,8 +1,7 @@
 <launch>
-    
     <arg name="geotiff_map_file_path" default="$(find rom2109_hector_slam)/maps"/>
 
-    <param name="/use_sim_time" value="true"/>
+    <param name="/use_sim_time" value="false"/>
 
     <include file="$(find rom2109_hector_slam)/launch/mapping_default.launch"/>
 
