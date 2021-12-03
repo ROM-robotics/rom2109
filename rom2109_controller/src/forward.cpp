@@ -19,7 +19,7 @@ int main(int argc, char** argv)
     if(argc != 3) { 
         std::cout<<"ERROR!"<<std::endl;
         std::cout<<"[ Usage: ]"<<std::endl;
-        std::cout<<"    rosrun rom2109_controller forward [+,- m/s] [+cm]"<<std::endl<<std::endl;
+        std::cout<<"    rosrun rom2109_controller forward [+m/s] [+cm]"<<std::endl<<std::endl;
         std::cout<<"    example: rosrun rom2109_controller forward 0.2 100"<<std::endl;
         return -1; 
     }
@@ -34,7 +34,7 @@ int main(int argc, char** argv)
     tf::TransformListener listener;
     tf::StampedTransform transform;
     int rate = 20;
-    float linear_velocity = vel;                                // ms
+    float linear_velocity = abs(vel);                                // ms
     
     geometry_msgs::Twist move_cmd;
     move_cmd.linear.x = 0.0;                                   // for smooth
