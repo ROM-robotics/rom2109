@@ -21,3 +21,8 @@ fi <br>
 ### sudo ./3_install_dependencies.bash      // shutdown ဖြစ်ပါမည်။ နောက်တစ်ကြိမ် power ဖွင့်ပြီး အသုံးပြုနိင်ပါပြီ။
 
 ### ဒါဆို username mr_robot နဲ့ password ဖြင့် login ဝင်ရောက်ကာ robot ကို အသုံးပြုနိင်ပါပြီ။ 
+
+internet မရရင်
+sudo ip route del default dev eth0
+
+

@@ -56,3 +56,6 @@ sudo timedatectl set-timezone Asia/Yangon
 sudo timedatectl set-ntp true
 date
 # Nowaday, timedatectl is replaced with NPT, 
+
+# BRIDGE
+#sudo apt install -y bridge-utils
