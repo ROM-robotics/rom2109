@@ -35,8 +35,6 @@ int main(int argc, char** argv)
     tf::StampedTransform transform;
     int rate = 20;
     float linear_velocity = vel;                                // ms
-    bool reverse = false;
-    if( linear_velocity < 0) { reverse=true; }
     
     geometry_msgs::Twist move_cmd;
     move_cmd.linear.x = 0.0;                                   // for smooth
@@ -77,14 +75,12 @@ int main(int argc, char** argv)
         {
             move_cmd.linear.x += min_velocity;
             if( move_cmd.linear.x > linear_velocity) { move_cmd.linear.x = linear_velocity; }
-            if(reverse) { move_cmd.linear.x *= -1.0; }
             
         }
         else if( distance > ( goal_distance-(goal_distance/speed_reduce_percent) ) )
         {
             move_cmd.linear.x -= min_velocity;
             if( move_cmd.linear.x < min_velocity) { move_cmd.linear.x = min_velocity; }
-            if(reverse) { move_cmd.linear.x *= -1.0; }
         }
         
         pub.publish(move_cmd);
@@ -106,8 +102,13 @@ int main(int argc, char** argv)
         
    
     // stop
-    move_cmd.linear.x = 0.0;
-    pub.publish(move_cmd);
+    for( int i=0;i<20;i++)
+    {
+        move_cmd.linear.x = 0.0;
+        pub.publish(move_cmd);
+        r.sleep();
+    }
+    
     ros::Duration(1).sleep();   
 
     ros::shutdown();
