@@ -6,13 +6,11 @@
 #include <tf/tf.h>
 #include <tf/transform_listener.h>
 
-float min_velocity = 0.009;                     // ms
-int speed_reduce_percent = 20.0;
+float OneRPM = 0.0036;                           // pololu can run 1 rpm.
+float min_velocity = OneRPM * 2.0;               // ms
+int speed_reduce_percent = 25.0;
 
-float cm_to_meter(float cm)
-{
-    return (cm/100.0);
-}
+float cm_to_meter(float cm);
 
 int main(int argc, char** argv)
 {
@@ -42,44 +40,36 @@ int main(int argc, char** argv)
     ros::Rate r(rate);
 
     ros::Duration(1).sleep();
+    move_cmd.linear.x += min_velocity;
 
     double linear_scale = 0.0;
     nh_private_.getParam("linear_scale", linear_scale);
     
     float goal_distance = cm_to_meter(dis) * linear_scale;    // meter
 
-    try
-    {
-        listener.waitForTransform("odom","base_link", ros::Time(0), ros::Duration(1.0));
-    }
-    catch(tf::LookupException e)
-    {
-        ROS_INFO_STREAM("Cannot wait tf between /odom and /baselink. Error= "<< e.what()<<"\n");
-    }
+        try     {   listener.waitForTransform("odom","base_link", ros::Time(0), ros::Duration(1.0));            }
+        catch(tf::LookupException e)    
+                {   ROS_INFO_STREAM("Cannot wait tf between /odom and /baselink. Error= "<< e.what()<<"\n");    }
 
-    try
-    {
-        listener.lookupTransform("odom","base_link", ros::Time(0), transform);
-    }
-    catch(tf::TransformException e)
-    {
-        ROS_INFO_STREAM("Cannot get tf between /odom and /baselink. Error= "<< e.what()<<"\n");
-    } 
+        try     {   listener.lookupTransform("odom","base_link", ros::Time(0), transform);                      }
+        catch(tf::TransformException e)
+                {   ROS_INFO_STREAM("Cannot get tf between /odom and /baselink. Error= "<< e.what()<<"\n");     } 
 
-        float x_start = transform.getOrigin().x();
-        float y_start = transform.getOrigin().y();
-        float distance = 0;
+    float x_start = transform.getOrigin().x();
+    float y_start = transform.getOrigin().y();
+    float distance = 0;
+    
     while(distance < goal_distance)
     { //-----------------------------------------------------------------------------------------------------------------
         if( distance < goal_distance/speed_reduce_percent ) 
         {
-            move_cmd.linear.x += min_velocity;
+            move_cmd.linear.x += OneRPM;
             if( move_cmd.linear.x > linear_velocity) { move_cmd.linear.x = linear_velocity; }
             
         }
         else if( distance > ( goal_distance-(goal_distance/speed_reduce_percent) ) )
         {
-            move_cmd.linear.x -= min_velocity;
+            move_cmd.linear.x -= OneRPM;
             if( move_cmd.linear.x < min_velocity) { move_cmd.linear.x = min_velocity; }
         }
         
@@ -115,3 +105,7 @@ int main(int argc, char** argv)
     return 0;
 }
 
+float cm_to_meter(float cm)
+{
+    return (cm/100.0);
+}
