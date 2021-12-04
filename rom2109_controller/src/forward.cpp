@@ -7,8 +7,10 @@
 #include <tf/transform_listener.h>
 
 float OneRPM = 0.0036;                           // pololu can run 1 rpm.
-float min_velocity = OneRPM * 2.0;               // ms
-int speed_reduce_percent = 25.0;
+float min_velocity = OneRPM * 5.0;               // ms
+float accelaration_percent = 45.0;
+float speed_decrease_percent = (100.0-accelaration_percent)/100.0;
+float speed_increase_percent = accelaration_percent/100.0;
 
 float cm_to_meter(float cm);
 
@@ -61,18 +63,20 @@ int main(int argc, char** argv)
     
     while(distance < goal_distance)
     { //-----------------------------------------------------------------------------------------------------------------
-        if( distance < goal_distance/speed_reduce_percent ) 
+        if( distance < (goal_distance*speed_increase_percent) ) 
         {
             move_cmd.linear.x += OneRPM;
             if( move_cmd.linear.x > linear_velocity) { move_cmd.linear.x = linear_velocity; }
             
         }
-        else if( distance > ( goal_distance-(goal_distance/speed_reduce_percent) ) )
+        else if( distance > ( goal_distance*speed_decrease_percent ) )
         {
             move_cmd.linear.x -= OneRPM;
             if( move_cmd.linear.x < min_velocity) { move_cmd.linear.x = min_velocity; }
         }
-        
+        // else {
+        //     move_cmd.linear.x = linear_velocity;
+        // }
         pub.publish(move_cmd);
         r.sleep();
 

@@ -137,9 +137,10 @@ int main(int argc, char** argv)
                 mySerial.write(linX);
                 mySerial.write(" ");
                 mySerial.write(angZ);
+                mySerial.write(" ");
                 free(linX); free(angZ);
             }else {
-                to_mcu = "0.0 0.0";
+                to_mcu = "0.00 0.00";
                 mySerial.write(to_mcu);
             }
             // ----------------------------------------------------------- end serial write
