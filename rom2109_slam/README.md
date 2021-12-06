@@ -1,16 +1,16 @@
 ### slam Problems နှင့် အဖြေများ
 
-1. collide ဖြစ်ရင် ရပ်တယ်။ <br>
+#### 1. collide ဖြစ်ရင် ရပ်တယ်။ <br>
 ???
 
-2. frequency 20 ထားေပမဲ့ မငြိမ် freq ~ <= 10 လောက်ပဲရှိ <br>
+#### 2. frequency 20 ထားေပမဲ့ မငြိမ် freq ~ <= 10 လောက်ပဲရှိ <br>
 driver ထဲမှာ transmit ကိုဖျက်ပြီး 0.00 0.00 များမပို့ရန် ပြင်ဆင်သည်။
 
 
-3. local planner arc length ကြီးတယ်။  <br>
+#### 3. local planner arc length ကြီးတယ်။  <br>
 base_local_planner မှာ sim_time 4.0 မှ 1.8  ပြောင်းကြည့်ထားတယ်။ 
 
-4. Navfn vs global planner which one ?
+#### 4. Navfn vs global planner which one ?
 ##### ROS Global Planner
 There are 3 global planners that adhere to nav_core::BaseGlobalPlanner interface: global_planner, navfn and carrot_planner. The nav_core::BaseGlobalPlanner provides an interface for global used in navigation.
 
