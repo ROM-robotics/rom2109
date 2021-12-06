@@ -24,7 +24,7 @@ int receive_Byte_Size = 32;
 int loop_rate = 20;
 float_t lin_x = 0;
 float_t ang_z = 0;
-bool transmit = false;
+//bool transmit = false;
 
 double x_pos = 0.0;
 double y_pos = 0.0;
@@ -35,7 +35,7 @@ void twistCallback( const geometry_msgs::Twist& robot_velocity)
 {
     lin_x = robot_velocity.linear.x;
     ang_z = robot_velocity.angular.z;
-    transmit = true;
+    //transmit = true;
 }
 
 int main(int argc, char** argv)
@@ -123,8 +123,8 @@ int main(int argc, char** argv)
             }
             // ----------------------------------------------------------- start serial write
             std::string to_mcu;
-            if(transmit) 
-            {
+            //if(transmit) 
+            //{
                 int linX_len = snprintf( NULL, 0, "%.3f", lin_x);
                 char* linX = (char*)malloc( linX_len+1 );
                 snprintf( linX, linX_len+1, "%f", lin_x);
@@ -133,16 +133,16 @@ int main(int argc, char** argv)
                 char* angZ = (char*)malloc( angZ_len+1 );
                 snprintf( angZ, angZ_len+1, "%f", ang_z);
 
-                transmit = false;
+                //-----------------------------------transmit = false;
                 mySerial.write(linX);
                 mySerial.write(" ");
                 mySerial.write(angZ);
                 mySerial.write(" ");
                 free(linX); free(angZ);
-            }else {
-                to_mcu = "0.00 0.00";
-                mySerial.write(to_mcu);
-            }
+            //}else {
+            //    to_mcu = "0.00 0.00";
+            //    mySerial.write(to_mcu);
+            //}
             // ----------------------------------------------------------- end serial write
             odom_pub.publish(odom_msg);
             ros::spinOnce();
