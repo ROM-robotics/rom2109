@@ -1,9 +1,6 @@
 
 <launch>
-
   <arg name="odom_topic" default="odom"/>
-
-  
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find rom2109_slam)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -24,6 +21,7 @@
     <!--param name="base_global_planner" value="global_planner/GlobalPlanner"/-->
     <!--param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /-->
 
+    <!-- i think this param aren't use in this namespace, go to base_local_planner_params.yaml -->
     <param name="controller_frequency" value="20.0" /> 
     <param name="max_vel_x" value="0.300" /> 
     <param name="min_vel_x" value="0.0036" /> 
