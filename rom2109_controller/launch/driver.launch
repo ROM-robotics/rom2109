@@ -1,5 +1,5 @@
 <launch>
-   <arg name="laser_scan" value="false"/>
+   <arg name="laser_scan" value="true"/>
    <param name="/forward/linear_scale" value="1.0" />
    <param name="/rotate/angular_scale" value="1.0" />
 
