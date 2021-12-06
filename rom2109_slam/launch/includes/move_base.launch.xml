@@ -25,6 +25,15 @@
     <!--param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /-->
 
     <param name="controller_frequency" value="20.0" /> 
+    <param name="max_vel_x" value="0.300" /> 
+    <param name="min_vel_x" value="0.0036" /> 
+    <param name="max_vel_theta" value="1.0" /> 
+    <param name="min_vel_theta" value="-1.0" /> 
+    <param name="acc_lim_x" value="0.3" />
+    <param name="acc_lim_theta" value="1.0" />
+    <param name="yaw_goal_tolerance" value="0.3" /> <!-- radian -->
+    <param name="xy_goal_tolerance" value="0.05" /> <!--  meter -->
+    <param name="max_trans_vel" value="0.300" />
     <!--
       <param name="recovery_behavior_enabled" value="false"/>
       <param name="planner_patience" value="5.0"/>

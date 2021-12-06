@@ -125,11 +125,11 @@ int main(int argc, char** argv)
             std::string to_mcu;
             //if(transmit) 
             //{
-                int linX_len = snprintf( NULL, 0, "%.3f", lin_x);
+                int linX_len = snprintf( NULL, 0, "%.4f", lin_x);
                 char* linX = (char*)malloc( linX_len+1 );
                 snprintf( linX, linX_len+1, "%f", lin_x);
 
-                int angZ_len = snprintf( NULL, 0, "%.3f", ang_z);
+                int angZ_len = snprintf( NULL, 0, "%.4f", ang_z);
                 char* angZ = (char*)malloc( angZ_len+1 );
                 snprintf( angZ, angZ_len+1, "%f", ang_z);
 
