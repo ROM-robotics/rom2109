@@ -1,5 +1,5 @@
 TrajectoryPlannerROS:
-controller frequency: 20.0
+  controller frequency: 20.0
 # Robot Configuration Parameters
   max_vel_x: 0.300
   min_vel_x: 0.0036
