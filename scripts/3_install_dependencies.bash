@@ -29,9 +29,9 @@ catkin_make
 echo ""
 echo " ROM ROBOTICS LTD:: writing Network Setting to ~/.bashrc ........"
 echo ""
-echo "export ROS_IP=192.169.100.57" >> ~/.bashrc
-echo "export ROS_HOSTNAME=192.168.100.57" >> ~/.bashrc
-echo "export ROS_MASTER_URI=http://192.168.100.57:11311" >> ~/.bashrc
+echo "export ROS_IP=192.169.100.200" >> ~/.bashrc
+echo "export ROS_HOSTNAME=192.168.100.200" >> ~/.bashrc
+echo "export ROS_MASTER_URI=http://192.168.100.200:11311" >> ~/.bashrc
 
 # SOURCE BASHRC
 echo ""
