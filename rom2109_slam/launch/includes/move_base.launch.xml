@@ -7,41 +7,24 @@
     <rosparam file="$(find rom2109_slam)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find rom2109_slam)/param/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find rom2109_slam)/param/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find rom2109_slam)/param/base_local_planner_params.yaml" command="load" />
-    <!--rosparam file="$(find rom2109_slam)/param/dwa_local_planner_params.yaml" command="load" /-->
     <rosparam file="$(find rom2109_slam)/param/move_base_params.yaml" command="load" />
+
+    <rosparam file="$(find rom2109_slam)/param/base_local_planner_params.yaml" command="load" />
+    <!--rosparam file="$(find rom2109_slam)/param/all_local_planners_params.yaml" command="load" /-->
+
+    <!-- global planner -->
+    <param name="base_global_planner" value="navfn/NavfnROS"/> <!-- default -->
+    <!--param name="base_global_planner" value="carrot_planner/CarrotPlanner"/-->
+    <!--param name="base_global_planner" value="global_planner/GlobalPlanner"/-->
+
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" />  <!-- default -->
+    <!--param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /-->
+    <!--param name="base_local_planner" value="eband_local_planner/EBandPlannerROS" /-->
+    <!--param name="base_local_planner" value="teb_local_planner/TepLocalPlannerROS" /-->
 
     <!--remap from="cmd_vel" to="/cmd_navigation"/>
     <remap from="odom" to="$(arg odom_topic)"/-->
 
-    <!-- default -->
-    <param name="base_global_planner" value="navfn/NavfnROS"/>
-    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" />
-
-    <!--param name="base_global_planner" value="global_planner/GlobalPlanner"/-->
-    <!--param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /-->
-
-    <!-- i think this param aren't use in this namespace, go to base_local_planner_params.yaml -->
-    <param name="controller_frequency" value="20.0" /> 
-    <param name="max_vel_x" value="0.300" /> 
-    <param name="min_vel_x" value="0.0036" /> 
-    <param name="max_vel_theta" value="1.0" /> 
-    <param name="min_vel_theta" value="-1.0" /> 
-    <param name="acc_lim_x" value="0.3" />
-    <param name="acc_lim_theta" value="1.0" />
-    <param name="yaw_goal_tolerance" value="0.3" /> <!-- radian -->
-    <param name="xy_goal_tolerance" value="0.05" /> <!--  meter -->
-    <param name="max_trans_vel" value="0.300" />
-    <!--
-      <param name="recovery_behavior_enabled" value="false"/>
-      <param name="planner_patience" value="5.0"/>
-      <param name="controller_patience" value="15.0"/>
-      <param name="shutdown_costmaps" value="true"/>
-      <param name="oscillation_timeout" value="30.0"/>
-      <param name="oscillation_distance" value="0.4"/>
-      <param name="planner_frequency" value="0.0"/>
-      <param name="max_planning_retries" value="-1"/>
-    -->
   </node>
 
   

@@ -8,7 +8,7 @@ driver ထဲမှာ transmit ကိုဖျက်ပြီး 0.00 0.00 မ�
 
 
 #### 3. local planner arc length ကြီးတယ်။  <br>
-base_local_planner မှာ sim_time 4.0 မှ 1.8  ပြောင်းကြည့်ထားတယ်။ 
+base_local_planner မှာ sim_time 4.0 မှ 1.8  ပြောင်းကြည့်ထားတယ်။ sim_time များရင် local path ရှည်မယ်။
 
 #### 4. Navfn vs global planner which one ?
 ##### ROS Global Planner
