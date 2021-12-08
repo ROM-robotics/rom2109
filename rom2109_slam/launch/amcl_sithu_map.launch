@@ -10,7 +10,8 @@
 
   <arg name="initial_pose_x" default="1.368629"/> <!-- Use 17.0 for willow's map in simulation -->
   <arg name="initial_pose_y" default="0.53971"/> <!-- Use 17.0 for willow's map in simulation -->
-  <arg name="initial_pose_a" default="0.0"/>
+  <arg name="initial_pose_a" default="0.5907798963165575"/>
+
 
   <include file="$(find rom2109_slam)/launch/includes/amcl.launch.xml">
     <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
