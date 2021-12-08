@@ -11,7 +11,7 @@
     </include>
     
     
-    <!-- how to save a map
+    <!-- start to save a map
         rostopic pub syscommand std_msgs/String "savegeotiff"
     -->
 </launch>

@@ -4,19 +4,19 @@ TrajectoryPlannerROS:
   max_vel_x: 0.300
   min_vel_x: 0.0036
   max_trans_vel: 0.300
-  max_vel_theta:  0.7
-  min_vel_theta: -0.7
+  max_vel_theta:  0.5
+  min_vel_theta: -0.5
   min_in_place_vel_theta: 0.4
   
   #add
   #escape_vel: -0.1
   
-  acc_lim_x: 0.1
-  acc_lim_theta: 0.1
+  acc_lim_x: 0.05
+  acc_lim_theta: 0.05
 
 # Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.3
-  xy_goal_tolerance: 0.05
+  yaw_goal_tolerance: 0.5
+  xy_goal_tolerance: 0.10
 
 # Forward Simulation Parameters
   sim_time: 1.8
@@ -31,7 +31,7 @@ TrajectoryPlannerROS:
   goal_distance_bias: 0.4
   occdist_scale: 0.3
   heading_lookahead: 0.325
-  dwa: true
+  dwa: false
 
 # Oscillation Prevention Parameters
   oscillation_reset_dist: 0.05

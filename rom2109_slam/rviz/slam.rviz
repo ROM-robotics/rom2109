@@ -3,7 +3,9 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 431
   - Class: rviz/Selection
@@ -300,6 +302,56 @@ Visualization Manager:
       Topic: /amcl_pose
       Unreliable: false
       Value: false
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_link:
+          Value: true
+        camera:
+          Value: false
+        left_wheel:
+          Value: false
+        lidar:
+          Value: false
+        map:
+          Value: true
+        odom:
+          Value: true
+        plate1:
+          Value: false
+        plate2:
+          Value: false
+        plate3:
+          Value: false
+        right_wheel:
+          Value: false
+      Marker Alpha: 1
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        map:
+          odom:
+            base_link:
+              left_wheel:
+                {}
+              plate1:
+                camera:
+                  {}
+                lidar:
+                  {}
+              plate2:
+                {}
+              plate3:
+                {}
+              right_wheel:
+                {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -328,7 +380,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 9.061662673950195
+      Distance: 14.118596076965332
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -336,17 +388,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 2.4435606002807617
-        Y: 0.7392597794532776
-        Z: -4.601202964782715
+        X: 4.927128314971924
+        Y: -0.866136372089386
+        Z: -4.478134632110596
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 1.45979642868042
       Target Frame: <Fixed Frame>
-      Yaw: 3.890408992767334
+      Yaw: 3.690406084060669
     Saved: ~
 Window Geometry:
   Displays:
