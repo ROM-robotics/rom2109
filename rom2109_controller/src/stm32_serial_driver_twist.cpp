@@ -15,6 +15,22 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
+#define RPM_MONITOR 1
+
+#ifdef RPM_MONITOR
+#include <rom_motor_msgs/rpm_monitor.h>
+
+char right_actual = 'A';
+char right_desire = 'B';
+char left_actual  = 'C';
+char left_desire  = 'D';
+
+int r_actual = 0;
+int r_desire = 0;
+int l_actual = 0;
+int l_desire = 0;
+#endif
+
 uint32_t baud = 115200;
 const std::string port = "/home/mr_robot/robotController";
 uint32_t inter_byte_timeout = 0, read_timeout = 1, read_timeout_mul = 1, write_timeout = 0, write_timeout_mul = 0;
@@ -51,6 +67,11 @@ int main(int argc, char** argv)
     
     ros::Rate r(loop_rate);
 
+    #ifdef RPM_MONITOR
+    ros::Publisher rpm_pub = nh_.advertise<rom_motor_msgs::rpm_monitor>("/all_rpms", 50);
+    rom_motor_msgs::rpm_monitor rpm_monitor;
+    #endif
+
     char base_link[] = "base_link";
     char odom[] = "/odom";
     nav_msgs::Odometry odom_msg;
@@ -84,14 +105,41 @@ int main(int argc, char** argv)
                 std::size_t position_y = read_buffer.find("y");
                 std::size_t position_t = read_buffer.find("t");
 
+                #ifdef RPM_MONITOR
+                std::size_t position_ra = read_buffer.find(right_actual);
+                std::size_t position_rd = read_buffer.find(right_desire);
+                std::size_t position_la = read_buffer.find(left_actual);
+                std::size_t position_ld = read_buffer.find(left_desire);
+                #endif
+
                 std::string x_pos_str = read_buffer.substr(0, position_x);
                 std::string y_pos_str = read_buffer.substr(position_x+1, position_y);
                 std::string theta_str = read_buffer.substr(position_y+1, position_t);
+
+                #ifdef RPM_MONITOR
+                std::string right_act = read_buffer.substr(position_t+1, position_ra);
+                std::string right_des = read_buffer.substr(position_ra+1, position_rd);
+                std::string left_act  = read_buffer.substr(position_rd+1, position_la);
+                std::string left_des  = read_buffer.substr(position_la+1, position_ld);
+                #endif
 
                 x_pos = strtof(x_pos_str.c_str(), NULL);
                 y_pos = strtof(y_pos_str.c_str(), NULL);
                 theta = strtof(theta_str.c_str(), NULL);
                 
+                #ifdef RPM_MONITOR
+                r_actual = stoi(right_act, NULL);
+                r_desire = stoi(right_des, NULL);
+                l_actual = stoi(left_act, NULL);
+                l_desire = stoi(left_des, NULL);
+
+                rpm_monitor.actual_left = l_actual;
+                rpm_monitor.actual_right= r_actual;
+                rpm_monitor.desire_left = l_desire;
+                rpm_monitor.desire_right= r_desire;
+                
+                #endif
+
                 geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
                 double q0, q1, q2, q3;
                 q0 = odom_quat.w; q1 = odom_quat.x; q2 = odom_quat.y; q3 = odom_quat.z;
@@ -144,6 +192,9 @@ int main(int argc, char** argv)
             //    mySerial.write(to_mcu);
             //}
             // ----------------------------------------------------------- end serial write
+            #ifdef RPM_MONITOR
+                rpm_pub.publish(rpm_monitor);
+            #endif
             odom_pub.publish(odom_msg);
             ros::spinOnce();
             r.sleep();

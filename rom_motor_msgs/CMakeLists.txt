@@ -20,6 +20,7 @@ add_message_files(
   encoder.msg 
   actual_rpm.msg
   pid_tuner.msg
+  rpm_monitor.msg
 )
 ## Generate services in the 'srv' folder
 # add_service_files(

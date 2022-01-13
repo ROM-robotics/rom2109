@@ -1,0 +1,11 @@
+<launch>
+
+	<!-- Run teleop -->
+    <include file="$(find rom2109_controller)/launch/driver.launch"/>
+
+	<!-- Wait for the lidar to start up. 
+	<arg name="node_start_delay" default="5.0" />  -->
+
+	<!-- Run the map server --> 
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find rom2109_slam)/maps/sithu.yaml"/>
+</launch>

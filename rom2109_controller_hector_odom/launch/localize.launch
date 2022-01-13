@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find rom2109_controller_hector_odom)/launch/loc1.launch"/>
+  <include file="$(find rom2109_controller_hector_odom)/launch/loc2.launch"/>
+  <include file="$(find rom2109_controller_hector_odom)/launch/loc3.launch"/>
+  <include file="$(find rom2109_controller_hector_odom)/launch/loc4.launch"/>
+</launch>
