@@ -3,10 +3,8 @@
 	<!-- Run teleop -->
     <include file="$(find rom2109_description)/launch/urdf.launch" />
    
-   <node name="stm32_driver" pkg="rom2109_controller" type="stm32_driver" output="screen">
+   <node name="stm32_driver" pkg="rom2109_controller_hector_odom" type="stm32_driver_hector" output="screen">
 		<remap from="odom" to="odom2" />
-		<param name="publish_tf" value="true"/>
-		<param name="odom_frame" value="odom2"/>
 	</node>
 
    <!-- lidar -->

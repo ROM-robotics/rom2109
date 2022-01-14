@@ -9,10 +9,16 @@ project(rom2109_controller_hector_odom)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
+  rom_motor_msgs
   roscpp
   rospy
+  sensor_msgs
+  serial
   std_msgs
+  nav_msgs
+  tf
 )
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -205,3 +211,5 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+add_executable(stm32_driver_hector src/stm32_serial_driver_twist.cpp)
+target_link_libraries(stm32_driver_hector ${catkin_LIBRARIES})
