@@ -40,7 +40,6 @@ int receive_Byte_Size = 32;
 int loop_rate = 20;
 float_t lin_x = 0;
 float_t ang_z = 0;
-bool pub_tf = true;
 
 double x_pos = 0.0;
 double y_pos = 0.0;
@@ -85,11 +84,8 @@ int main(int argc, char** argv)
         odom_msg.twist.twist.angular.x = 0.0;
         odom_msg.twist.twist.angular.y = 0.0;
 
-    nh_priv.getParam("publish_tf", pub_tf);
-
     geometry_msgs::TransformStamped t;
         t.header.frame_id = odom;
-        t.header.frame_id = "odom2";
         t.child_frame_id = base_link;
         t.transform.translation.z = 0.0;
 
@@ -157,9 +153,8 @@ int main(int argc, char** argv)
                 t.transform.rotation.y = q2/d;
                 t.transform.rotation.z = q3/d;
                 t.header.stamp = current_time;
-                if(pub_tf) {
-                    broadcaster.sendTransform(t);
-                }
+                
+                broadcaster.sendTransform(t);
                 
                 
                 odom_msg.header.stamp = current_time;
