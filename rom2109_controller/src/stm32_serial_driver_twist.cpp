@@ -91,7 +91,8 @@ int main(int argc, char** argv)
 
     geometry_msgs::TransformStamped t;
         //t.header.frame_id = odom;
-        t.header.frame_id = odom_frame;
+        //t.header.frame_id = odom_frame;
+        t.header.frame_id = "odom2";
         t.child_frame_id = base_link;
         t.transform.translation.z = 0.0;
 
