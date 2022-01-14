@@ -1,10 +1,13 @@
 <launch>
+	<!--  AMCL stuff. 
 	<arg name="initial_pose_x" default="4.608572350451344"/>
   	<arg name="initial_pose_y" default="-0.03639855832973897"/>
-  	<arg name="initial_pose_a" default="-1.836557"/>
-    	<!-- 
-		AMCL stuff.
-	 -->
+  	<arg name="initial_pose_a" default="-1.836557"/> -->
+
+	<arg name="initial_pose_x" default="0.0"/>
+  	<arg name="initial_pose_y" default="0.0"/>
+  	<arg name="initial_pose_a" default="0.0"/>
+    	
 	<node pkg="amcl" type="amcl" name="amcl">
 		<param name="tf_broadcast" value="true" />
 		<param name="base_frame_id" value="/base_link" />
