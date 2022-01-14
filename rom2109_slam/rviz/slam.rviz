@@ -5,8 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Grid1
-        - /TF1
         - /TF1/Frames1
+        - /Odometry1
       Splitter Ratio: 0.5
     Tree Height: 719
   - Class: rviz/Selection
@@ -269,7 +269,7 @@ Visualization Manager:
       Frames:
         All Enabled: false
         base_link:
-          Value: false
+          Value: true
         camera:
           Value: false
         left_wheel:
@@ -277,7 +277,7 @@ Visualization Manager:
         lidar:
           Value: false
         map:
-          Value: true
+          Value: false
         odom:
           Value: true
         plate1:
@@ -289,7 +289,7 @@ Visualization Manager:
         right_wheel:
           Value: false
         scanmatcher_frame:
-          Value: false
+          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -319,12 +319,47 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz/Axes
-      Enabled: true
+      Enabled: false
       Length: 1
       Name: Axes
       Radius: 0.10000000149011612
       Reference Frame: <Fixed Frame>
       Show Trail: false
+      Value: false
+    - Angle Tolerance: 0.10000000149011612
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.30000001192092896
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: false
+      Enabled: true
+      Keep: 100
+      Name: Odometry
+      Position Tolerance: 0.10000000149011612
+      Queue Size: 10
+      Shape:
+        Alpha: 1
+        Axes Length: 1
+        Axes Radius: 0.10000000149011612
+        Color: 255; 25; 0
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 1
+        Shaft Radius: 0.05000000074505806
+        Value: Arrow
+      Topic: /odom
+      Unreliable: false
       Value: true
   Enabled: true
   Global Options:
@@ -354,7 +389,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 39.67858123779297
+      Distance: 13.740184783935547
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -362,17 +397,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 1.4599612951278687
-        Y: -0.29869821667671204
-        Z: -4.774834632873535
+        X: 0.9980288147926331
+        Y: -0.7267944812774658
+        Z: -4.843651294708252
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.45979642868042
+      Pitch: 1.3947964906692505
       Target Frame: <Fixed Frame>
-      Yaw: 3.690406084060669
+      Yaw: 3.135406732559204
     Saved: ~
 Window Geometry:
   Displays:
