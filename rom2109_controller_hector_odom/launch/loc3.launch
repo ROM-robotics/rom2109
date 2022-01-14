@@ -1,12 +1,6 @@
 <launch>
-	<!--  AMCL stuff. 
-	<arg name="initial_pose_x" default="4.608572350451344"/>
-  	<arg name="initial_pose_y" default="-0.03639855832973897"/>
-  	<arg name="initial_pose_a" default="-1.836557"/> -->
-
-	<arg name="initial_pose_x" default="0.0"/>
-  	<arg name="initial_pose_y" default="0.0"/>
-  	<arg name="initial_pose_a" default="0.0"/>
+	<!--  AMCL stuff. -->
+	
     	
 	<node pkg="amcl" type="amcl" name="amcl">
 		<param name="tf_broadcast" value="true" />
@@ -44,11 +38,6 @@
 	    <param name="transform_tolerance" value="0.1"/>
 	    <param name="recovery_alpha_slow" value="0.0"/>
 	    <param name="recovery_alpha_fast" value="0.0"/>
-
-		<param name="initial_pose_x"            value="$(arg initial_pose_x)" />
-    	<param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
-    	<param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
-
 	  </node> 
 
 
