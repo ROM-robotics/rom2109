@@ -15,7 +15,7 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
-#define RPM_MONITOR 1
+//#define RPM_MONITOR 1
 
 #ifdef RPM_MONITOR
 #include <rom_motor_msgs/rpm_monitor.h>
@@ -40,7 +40,7 @@ int receive_Byte_Size = 32;
 int loop_rate = 20;
 float_t lin_x = 0;
 float_t ang_z = 0;
-//bool transmit = false;
+bool pub_tf = false;
 
 double x_pos = 0.0;
 double y_pos = 0.0;
@@ -51,13 +51,13 @@ void twistCallback( const geometry_msgs::Twist& robot_velocity)
 {
     lin_x = robot_velocity.linear.x;
     ang_z = robot_velocity.angular.z;
-    //transmit = true;
 }
 
 int main(int argc, char** argv)
 {
     ros::init(argc, argv, "serial_driver");
     ros::NodeHandle nh_;
+    ros::NodeHandle nh_priv;
     ros::Publisher odom_pub = nh_.advertise<nav_msgs::Odometry>("/odom", 50);
     tf::TransformBroadcaster broadcaster;
     ros::Subscriber sub = nh_.subscribe("/cmd_vel", 50, twistCallback);
@@ -90,7 +90,8 @@ int main(int argc, char** argv)
         t.child_frame_id = base_link;
         t.transform.translation.z = 0.0;
 
-    
+    nh_priv.getParam("publish_tf", pub_tf);
+
     if(! mySerial.isOpen() ) { mySerial.open(); }
 
         while (ros::ok())
@@ -155,7 +156,10 @@ int main(int argc, char** argv)
                 t.transform.rotation.y = q2/d;
                 t.transform.rotation.z = q3/d;
                 t.header.stamp = current_time;
-                broadcaster.sendTransform(t);
+                if(pub_tf) {
+                    broadcaster.sendTransform(t);
+                }
+                
                 
                 odom_msg.header.stamp = current_time;
                 odom_msg.pose.pose.position.x = x_pos;

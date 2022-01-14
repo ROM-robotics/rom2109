@@ -1,10 +1,15 @@
 <launch>
 
 	<!-- Run teleop -->
-    <include file="$(find rom2109_controller)/launch/driver.launch"/>
+    <include file="$(find rom2109_description)/launch/urdf.launch" />
+   
+   <node name="stm32_driver" pkg="rom2109_controller" type="stm32_driver" output="screen">
+		<remap from="odom" to="myodom" />
+		<param name="publish_tf" value="false"/>
+	</node>
 
-	<!-- Wait for the lidar to start up. 
-	<arg name="node_start_delay" default="5.0" />  -->
+   <!-- lidar -->
+	 	<include file="$(find rom2109_controller)/launch/rplidarA2.launch" />
 
 	<!-- Run the map server --> 
     <node name="map_server" pkg="map_server" type="map_server" args="$(find rom2109_slam)/maps/sithu.yaml"/>
