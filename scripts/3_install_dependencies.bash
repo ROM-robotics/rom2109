@@ -62,6 +62,13 @@ source ~/.bashrc
 sudo cp ~/rom2109/rom2109_controller/udev/rplidar.rules /etc/udev/rules.d
 sudo ln -s /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0 ~/robotController
 rm -rf ~/rom2109
+
+# i2c on ubuntu server 20.04
+sudo apt install -y i2c-tools python3-pip
+sudo pip3 install smbus2
+
+
+
 sudo shutdown 0
 
 
