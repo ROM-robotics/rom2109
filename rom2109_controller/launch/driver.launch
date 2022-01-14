@@ -7,7 +7,6 @@
    
    <node name="stm32_driver" pkg="rom2109_controller" type="stm32_driver" output="screen">
       <param name="publish_tf" value="true"/>
-      <param name="odom_frame" value="odom"/>
    </node>
 
    <!-- lidar -->
