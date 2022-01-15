@@ -48,6 +48,8 @@ double y_pos = 0.0;
 double theta = 0.0;
 ros::Time current_time;
 
+bool pub_tf = true;
+
 void twistCallback( const geometry_msgs::Twist& robot_velocity)
 {
     lin_x = robot_velocity.linear.x;
@@ -90,6 +92,8 @@ int main(int argc, char** argv)
         t.header.frame_id = odom;
         t.child_frame_id = base_link;
         t.transform.translation.z = 0.0;
+
+    nh_priv.getParam("publish_tf", pub_tf);
 
     if(! mySerial.isOpen() ) { mySerial.open(); }
 
@@ -156,7 +160,9 @@ int main(int argc, char** argv)
                 t.transform.rotation.z = q3/d;
                 t.header.stamp = current_time;
                 
-                broadcaster.sendTransform(t);
+                if(pub_tf) {
+                    broadcaster.sendTransform(t);
+                }
                 
                 
                 odom_msg.header.stamp = current_time;
