@@ -38,8 +38,10 @@ serial::Timeout timeout_(inter_byte_timeout, read_timeout, read_timeout_mul, wri
 int receive_Byte_Size = 32;
 
 int loop_rate = 20;
-float_t lin_x = 0;
-float_t ang_z = 0;
+float_t lin_x = 0.0;
+float_t ang_z = 0.0;
+std::string reset_ = "1.0";
+bool reset_mcu = true;
 
 double x_pos = 0.0;
 double y_pos = 0.0;
@@ -186,6 +188,7 @@ int main(int argc, char** argv)
                 mySerial.write(" ");
                 mySerial.write(angZ);
                 mySerial.write(" ");
+                if(reset_mcu) { mySerial.write(reset_); mySerial.write(" "); reset_mcu=false; }
                 free(linX); free(angZ);
             //}else {
             //    to_mcu = "0.00 0.00";

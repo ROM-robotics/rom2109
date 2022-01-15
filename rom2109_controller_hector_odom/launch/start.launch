@@ -1,6 +1,6 @@
 <launch>
-  <include file="$(find rom2109_controller_hector_odom)/launch/loc1.launch"/>
-  <include file="$(find rom2109_controller_hector_odom)/launch/loc2.launch"/>
-  <include file="$(find rom2109_controller_hector_odom)/launch/loc3.launch"/>
-  <include file="$(find rom2109_controller_hector_odom)/launch/loc4.launch"/>
+  <include file="$(find rom2109_controller_hector_odom)/launch/1driver.launch"/>
+  <include file="$(find rom2109_controller_hector_odom)/launch/2hector.launch"/>
+  <include file="$(find rom2109_controller_hector_odom)/launch/3amcl.launch"/>
+  <include file="$(find rom2109_controller_hector_odom)/launch/4move_base.launch"/>
 </launch>
