@@ -76,7 +76,7 @@ int main(int argc, char** argv)
     #endif
 
     char base_link[] = "base_link2";
-    char odom[] = "odom";
+    char odom[] = "odom2";
     nav_msgs::Odometry odom_msg;
         odom_msg.header.frame_id = odom;
         odom_msg.child_frame_id = base_link;
