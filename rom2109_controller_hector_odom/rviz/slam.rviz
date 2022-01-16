@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Grid1
+        - /TF1
         - /TF1/Frames1
         - /Hector_Odom1
         - /Hector_Odom1/Shape1
@@ -271,8 +272,6 @@ Visualization Manager:
         All Enabled: false
         base_link:
           Value: true
-        base_link2:
-          Value: true
         camera:
           Value: false
         left_wheel:
@@ -280,7 +279,7 @@ Visualization Manager:
         lidar:
           Value: false
         map:
-          Value: false
+          Value: true
         odom:
           Value: true
         plate1:
@@ -316,8 +315,6 @@ Visualization Manager:
                 {}
               right_wheel:
                 {}
-            base_link2:
-              {}
           scanmatcher_frame:
             {}
       Update Interval: 0
@@ -349,7 +346,7 @@ Visualization Manager:
           Value: true
         Value: false
       Enabled: true
-      Keep: 10
+      Keep: 1
       Name: Hector_Odom
       Position Tolerance: 0.10000000149011612
       Queue Size: 5
@@ -383,7 +380,7 @@ Visualization Manager:
           Scale: 1
           Value: true
         Value: false
-      Enabled: true
+      Enabled: false
       Keep: 10
       Name: wheel_Odom
       Position Tolerance: 0.10000000149011612
@@ -400,7 +397,7 @@ Visualization Manager:
         Value: Arrow
       Topic: /odom2
       Unreliable: false
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -429,7 +426,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 8.097463607788086
+      Distance: 10.854005813598633
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -437,9 +434,9 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 1.4075233936309814
-        Y: -0.1561693251132965
-        Z: -4.771457195281982
+        X: 1.0011725425720215
+        Y: -0.3183387517929077
+        Z: -4.84354305267334
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
