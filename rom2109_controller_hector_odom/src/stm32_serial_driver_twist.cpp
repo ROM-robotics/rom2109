@@ -48,7 +48,7 @@ double y_pos = 0.0;
 double theta = 0.0;
 ros::Time current_time;
 
-bool pub_tf = true;
+bool pub_tf = false;
 
 void twistCallback( const geometry_msgs::Twist& robot_velocity)
 {
