@@ -5,6 +5,7 @@
    
    <node name="stm32_driver" pkg="rom2109_controller_hector_odom" type="stm32_driver_hector" output="screen">
 		<remap from="odom" to="odom2" />
+		<param name="pub_tf" value="false"/>
 	</node>
 
    <!-- lidar -->
