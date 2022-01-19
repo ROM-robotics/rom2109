@@ -67,9 +67,9 @@ rm -rf ~/rom2109
 sudo apt install -y i2c-tools python3-pip
 sudo pip3 install smbus2
 
-echo "PS1='\[\033[01;31m\]\u&\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ '" >> ~/.bashrc
 
-#sudo shutdown 0
+
+sudo shutdown 0
 
 
 
