@@ -6,8 +6,12 @@ echo ""
 
 
 # DELETE user
+echo " ROM ROBOTICS LTD:: Deleting users and contents ...................................."
 sudo pkill -u ubuntu
 sudo userdel -r ubuntu
+sudo pkill -u pi
+sudo userdel -r pi
+
 cd ~
 git clone https://github.com/greenghostman/rom2109.git
 
