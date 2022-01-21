@@ -5,37 +5,45 @@
 import smbus,time
 
 def MPU6050_start():
+
     # alter sample rate (stability)
     samp_rate_div = 0 # sample rate = 8 kHz/(1+samp_rate_div)
     bus.write_byte_data(MPU6050_ADDR, SMPLRT_DIV, samp_rate_div)
     time.sleep(0.1)
+
     # reset all sensors
     bus.write_byte_data(MPU6050_ADDR,PWR_MGMT_1,0x00)
     time.sleep(0.1)
+
     # power management and crystal settings
     bus.write_byte_data(MPU6050_ADDR, PWR_MGMT_1, 0x01)
     time.sleep(0.1)
+
     #Write to Configuration register
     bus.write_byte_data(MPU6050_ADDR, CONFIG, 0)
     time.sleep(0.1)
+
     #Write to Gyro configuration register
     gyro_config_sel = [0b00000,0b010000,0b10000,0b11000] # byte registers
     gyro_config_vals = [250.0,500.0,1000.0,2000.0] # degrees/sec
     gyro_indx = 0
     bus.write_byte_data(MPU6050_ADDR, GYRO_CONFIG, int(gyro_config_sel[gyro_indx]))
     time.sleep(0.1)
+
     #Write to Accel configuration register
     accel_config_sel = [0b00000,0b01000,0b10000,0b11000] # byte registers
     accel_config_vals = [2.0,4.0,8.0,16.0] # g (g = 9.81 m/s^2)
     accel_indx = 0                            
     bus.write_byte_data(MPU6050_ADDR, ACCEL_CONFIG, int(accel_config_sel[accel_indx]))
     time.sleep(0.1)
+
     # interrupt register (related to overflow of data [FIFO])
     bus.write_byte_data(MPU6050_ADDR, INT_ENABLE, 1)
     time.sleep(0.1)
     return gyro_config_vals[gyro_indx],accel_config_vals[accel_indx]
     
 def read_raw_bits(register):
+
     # read accel and gyro values
     high = bus.read_byte_data(MPU6050_ADDR, register)
     low = bus.read_byte_data(MPU6050_ADDR, register+1)
@@ -49,6 +57,7 @@ def read_raw_bits(register):
     return value
 
 def mpu6050_conv():
+    
     # raw acceleration bits
     acc_x = read_raw_bits(ACCEL_XOUT_H)
     acc_y = read_raw_bits(ACCEL_YOUT_H)
