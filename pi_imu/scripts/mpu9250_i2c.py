@@ -89,7 +89,7 @@ def AK8963_start():
     AK8963_bit_res = 0b0001 # 0b0001 = 16-bit
     AK8963_samp_rate = 0b0110 # 0b0010 = 8 Hz, 0b0110 = 100 Hz
     AK8963_mode = (AK8963_bit_res <<4)+AK8963_samp_rate # bit conversion
-    bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,0x16)
+    bus.write_byte_data(AK8963_ADDR,AK8963_CNTL,AK8963_mode)
     time.sleep(0.5)
     
 def AK8963_reader(register):
