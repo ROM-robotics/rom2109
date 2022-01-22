@@ -16,7 +16,7 @@ t0 = time.time()
 start_bool = False # boolean for connection
 while (time.time()-t0)<5: # wait for 5-sec to connect to IMU
     try:
-        from mpu9250_i2c_2 import *
+        from mpu9250_i2c import *
         start_bool = True # True for forthcoming loop
         break 
     except:

@@ -144,10 +144,7 @@ int main(int argc, char** argv)
                 double q0, q1, q2, q3;
                 q0 = odom_quat.w; q1 = odom_quat.x; q2 = odom_quat.y; q3 = odom_quat.z;
                 double d = sqrt(q0*q0+q1*q1+q2*q2+q3*q3); // it might be unsafe when d=0;
-                //tf2::Quaternion odom_quat_tf;
-                //odom_quat_tf.setRPY(0.0,0.0,theta); odom_quat_tf.normalize();
-                //geometry_msgs::Quaternion odom_quat;
-                //tf2::convert( odom_quat , odom_quat_tf );
+            
                 t.transform.translation.x = x_pos;
                 t.transform.translation.y = y_pos;
                 t.transform.rotation.w = q0/d;
@@ -157,7 +154,6 @@ int main(int argc, char** argv)
                 t.header.stamp = current_time;
                 
                 broadcaster.sendTransform(t);
-                
                 
                 odom_msg.header.stamp = current_time;
                 odom_msg.pose.pose.position.x = x_pos;

@@ -117,8 +117,9 @@ def AK8963_reader(register):
 def AK8963_conv():
     # raw magnetometer bits
     while 1:
-##        if ((bus.read_byte_data(AK8963_ADDR,AK8963_ST1) & 0x01))!=1:
-##            return 0,0,0
+        # if status register 1 's data ready bit is not zero( not ready )
+        if ((bus.read_byte_data(AK8963_ADDR,AK8963_ST1) & 0x01))!=1:
+            return mag_x,mag_y,mag_z
         mag_x = AK8963_reader(HXH)
         mag_y = AK8963_reader(HYH)
         mag_z = AK8963_reader(HZH)
@@ -166,6 +167,9 @@ AK8963_ASAX = 0x10
 mag_sens = 4800.0 # magnetometer sensitivity: 4800 uT
 
 # start I2C driver
+mag_x = 0
+mag_y = 0
+mag_z = 0
 bus = smbus.SMBus(1) # start comm with i2c bus
 time.sleep(0.1)
 gyro_sens,accel_sens = MPU6050_start() # instantiate gyro/accel
