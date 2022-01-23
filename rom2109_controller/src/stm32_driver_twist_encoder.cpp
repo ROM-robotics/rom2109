@@ -31,6 +31,8 @@ int l_actual = 0;
 int l_desire = 0;
 #endif
 
+bool publish_tf_ = true;
+
 uint32_t baud = 115200;
 const std::string port = "/home/mr_robot/robotController";
 uint32_t inter_byte_timeout = 0, read_timeout = 1, read_timeout_mul = 1, write_timeout = 0, write_timeout_mul = 0;
@@ -67,6 +69,8 @@ int main(int argc, char** argv)
     serial::eightbits, serial::parity_none, serial::stopbits_one, serial::flowcontrol_none );
     
     ros::Rate r(loop_rate);
+
+    ros::param::get("/publish_tf", publish_tf_ );
 
     #ifdef RPM_MONITOR
     ros::Publisher rpm_pub = nh_.advertise<rom_motor_msgs::rpm_monitor>("/all_rpms", 50);
@@ -144,16 +148,20 @@ int main(int argc, char** argv)
                 double q0, q1, q2, q3;
                 q0 = odom_quat.w; q1 = odom_quat.x; q2 = odom_quat.y; q3 = odom_quat.z;
                 double d = sqrt(q0*q0+q1*q1+q2*q2+q3*q3); // it might be unsafe when d=0;
-            
-                t.transform.translation.x = x_pos;
-                t.transform.translation.y = y_pos;
-                t.transform.rotation.w = q0/d;
-                t.transform.rotation.x = q1/d;
-                t.transform.rotation.y = q2/d;
-                t.transform.rotation.z = q3/d;
-                t.header.stamp = current_time;
+
+                if(publish_tf_)
+                {
+                    t.transform.translation.x = x_pos;
+                    t.transform.translation.y = y_pos;
+                    t.transform.rotation.w = q0/d;
+                    t.transform.rotation.x = q1/d;
+                    t.transform.rotation.y = q2/d;
+                    t.transform.rotation.z = q3/d;
+                    t.header.stamp = current_time;
                 
-                broadcaster.sendTransform(t);
+                    broadcaster.sendTransform(t);
+                }
+ 
                 
                 odom_msg.header.stamp = current_time;
                 odom_msg.pose.pose.position.x = x_pos;
