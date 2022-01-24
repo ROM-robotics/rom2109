@@ -214,9 +214,6 @@ include_directories(
 add_executable(driver_enc src/stm32_driver_twist_encoder.cpp)
 target_link_libraries(driver_enc ${catkin_LIBRARIES})
 
-add_executable(driver_enc_AndriodIMU src/stm32_driver_twist_enc_android_imu.cpp)
-target_link_libraries(driver_enc_AndriodIMU ${catkin_LIBRARIES})
-
 add_executable(forward src/forward.cpp)
 target_link_libraries(forward ${catkin_LIBRARIES})
 

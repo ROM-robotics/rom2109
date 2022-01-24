@@ -5,7 +5,7 @@ def callback(data, args):
 	bc = tf2_ros.TransformBroadcaster()
 	t = geometry_msgs.msg.TransformStamped()
 	t.header.stamp = rospy.Time.now()
-	t.header.frame_id = args[0]
+	t.header.frame_id = 'odom'
 	t.child_frame_id = args[1]
 	t.transform.translation = data.pose.pose.position
 	t.transform.rotation = data.pose.pose.orientation

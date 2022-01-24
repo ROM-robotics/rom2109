@@ -15,23 +15,10 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
-//#define RPM_MONITOR 1
-
-#ifdef RPM_MONITOR
 #include <rom_motor_msgs/rpm_monitor.h>
 
-char right_actual = 'A';
-char right_desire = 'B';
-char left_actual  = 'C';
-char left_desire  = 'D';
-
-int r_actual = 0;
-int r_desire = 0;
-int l_actual = 0;
-int l_desire = 0;
-#endif
-
-bool publish_tf_ = true;
+bool publish_tf = false;
+bool monitor_rpms = false;
 
 uint32_t baud = 115200;
 const std::string port = "/home/mr_robot/robotController";
@@ -60,47 +47,56 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "serial_driver");
     ros::NodeHandle nh_;
-    ros::NodeHandle nh_priv;
+    ros::NodeHandle nh_priv("~");
     ros::Publisher odom_pub = nh_.advertise<nav_msgs::Odometry>("/odom", 50);
     tf::TransformBroadcaster broadcaster;
     ros::Subscriber sub = nh_.subscribe("/cmd_vel", 50, twistCallback);
-
     serial::Serial mySerial( port, baud, timeout_,
     serial::eightbits, serial::parity_none, serial::stopbits_one, serial::flowcontrol_none );
-    
     ros::Rate r(loop_rate);
+    ros::param::get("/publish_odom_baselink_tf", publish_tf );
+    ros::param::get("/monitor_rpms", monitor_rpms);
 
-    ros::param::get("/publish_tf", publish_tf_ );
+    if(monitor_rpms){   
+        #define RPM_MONITOR 1;  
+    }
 
     #ifdef RPM_MONITOR
-    ros::Publisher rpm_pub = nh_.advertise<rom_motor_msgs::rpm_monitor>("/all_rpms", 50);
-    rom_motor_msgs::rpm_monitor rpm_monitor;
+        char right_actual = 'A';
+        char right_desire = 'B';
+        char left_actual  = 'C';
+        char left_desire  = 'D';
+
+        int r_actual = 0;
+        int r_desire = 0;
+        int l_actual = 0;
+        int l_desire = 0;
+
+        ros::Publisher rpm_pub = nh_.advertise<rom_motor_msgs::rpm_monitor>("/all_rpms", 50);
+        rom_motor_msgs::rpm_monitor rpm_monitor;
     #endif
 
     char base_link[] = "base_link";
     char odom[] = "odom";
     nav_msgs::Odometry odom_msg;
         odom_msg.header.frame_id = odom;
-        odom_msg.child_frame_id = base_link;
-        // position part
-        odom_msg.pose.pose.position.z = 0.0;
-        // velocity part
-        odom_msg.twist.twist.linear.y = 0.0;
-        odom_msg.twist.twist.linear.z = 0.0;
+        odom_msg.child_frame_id  = base_link;
+        odom_msg.pose.pose.position.z  = 0.0;
+        odom_msg.twist.twist.linear.y  = 0.0;
+        odom_msg.twist.twist.linear.z  = 0.0;
         odom_msg.twist.twist.angular.x = 0.0;
         odom_msg.twist.twist.angular.y = 0.0;
 
     geometry_msgs::TransformStamped t;
         t.header.frame_id = odom;
-        t.child_frame_id = base_link;
+        t.child_frame_id  = base_link;
         t.transform.translation.z = 0.0;
 
-    if(! mySerial.isOpen() ) { mySerial.open(); }
+    if( !mySerial.isOpen() ) { mySerial.open(); }
 
         while (ros::ok())
-        {   
-            current_time = ros::Time::now();
-            // ---------------------------------------------------------- start serial read
+        { 
+            // ----------------------------------------------------------- start serial read
             if( mySerial.waitReadable() )
             {   
                 std::string read_buffer = mySerial.readline(receive_Byte_Size, "\r"); mySerial.flushInput(); // 32 not sure.check firmware
@@ -149,20 +145,20 @@ int main(int argc, char** argv)
                 q0 = odom_quat.w; q1 = odom_quat.x; q2 = odom_quat.y; q3 = odom_quat.z;
                 double d = sqrt(q0*q0+q1*q1+q2*q2+q3*q3); // it might be unsafe when d=0;
 
-                if(publish_tf_)
+                current_time = ros::Time::now();
+
+                if(publish_tf)
                 {
+                    t.header.stamp = current_time;
                     t.transform.translation.x = x_pos;
                     t.transform.translation.y = y_pos;
                     t.transform.rotation.w = q0/d;
                     t.transform.rotation.x = q1/d;
                     t.transform.rotation.y = q2/d;
                     t.transform.rotation.z = q3/d;
-                    t.header.stamp = current_time;
-                
                     broadcaster.sendTransform(t);
                 }
- 
-                
+            
                 odom_msg.header.stamp = current_time;
                 odom_msg.pose.pose.position.x = x_pos;
                 odom_msg.pose.pose.position.y = y_pos;
@@ -171,8 +167,8 @@ int main(int argc, char** argv)
                 odom_msg.pose.pose.orientation.y = q2/d;
                 odom_msg.pose.pose.orientation.z = q3/d;
                 // can add velocity part
-                odom_msg.twist.twist.linear.x = 0;
-                odom_msg.twist.twist.angular.z = 0;
+                odom_msg.twist.twist.linear.x = lin_x;
+                odom_msg.twist.twist.angular.z = ang_z;
                 //ROS_INFO_STREAM("x: "<< x_pos << ", y: "<< y_pos << ", theta: "<< theta);
             }
             // ----------------------------------------------------------- start serial write
@@ -188,20 +184,23 @@ int main(int argc, char** argv)
                 snprintf( angZ, angZ_len+1, "%f", ang_z);
 
                 //-----------------------------------transmit = false;
-                mySerial.write(linX);
-                mySerial.write(" ");
-                mySerial.write(angZ);
-                mySerial.write(" ");
+                mySerial.write(linX); mySerial.write(" ");
+                mySerial.write(angZ); mySerial.write(" ");
+                
                 if(reset_mcu) { mySerial.write(reset_); mySerial.write(" "); reset_mcu=false; }
+                else { mySerial.write("0.0"); mySerial.write(" "); }
+
                 free(linX); free(angZ);
             //}else {
             //    to_mcu = "0.00 0.00";
             //    mySerial.write(to_mcu);
             //}
             // ----------------------------------------------------------- end serial write
+
             #ifdef RPM_MONITOR
                 rpm_pub.publish(rpm_monitor);
             #endif
+
             odom_pub.publish(odom_msg);
             ros::spinOnce();
             r.sleep();

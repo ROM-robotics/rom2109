@@ -1,11 +1,11 @@
 <launch>
    <arg name="laser_scan" value="true"/>
-   <param name="/forward/linear_scale" value="1.0" />
-   <param name="/rotate/angular_scale" value="1.0" />
 
    <include file="$(find rom2109_description)/launch/urdf.launch" />
    
    <node name="stm32_driver" pkg="rom2109_controller" type="stm32_driver" output="screen">
+      <param name="publish_odom_baselink_tf" value="true"/>
+      <param name="use_imu_orientation" value="false"/>
    </node>
 
    <!-- lidar -->
