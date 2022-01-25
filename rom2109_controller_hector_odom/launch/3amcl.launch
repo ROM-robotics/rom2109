@@ -1,8 +1,7 @@
 <launch>
 	<arg name="use_AMCL" value="true"/>
 
-	<!-- Run the map server --> 
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find rom2109_slam)/maps/crop_sithu.yaml"/>
+	
 
 	<!--  Uset statics tf ( map->odom ) instead of AMCL :P  -->
   	<group if="$(eval use_AMCL == false)">
@@ -13,7 +12,7 @@
 	<group if="$(eval use_AMCL == true)">
 	 	<node pkg="amcl" type="amcl" name="amcl">
 			<param name="tf_broadcast" value="true" />
-			<param name="base_frame_id" value="/base_link" />
+			<param name="base_frame_id" value="base_link" />
 			<param name="global_frame_id" value="map" />
 			<param name="odom_frame_id" value="odom" />
 			<param name="use_map_topic" value="false" />

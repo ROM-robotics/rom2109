@@ -1,7 +1,7 @@
 <launch>
   <arg name="publish_odom_baseklink_tf" value="true"/>
 
-  <!-- MOVEMENT -->
+  <!-- MOVEMENT 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find rom2109_controller_hector_odom)/params/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
     <rosparam file="$(find rom2109_controller_hector_odom)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
@@ -9,8 +9,8 @@
     <rosparam file="$(find rom2109_controller_hector_odom)/params/global_costmap_params.yaml" command="load" /> 
     <rosparam file="$(find rom2109_controller_hector_odom)/params/base_local_planner_params.yaml" command="load" />
   </node>
-
-  <!-- <include file="$(find rom2109_slam)/launch/includes/move_base.launch.xml"/> -->
+  -->
+  <include file="$(find rom2109_slam)/launch/includes/move_base.launch.xml"/>
   
   <group if="$(eval publish_odom_baseklink_tf == true)">
 	 	<!-- Run odom transformer. Credit goes to https://github.com/ne0h/hmmwv/blob/master/ros_workspace/src/hmmwv/launch/odomtransformer.launch -->
