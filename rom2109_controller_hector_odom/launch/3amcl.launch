@@ -1,5 +1,8 @@
 <launch>
-	<arg name="use_AMCL" value="false"/>
+	<arg name="use_AMCL" value="true"/>
+
+	<!-- Run the map server --> 
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find rom2109_slam)/maps/crop_sithu.yaml"/>
 
 	<!--  Uset statics tf ( map->odom ) instead of AMCL :P  -->
   	<group if="$(eval use_AMCL == false)">
