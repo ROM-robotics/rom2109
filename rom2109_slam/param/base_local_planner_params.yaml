@@ -1,7 +1,7 @@
 TrajectoryPlannerROS:
   controller frequency: 20.0
 # Robot Configuration Parameters
-  max_vel_x: 0.20
+  max_vel_x: 0.25
   min_vel_x: 0.02
   max_trans_vel: 0.300
   max_vel_theta:  0.5
@@ -16,7 +16,7 @@ TrajectoryPlannerROS:
 
 # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.5
-  xy_goal_tolerance: 0.10
+  xy_goal_tolerance: 0.20
 
 # Forward Simulation Parameters
   sim_time: 1.8
