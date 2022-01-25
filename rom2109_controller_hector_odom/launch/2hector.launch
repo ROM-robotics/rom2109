@@ -15,7 +15,7 @@
 
     <!-- Frame names -->
 	  <remap from="map" to="mapcurrent" />
-	  <remap from="/scanmatch_odom" to="/hector_odom"/>
+	  <remap from="/scanmatch_odom" to="odom"/>
     <param name="map_frame" value="map" />
     <param name="base_frame" value="$(arg base_frame)" />
     <param name="odom_frame" value="$(arg odom_frame)" />
