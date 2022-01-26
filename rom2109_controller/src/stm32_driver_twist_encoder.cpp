@@ -67,7 +67,6 @@ int main(int argc, char** argv)
     serial::Serial mySerial( port, baud, timeout_,
     serial::eightbits, serial::parity_none, serial::stopbits_one, serial::flowcontrol_none );
     ros::Rate r(loop_rate);
-    //ros::param::get("/publish_odom_baselink_tf", publish_tf );
     nh_priv.getParam("publish_odom_baselink_tf", publish_tf);
 
 

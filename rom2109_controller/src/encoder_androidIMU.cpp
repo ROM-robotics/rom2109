@@ -8,7 +8,6 @@
 #include "serial/serial.h"
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/Imu.h>
-
 #include <tf/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
 #include <geometry_msgs/TransformStamped.h>
@@ -17,8 +16,9 @@
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 #include <rom_motor_msgs/rpm_monitor.h>
-
+  
 //#define RPM_MONITOR 1
+
 #ifdef RPM_MONITOR
         char right_actual = 'A';
         char right_desire = 'B';
@@ -30,7 +30,7 @@
         int l_actual = 0;
         int l_desire = 0;
 #endif
-        
+
 bool publish_tf = true;
 
 uint32_t baud = 115200;
@@ -74,9 +74,10 @@ int main(int argc, char** argv)
     serial::Serial mySerial( port, baud, timeout_,
     serial::eightbits, serial::parity_none, serial::stopbits_one, serial::flowcontrol_none );
     ros::Rate r(loop_rate);
-    ros::param::get("/publish_odom_baselink_tf", publish_tf );
+    nh_priv.getParam("publish_odom_baselink_tf", publish_tf);
 
-    
+
+
     #ifdef RPM_MONITOR
         ros::Publisher rpm_pub = nh_.advertise<rom_motor_msgs::rpm_monitor>("/all_rpms", 50);
         rom_motor_msgs::rpm_monitor rpm_monitor;
@@ -146,14 +147,20 @@ int main(int argc, char** argv)
                 
                 #endif
 
+                //geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
+                //double q0, q1, q2, q3;
+                //q0 = odom_quat.w; q1 = odom_quat.x; q2 = odom_quat.y; q3 = odom_quat.z;
+                //double d = sqrt(q0*q0+q1*q1+q2*q2+q3*q3); // it might be unsafe when d=0;
+
                 current_time = ros::Time::now();
+
+                t.header.stamp = current_time;
+                t.transform.translation.x = x_pos;
+                t.transform.translation.y = y_pos;
+                t.transform.rotation = imu_orientation;
 
                 if(publish_tf)
                 {
-                    t.header.stamp = current_time;
-                    t.transform.translation.x = x_pos;
-                    t.transform.translation.y = y_pos;
-                    t.transform.rotation = imu_orientation;
                     broadcaster.sendTransform(t);
                 }
             
