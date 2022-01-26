@@ -1,9 +1,9 @@
 <launch>
     <!-- for Android IMU -->
-    <node pkg="tf" type="static_transform_publisher" name="baselink_imu_broadcaster" args="0 0 0 0 0 0 /base_link /imu 100"/>
+    <node pkg="tf" type="static_transform_publisher" name="baselink_imu_broadcaster" args="0 0 0.43 0 0 0 /base_link /imu 100"/>
   
     <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
-        <param name="output_frame" value="odom_combined"/>
+        <param name="output_frame" value="odom"/>
         <param name="base_footprint_frame" value="base_link"/>
         <param name="freq" value="20.0"/>
         <param name="sensor_timeout" value="1.0"/>  
@@ -11,7 +11,8 @@
         <param name="imu_used" value="true"/>
         <param name="vo_used" value="false"/>
         <param name="debug" value="false"/>
-        <remap from="odom" to="pr2_base_odometry/odom" />
+        <remap from="odom" to="encoder_odom" />
+        <remap from="imu_data" to="android/imu"/>
     </node>
 
 </launch>
