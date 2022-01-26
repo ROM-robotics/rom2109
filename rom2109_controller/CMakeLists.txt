@@ -214,8 +214,8 @@ include_directories(
 add_executable(driver_enc src/stm32_driver_twist_encoder.cpp)
 target_link_libraries(driver_enc ${catkin_LIBRARIES})
 
-add_executable(enc_imu src/encoder_combine_with_imu.cpp)
-target_link_libraries(enc_imu ${catkin_LIBRARIES})
+add_executable(driver_enc_imu src/encoder_combine_with_imu.cpp)
+target_link_libraries(driver_enc_imu ${catkin_LIBRARIES})
 
 add_executable(forward src/forward.cpp)
 target_link_libraries(forward ${catkin_LIBRARIES})
