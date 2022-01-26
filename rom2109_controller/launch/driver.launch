@@ -5,7 +5,6 @@
    
    <node name="stm32_driver" pkg="rom2109_controller" type="driver_enc" output="screen">
       <param name="publish_odom_baselink_tf" value="true"/>
-      <param name="monitor_rpms" value="false"/>
       <remap from="odom" to="encoder_odom" />
    </node>
 

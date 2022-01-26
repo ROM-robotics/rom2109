@@ -69,7 +69,6 @@ int main(int argc, char** argv)
     serial::eightbits, serial::parity_none, serial::stopbits_one, serial::flowcontrol_none );
     ros::Rate r(loop_rate);
     ros::param::get("/publish_odom_baselink_tf", publish_tf );
-    ros::param::get("/monitor_rpms", monitor_rpms);
 
 
 

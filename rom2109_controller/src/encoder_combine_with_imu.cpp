@@ -18,6 +18,19 @@
 
 #include <rom_motor_msgs/rpm_monitor.h>
 
+//#define RPM_MONITOR 1
+#ifdef RPM_MONITOR
+        char right_actual = 'A';
+        char right_desire = 'B';
+        char left_actual  = 'C';
+        char left_desire  = 'D';
+
+        int r_actual = 0;
+        int r_desire = 0;
+        int l_actual = 0;
+        int l_desire = 0;
+#endif
+        
 bool publish_tf = false;
 bool monitor_rpms = false;
 
@@ -63,23 +76,9 @@ int main(int argc, char** argv)
     serial::eightbits, serial::parity_none, serial::stopbits_one, serial::flowcontrol_none );
     ros::Rate r(loop_rate);
     ros::param::get("/publish_odom_baselink_tf", publish_tf );
-    ros::param::get("/monitor_rpms", monitor_rpms);
 
-    if(monitor_rpms){   
-        #define RPM_MONITOR 1;  
-    }
-
+    
     #ifdef RPM_MONITOR
-        char right_actual = 'A';
-        char right_desire = 'B';
-        char left_actual  = 'C';
-        char left_desire  = 'D';
-
-        int r_actual = 0;
-        int r_desire = 0;
-        int l_actual = 0;
-        int l_desire = 0;
-
         ros::Publisher rpm_pub = nh_.advertise<rom_motor_msgs::rpm_monitor>("/all_rpms", 50);
         rom_motor_msgs::rpm_monitor rpm_monitor;
     #endif
