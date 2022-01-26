@@ -147,15 +147,16 @@ int main(int argc, char** argv)
 
                 current_time = ros::Time::now();
 
+                t.header.stamp = current_time;
+                t.transform.translation.x = x_pos;
+                t.transform.translation.y = y_pos;
+                t.transform.rotation.w = q0/d;
+                t.transform.rotation.x = q1/d;
+                t.transform.rotation.y = q2/d;
+                t.transform.rotation.z = q3/d;
+
                 if(publish_tf)
                 {
-                    t.header.stamp = current_time;
-                    t.transform.translation.x = x_pos;
-                    t.transform.translation.y = y_pos;
-                    t.transform.rotation.w = q0/d;
-                    t.transform.rotation.x = q1/d;
-                    t.transform.rotation.y = q2/d;
-                    t.transform.rotation.z = q3/d;
                     broadcaster.sendTransform(t);
                 }
             
