@@ -148,16 +148,19 @@ int main(int argc, char** argv)
                 #endif
 
                 //geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta);
-                //double q0, q1, q2, q3;
-                //q0 = odom_quat.w; q1 = odom_quat.x; q2 = odom_quat.y; q3 = odom_quat.z;
-                //double d = sqrt(q0*q0+q1*q1+q2*q2+q3*q3); // it might be unsafe when d=0;
+                double q0, q1, q2, q3;
+                q0 = imu_orientation.w; q1 = imu_orientation.x; q2 = imu_orientation.y; q3 = imu_orientation.z;
+                double d = sqrt(q0*q0+q1*q1+q2*q2+q3*q3); // it might be unsafe when d=0;
 
                 current_time = ros::Time::now();
 
                 t.header.stamp = current_time;
                 t.transform.translation.x = x_pos;
                 t.transform.translation.y = y_pos;
-                t.transform.rotation = imu_orientation;
+                t.transform.rotation.w = q0/d;
+                t.transform.rotation.x = q1/d;
+                t.transform.rotation.y = q2/d;
+                t.transform.rotation.z = q3/d;
 
                 if(publish_tf)
                 {
@@ -167,7 +170,10 @@ int main(int argc, char** argv)
                 odom_msg.header.stamp = current_time;
                 odom_msg.pose.pose.position.x = x_pos;
                 odom_msg.pose.pose.position.y = y_pos;
-                odom_msg.pose.pose.orientation = imu_orientation;
+                odom_msg.pose.pose.orientation.w = q0/d;
+                odom_msg.pose.pose.orientation.x = q1/d;
+                odom_msg.pose.pose.orientation.y = q2/d;
+                odom_msg.pose.pose.orientation.z = q3/d;
                 // can add velocity part
                 odom_msg.twist.twist.linear.x = lin_x;
                 odom_msg.twist.twist.angular.z = ang_z;
