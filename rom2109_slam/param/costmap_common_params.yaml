@@ -38,5 +38,5 @@ obstacles_laser:
   laser: {data_type: LaserScan, clearing: true, marking: true, topic: scan, inf_is_valid: true}
 
 inflation: 
-  inflation_radius: 1.0 # robot cannot pass this outer blue region of obstacle
+  inflation_radius: 0.3 # robot cannot pass this outer blue region of obstacle
 

@@ -11,8 +11,8 @@ TrajectoryPlannerROS:
   #add
   #escape_vel: -0.1
   
-  acc_lim_x: 0.05
-  acc_lim_theta: 0.05
+  acc_lim_x: 0.1
+  acc_lim_theta: 0.1
 
 # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.5
