@@ -31,8 +31,7 @@
         int l_desire = 0;
 #endif
         
-bool publish_tf = false;
-bool monitor_rpms = false;
+bool publish_tf = true;
 
 uint32_t baud = 115200;
 const std::string port = "/home/mr_robot/robotController";
