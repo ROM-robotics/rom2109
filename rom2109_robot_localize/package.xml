@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>rom2109_robot_localization</name>
+  <name>rom2109_robot_localize</name>
   <version>0.0.0</version>
   <description>The rom2109_robot_localization package</description>
 
