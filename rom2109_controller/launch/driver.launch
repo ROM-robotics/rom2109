@@ -4,7 +4,7 @@
    <include file="$(find rom2109_description)/launch/urdf.launch" />
    
    <node name="stm32_driver" pkg="rom2109_controller" type="driver_enc" output="screen">
-      <param name="publish_odom_baselink_tf" type="bool" value="true"/>
+      <param name="publish_odom_baselink_tf" type="bool" value="false"/>
       <remap from="odom" to="encoder_odom" />
    </node>
 
