@@ -2,6 +2,8 @@
    <arg name="laser_scan" value="true"/>
 
    <include file="$(find rom2109_description)/launch/urdf.launch" />
+
+   <node pkg="tf" type="static_transform_publisher" name="baselink_imu_broadcaster" args="0 0 0.43 0 0 0 /base_link /imu 100"/>
    
    <node name="stm32_driver" pkg="rom2109_controller" type="driver_enc" output="screen">
       <param name="publish_odom_baselink_tf" type="bool" value="false"/>

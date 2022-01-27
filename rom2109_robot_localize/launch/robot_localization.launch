@@ -2,7 +2,7 @@
     <node pkg="rom2109_robot_localize" type="android_to_ros" name="andriod2ros"/>
     <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
         <rosparam command="load" file="$(find rom2109_robot_localize)/config/ekf.yaml" />
-        <remap from="odom_filtered" to="odom"/>
+        <remap from="odometry/filtered" to="odom"/>
     </node>
 
 </launch>
