@@ -1,6 +1,0 @@
-<launch>
-
-
-<node name="play" pkg="rosbag" type="play" args="$(find rom2109_hector_slam)/bag/Team_Hector_MappingBox_RoboCup_2011_Rescue_Arena.bag --clock"/>
-
-</launch>

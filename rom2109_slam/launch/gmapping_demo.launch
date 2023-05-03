@@ -1,4 +1,0 @@
-<launch>
-  <include file="$(find rom2109_slam)/launch/includes/gmapping.launch.xml"/>
-  <!--include file="$(find rom2109_slam)/launch/amcl_demo.launch"/-->
-</launch>

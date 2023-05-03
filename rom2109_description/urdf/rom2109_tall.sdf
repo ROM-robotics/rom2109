@@ -1,0 +1,224 @@
+<sdf version='1.7'>
+  <model name='rom2109'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.002872 -0.00055 0.102152 0 -0 0</pose>
+        <mass>4.50323</mass>
+        <inertia>
+          <ixx>0.0582555</ixx>
+          <ixy>2.94647e-05</ixy>
+          <ixz>5.27872e-05</ixz>
+          <iyy>0.0619967</iyy>
+          <iyz>0.000484486</iyz>
+          <izz>0.0314972</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__plate1_collision_1'>
+        <pose>-0.003873 0 0.15505 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/plate1.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__camera_collision_2'>
+        <pose>0.105627 0.005577 0.14255 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/camera.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__lidar_collision_3'>
+        <pose>0.012125 -0.00158 0.18765 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/lidar.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__plate2_collision_4'>
+        <pose>-0.003873 0 0.2668 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/plate2.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__plate3_collision_5'>
+        <pose>-0.003873 0 0.424802 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/plate3.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__plate1_visual_1'>
+        <pose>-0.003873 0 0.15505 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/plate1.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__camera_visual_2'>
+        <pose>0.105627 0.005577 0.14255 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/camera.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__lidar_visual_3'>
+        <pose>0.012125 -0.00158 0.18765 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/lidar.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__plate2_visual_4'>
+        <pose>-0.003873 0 0.2668 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/plate2.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__plate3_visual_5'>
+        <pose>-0.003873 0 0.424802 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/plate3.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='left_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>0 0.098333 0.02605 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>left_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel'>
+      <pose relative_to='left_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0.000949 0 0 -0 0</pose>
+        <mass>2.88258</mass>
+        <inertia>
+          <ixx>0.00290152</ixx>
+          <ixy>-9.17143e-15</ixy>
+          <ixz>6.05065e-15</ixz>
+          <iyy>0.00524996</iyy>
+          <iyz>-2.70785e-15</iyz>
+          <izz>0.00290152</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/left_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/left_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='right_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>0 -0.098333 0.02605 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>right_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel'>
+      <pose relative_to='right_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 -0.000949 0 0 -0 0</pose>
+        <mass>2.8826</mass>
+        <inertia>
+          <ixx>0.0029015</ixx>
+          <ixy>8.8473e-19</ixy>
+          <ixz>1.0826e-19</ixz>
+          <iyy>0.00525</iyy>
+          <iyz>8.1336e-18</iyz>
+          <izz>0.0029015</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/right_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rom2109_description/meshes/tall/right_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

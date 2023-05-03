@@ -1,31 +1,21 @@
-# rom2109 Autonomous Mobile Robot
+#### rom2109 Autonomous Mobile Robot
 
-- လိုအပ်သော package များကို install လုပ်ရန် 
+###### ROS2 humble အတွက် simulation package
 
-- robot controller နှင့် lidar port များကို robot computer တွင် /home/rom/robotController , /dev/rplidar အဖြစ် ရရှိစေရန်
-  rom2109_controller/udev/install.bash ကို run ပါ။ ပြန်ဖျက်လိုပါက ./uninstall.bash ကို run ပါ။
+$ sudo apt install -y ros-humble-gazebo-ros* <br>
+$ sudo apt install -y ros-humble-ros2-control* <br>
+$ sudo apt install -y ros-humble-controller-* <br>
 
-- ssh မှ login ဝင်ရာတွင် ~/.bashrc ကို run မပေးပါ။ ဒါကြောင့် roscore, roslaunch, rosrun များ run နိုင်မည်မဟုတ်ပါ။  login   ဝင်တိုင်း source ~/.bashrc လုပ်ရပါမယ်။ မလုပ်ချင်ရင် .bash_profile သို့မဟုတ် .profile မှာ အောက်ပါအတိုင်းရေးထည့်ပါရန်။
+<img src="images/bot.png" width="613" height="299" />
+- spawn ရရန် ~/.gazebo/models/ ထဲသို့ rom2109_tall , rom2109_bot နှင့် သက်ဆိုင်ရာ robot_description package ကိုထည့်ပါ။ <br>
+(( rom2109_bot, rom2109_tall ကို gz sdf convert လုပ်ခြင်း သို့မဟုတ် ros1 gazebo ဖြင့် urdf ကို spawn လုပ်ပြီး save as world ဖြင့် သက်ဆိုင်ရာ sdf ကို ရရှိနိင်သည်။ အဲ့ဒီ world သို့မဟုတ် sdf ထဲက link, joint များပါသော \<model> ... \</model> ကို sdf  ထဲ save ပြီး ~/.gazebo/models/ ထဲထည့်သွင်းထားခြင်းဖြစ်သည်။ ကိုယ်တိုင် robot ကို design ဆွဲထားပါက sdf ထဲက <uri>model://your_package/meshes/.. များကို path မှန်/ မမှန် စစ်ဆေးပါ။ )) <br>
 
-if [ -f ~/.bashrc ]; then <br>
-  . ~/.bashrc <br>
-fi <br>
+<img src="images/dog_and_tall.png" width="619" height="330" />
+- မူလ urdf တွင် gazebo plugin ( laser, differential ) များပါဝင်ပြီး မစမ်းသပ်ရေသးသော်လည်း differential plugin များမှ leftJoint --> left_joint, rightJoint --> right_joint, wheelDiameter --> wheel_diameter , wheelSeparation --> wheel_separation စသည့် spawner error များကို ရှင်းပြီးဖြစ်သည်။ 
 
-- gmapping မြေပုံမပေါ်ပါက map , odom နှစ်ခု relation frame မရှိလို့ ဖြစ်နိုင်ပါတယ်။ tf သည် time sensitive ဖြစ်တာမို့ computer နှစ်လုံးအချိန်ညှိပါ။ 
+- spawner ကို launch ဖိုင်မှခေါ်ရာတွင် position argument စတိုင်မှာ "-x", "0.0" အား "-x", '0.0' စသဖြင့်အသုံးပြုပါ။
 
+- sensor အားလုံးအဆင်ပြေ။ SLAM မစမ်းရေသး
 
-### အာ့တွေ တစ်ခုချင်း လုပ်ဖို့ ပျင်းတယ်ဆိုရင် 
-##### $ sudo ./1_create_user.bash               
-mr_robot အတွက် password အသစ်တောင်းမယ်။ ပြီးရင် auto reboot ကျပါမယ်။
-##### $ ssh mr_robot@your_ip                    
-user name mr_robot နှင့် ssh login ဝင်ပါ။
-##### $ sudo ./install_ros_noetic.bash          
-##### $ sudo ./3_install_dependencies.bash      
-shutdown ဖြစ်ပါမည်။ နောက်တစ်ကြိမ် power ဖွင့်ပြီး အသုံးပြုနိင်ပါပြီ။
-
-ဒါဆို username mr_robot နဲ့ password ဖြင့် login ဝင်ရောက်ကာ robot ကို အသုံးပြုနိင်ပါပြီ။ 
-
-internet မရရင်
-##### $ sudo ip route del default dev eth0
-
-
+<img src="images/orange_bot.png" width="619" height="330" />
+- rom2109_tall ကို ကိုပြည့်စုံအောင် design ဆွဲပြီး rom2109_bot ကို ကိုစည်သူရဲထွန်း design ဆွဲပြီး မြန်မာပြည်တွင် တပ်ဆင်သည်။
