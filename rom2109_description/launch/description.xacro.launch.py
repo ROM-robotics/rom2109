@@ -17,7 +17,7 @@ def generate_launch_description():
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('rom2109_description'))
-    xacro_file = os.path.join(pkg_path,'urdf','rom2109_tall.xacro')
+    xacro_file = os.path.join(pkg_path,'urdf','robot.urdf.xacro')
     robot_description_config = xacro.process_file(xacro_file)
     
     # Create a robot_state_publisher node
@@ -27,6 +27,12 @@ def generate_launch_description():
         executable='robot_state_publisher',
         output='screen',
         parameters=[params]
+    )
+
+    joint_state_node = Node(
+        name="joint_state_publisher",
+        package="joint_state_publisher",
+        executable="joint_state_publisher",
     )
 
 
