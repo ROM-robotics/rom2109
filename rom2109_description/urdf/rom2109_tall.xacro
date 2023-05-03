@@ -413,5 +413,22 @@
       xyz="0 0 0" />
   </joint>
 
+  <!-- Colour -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="plate1">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+   <gazebo reference="plate2">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
+   <gazebo reference="plate3">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+
 
 </robot>

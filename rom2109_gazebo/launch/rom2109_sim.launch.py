@@ -10,23 +10,13 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
     gazebo_pkg = get_package_share_directory('rom2109_gazebo')
+    description_pkg = get_package_share_directory('rom2109_description')
     default_world_path = os.path.join(gazebo_pkg, 'worlds', 'cafe.world')
     
-    urdf_pkg = get_package_share_directory('rom2109_description')
-    urdf_path= os.path.join(urdf_pkg, 'urdf', "rom2109_tall.urdf")
-    urdf = open(urdf_path).read()
-
-    robot_state_publisher_node = Node(
-        name="robot_state_publisher",
-        package="robot_state_publisher",
-        executable="robot_state_publisher",
-        parameters=[{"robot_description": urdf, 'use_sim_time': True}],
-    )
-
-    joint_state_node = Node(
-        name="joint_state_publisher",
-        package="joint_state_publisher",
-        executable="joint_state_publisher",
+    bot = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(
+        description_pkg,'launch','description.xacro.launch.py'
+        )]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
     rviz_node = Node(
@@ -52,23 +42,22 @@ def generate_launch_description():
         }.items(),
     )
 
-    spawn_tall_robot_node = Node(
-        package="gazebo_ros",
-        executable="spawn_entity.py",
-        arguments=["-database", "rom2109_tall", "-entity", "rom2109_tall",
+    spawn_robot_node = Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        arguments=['-topic', 'robot_description', '-entity', 'rom2109',
         "-x", '0.0',
         "-y", '0.0',
         "-z", '0.3'],
-        output="screen"
+        output='screen'
     )
 
     return LaunchDescription(
         [
-            DeclareLaunchArgument('open_rviz', default_value='false', description='Open RViz.'),
-            robot_state_publisher_node,
-            #joint_state_node,
-            rviz_node,
+            DeclareLaunchArgument('open_rviz', default_value='true', description='Open RViz.'),
+            bot,
             gazebo_launch,
-            spawn_tall_robot_node,
+            rviz_node,
+            spawn_robot_node,
         ]
     )

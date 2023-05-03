@@ -2,5 +2,10 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="rom2109">
 
     <xacro:include filename="rom2109_tall.xacro" />
-    
+    <xacro:include filename="gazebo_control.xacro" />
+    <xacro:include filename="lidar.xacro" />
+    <xacro:include filename="camera.xacro" />
+    <!-- <xacro:include filename="camera3d.xacro" /> -->
+
+
 </robot>
