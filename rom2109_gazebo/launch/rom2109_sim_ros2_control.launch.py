@@ -26,6 +26,8 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('open_rviz'))
     )
 
+    gazebo_params_file = os.path.join(get_package_share_directory('rom2109_gazebo'), 'config', 'gazebo_params.yaml')
+
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(
             get_package_share_directory("gazebo_ros"), "launch", "gazebo.launch.py")),
@@ -39,6 +41,7 @@ def generate_launch_description():
             "world_init_heading": "0.0",
             "gui": "true",
             "close_loop_odom": "true",
+            "extra_gazebo_args": "--ros-args --params-file " + gazebo_params_file
         }.items(),
     )
 
