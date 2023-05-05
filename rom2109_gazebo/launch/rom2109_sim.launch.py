@@ -54,7 +54,7 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
-            DeclareLaunchArgument('open_rviz', default_value='false', description='Open RViz.'),
+            DeclareLaunchArgument('open_rviz', default_value='true', description='Open RViz.'),
             bot,
             gazebo_launch,
             rviz_node,
