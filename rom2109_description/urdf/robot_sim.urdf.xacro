@@ -7,6 +7,7 @@
     <xacro:include filename="rom2109_tall.xacro" />
     <xacro:include filename="lidar.xacro" />
 
+    <!-- <xacro:include filename="hw_ros2_control.xacro" />  -->
     <xacro:include filename="ros2_control.xacro" /> 
     <!-- <xacro:include filename="gazebo_control.xacro" /> -->
 

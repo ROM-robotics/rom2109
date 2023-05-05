@@ -9,6 +9,8 @@ from launch_ros.actions import Node
 
 import xacro
 
+hardware_robot = 'robot_hw.urdf.xacro'
+simulation_robot = 'robot_sim.urdf.xacro'
 
 def generate_launch_description():
 
@@ -17,7 +19,7 @@ def generate_launch_description():
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('rom2109_description'))
-    xacro_file = os.path.join(pkg_path,'urdf','robot.urdf.xacro')
+    xacro_file = os.path.join(pkg_path,'urdf',simulation_robot)
     robot_description_config = xacro.process_file(xacro_file)
     
     # Create a robot_state_publisher node
