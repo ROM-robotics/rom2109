@@ -1,0 +1,68 @@
+sudo apt install ros-humble-navigation2
+sudo apt install ros-humble-nav2-brigup
+apt install ros-humble-turtlebot3*
+
+sudo apt install ros-humble-robot-localization
+sudo apt install -y ros-humble-slam-toolbox
+
+
+# simulation
+ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
+
+
+
+(SLAM) Navigating while Mapping
+sudo apt install ros-humble-slam-toolbox
+
+
+# launch robot interface and robot state publisher
+ros2 launch turtlebot3_bringup robot.launch.py----------------------------------------------------------------
+
+# Launch navigation without nav2_amcl and nav2_mapserver. SLAM nodes will publish /map topic and provide map-odom tf
+ros2 launch nav2_bringup navigation_launch.py
+
+# Launch SLAM, Make sure it provixes map->odom tf and /map topic. online သူက previous logged data မသုံးတာ Asynchronous ကတော့ skipping some scans
+ros2 launch slam_toolbox online_async_launch.py params_file:=/home/mr_robot/ros2/ros2_ws/src/rom2109/rom2109_bringup/config/mapper_params_online_async.yaml use_sim_time:=true
+
+# Working with slam, make your robot by requesting a goal through Rviz or ROS2 CLI	
+ros2 topic pub /goal_pose geometry_msgs/PoseStamped "{header: {stamp: {sec: 0}, frame_id: 'map'}, pose: {position: {x: 0.2, y: 0.0, z: 0.0}, orientation: {w: 1.0}}}"
+
+# You should see the map update live. to save this map to file:
+ros2 run nav2_map_server map_saver_cli -f ~/map
+
+# Getting started Simplication
+ros2 launch nav2_bringup tb3_simulation_launch.py slam:=True
+
+-------------------------------------------------------------------------------
+cp /opt/ros/humble/share/slam_toolbox/config/mapper_params_online_async.yaml your_path/
+
+launch your simulation robot
+ros2 launch slam_toolbox online_async_launch.py params_file:=/path/to/ use_sim_time:=true
+in rviz , add map, change fixed frame to map
+
+drive robot
+ros2 run teleop_twist_keyboard teleop_twist_keyboard /cmd_vel:=/diff_cont/cmd_vel_unstamped
+
+
+to save map
+Pandels -> add_new panel > slamtoolbox
+map save ဖို့က format နှစ်မျိုးရှိတယ်။ တမျိုးက old style သူက ပြန်ဖွင့်ဖို့  map server လိုမယ်။ Serialize လုပ်ပြီးသိမ်းရင်တော့ slamtoolbox က ပြန်ဖွင့်ပေးနိုင်
+
+map ပြန်ထည့်ဖို့ yaml, slamtool box, map_server နည်း / yaml မှာ mapping ကို localization ပြောင်း
+
+amcl
+ros2 run nav2_util lifecycle_bringup amcl
+ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
+
+2D Pose estimate
+
+
+
+
+
+
+
+
+
+
+
