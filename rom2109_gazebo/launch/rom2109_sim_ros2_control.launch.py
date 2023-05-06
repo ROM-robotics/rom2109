@@ -41,7 +41,7 @@ def generate_launch_description():
             "world_init_heading": "0.0",
             "gui": "true",
             "close_loop_odom": "true",
-            "extra_gazebo_args": "--ros-args --params-file " + gazebo_params_file
+            "extra_gazebo_args": "--ros-args --params-file " + gazebo_params_file #cause of rviz smoothing vel
         }.items(),
     )
 
