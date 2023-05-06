@@ -77,9 +77,9 @@ ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
 # velocity topic တွေပေါင်းဖို့ twist_mux ကို သုံးသင့်တယ်။
 sudo apt install ros-humble-twist-mux ros-humble-nav2*     
 # သူ့အတွက် yaml ဖိုင်ကို rom2109_gazebo ထဲမှာထည့်ထားတယ်။  output topic ကို လည်း remap လုပ်ပြီး run ပါမယ်။
-# stamped velocity ကို သုံးမယ်ဆိုရင်တော့ ဒါကို သုံးစရာမလိုပါ။ simulation နဲ့ slam toolbox ကို run ပြီး twist_mux ကို စမ်းကြည့်ပါ။
+# stamped velocity ကို သုံးမယ်ဆိုရင်တော့ ဒါကို သုံးစရာမလိုပါ။ 
+# simulation နဲ့ slam toolbox ကို run ပြီး twist_mux ကို စမ်းကြည့်ပါ။ ( နောက်ပိုင်းမှာတော့ twist_mux node ကို simulation launch ထဲပေါင်းထည့်ထားသည် )
 ros2 run twist_mux twist_mux --ros-args --params-file twist_mux.yaml -r cmd_vel_out:=diff_cont/cmd_vel_unstamped
-
 # ပြီးရင်တော့ navigation launch ကို run ပါ။
 ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true 
 # default param များပြောင်းလဲဖို့လိုသည် map အသစ်တစ်ခု ထပ်ထည့်ရန် topic တွင် global costmap ရွေးရန်
@@ -88,14 +88,32 @@ ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true
 
 
 # rviz -> Panels မှာ nagigation2 ထည့်ပြီး rviz တွင် + sign ကိုနှိပ်ပြီး GoalTool ကိုနှိပ် ( Goal Tool plugin မရ )
-navigation2 goal ကိုနှိပ်ပြီး start navigation ကိုနှိပ်ပါ
-ros2 launch nav2_bringup localization_launch.py map:=path to map save use_sim_time:=true
-rviz မှ fixed frame ကို map ပြောင်းပြီး 2D pose estimate လုပ် 
-map topic မှ durability ကို transient local ပြောင်းရန်
-ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local=true
-sudo cp /opt/ros/humble/share/nav2_bringup/params/nav2_params.yaml ~/ROS2/dolly_ws/src/rom2109/rom2109_nav2/
-sudo cp /opt/ros/humble/share/nav2_bringup/launch/navigation_launch.py ~/ROS2/dolly_ws/src/rom2109/rom2109_nav2/launch/
-sudo cp /opt/ros/humble/share/nav2_bringup/launch/localization_launch.py ~/ROS2/dolly_ws/src/rom2109/rom2109_nav2/launch/
+# GoalTool ရရင် navigation2 goal တချက်စီနှိပ်ပြီး waypoint လိုက်ချပါ။ waypoint များချပြီးတော့မှာ Navigation Panel က start navigation ကိုနှိပ်ရင် 
+# way point အတိုင်းသွားပါလိမ့်မယ်။
+# ---------------------------------------------------------
+# အခုတခါတော့ slam toolbox မသုံးပဲ map server နဲ့ amcl ပဲသုံးပြီး စမ်းကြမယ်။
+ros2 launch nav2_bringup localization_launch.py map:=/my/map_sace.yaml use_sim_time:=true
+# ဒါဆို map နဲ့အတူ localization ရပါလိမ့်မယ်။ map မပေါ်ရင် Map မှာ Durability ကို Transient Local ပြောင်းထားပါ။
+# rviz မှ fixed frame ကို map ပြောင်းပြီး 2D Pose Estimate လုပ် 
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
+
+
+# nav2 ရဲ့ parameter တွေကို tune လို့ရအောင် config ဖိုင်များနဲ့ launch ဖိုင်များကို ကိုယ်ပိုင် packages များသို့ copy ကူးပြိးမှ ပြင်ဆင်ပါ။
+sudo cp /opt/ros/humble/share/nav2_bringup/params/nav2_params.yaml ~/your_path/rom2109_nav2/
+sudo cp /opt/ros/humble/share/nav2_bringup/launch/navigation_launch.py ~/your_path/rom2109_nav2/launch/
+sudo cp /opt/ros/humble/share/nav2_bringup/launch/localization_launch.py ~/your_path/rom2109_nav2/launch/
+# launch ဖိုင်နှစ်ခုမှာ  use_sim_time တွေကို true ခဲ့ပါတယ်။ Real Robot နဲ့ဆိုရင် false လုပ်ဖို့လိုပါမယ်။
+# nav2_params.yaml မှာ robot_radius, cost_scaling_factor, inflation_radius တို့ကိုပြင်ပါ။
+# ဒါဆိုရင်တော့ 
+
+ros2 launch rom2109_gazebo rom2109_sim_ros2_control.launch.py
+ros2 launch rom2109_nav2 sim_localization_launch.py
+ros2 launch rom2109_nav2 sim_navigation_launch.py map_subscribe_transient_local:=true
+
+# ပြင်ရန်ကျန် ူူူူူူူူူူူူူူ
+# gazebo empty world တွင် 360 degree နဲ့ rviz 360 စစ်ပါ။ မတူရင် ros2_control ထဲမှာ ပြင်ဆင်ပါ။
+# nav2_params.yaml မှာ robot_radius, cost_scaling_factor, inflation_radius တို့ကိုပြင်ပါ။
+
 
 
 
