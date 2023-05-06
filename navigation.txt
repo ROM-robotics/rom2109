@@ -34,6 +34,7 @@ ros2 run nav2_map_server map_saver_cli -f ~/map
 ros2 launch nav2_bringup tb3_simulation_launch.py slam:=True
 
 -------------------------------------------------------------------------------
+MAPPING
 cp /opt/ros/humble/share/slam_toolbox/config/mapper_params_online_async.yaml your_path/
 
 launch your simulation robot
@@ -50,11 +51,28 @@ map save ဖို့က format နှစ်မျိုးရှိတယ်။
 
 map ပြန်ထည့်ဖို့ yaml, slamtool box, map_server နည်း / yaml မှာ mapping ကို localization ပြောင်း
 
+LOCALIZATION
 amcl
 ros2 run nav2_util lifecycle_bringup amcl
 ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
 
-2D Pose estimate
+2D Pose estimate 
+
+
+NAVIGATION
+sudo apt install ros-humble-twist-mux      twist-mux က inputs တွေကထုတ်မဲ့ /cmd_vel ကို /diff_cont/cmd_vel_unstamped ပြောင်းပေးဖို့
+ros2 run twist_mux twist_mux --ros-args --params_file path to twist_mux.yaml -r cmd_vel_out:=diff_cont/cmd_vel_unstamped
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true default param များပြောင်းလဲဖို့လိုသည်
+map အသစ်တစ်ခု ထပ်ထည့်ရန် topic တွင် global costmap ရွေးရန်
+rviz panel မှာ nagigation2 ထည့်ပြီး rviz တွင် + sign ကိုနှိပ်ပြီး gooltool ကိုနှိပ်
+navigation2 goal ကိုနှိပ်ပြီး start navigation ကိုနှိပ်ပါ
+ros2 launch nav2_bringup localization_launch.py map:=path to map save use_sim_time:=true
+rviz မှ fixed frame ကို map ပြောင်းပြီး 2D pose estimate လုပ် 
+map topic မှ durability ကို transient local ပြောင်းရန်
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true map_subscribe_transient_local=true
+sudo cp /opt/ros/humble/share/nav2_bringup/params/nav2_params.yaml ~/ROS2/dolly_ws/src/rom2109/rom2109_nav2/
+sudo cp /opt/ros/humble/share/nav2_bringup/launch/navigation_launch.py ~/ROS2/dolly_ws/src/rom2109/rom2109_nav2/launch/
+sudo cp /opt/ros/humble/share/nav2_bringup/launch/localization_launch.py ~/ROS2/dolly_ws/src/rom2109/rom2109_nav2/launch/
 
 
 

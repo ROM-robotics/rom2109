@@ -8,14 +8,15 @@ from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
+
 def generate_launch_description():
     gazebo_pkg = get_package_share_directory('rom2109_gazebo')
     description_pkg = get_package_share_directory('rom2109_description')
     default_world_path = os.path.join(gazebo_pkg, 'worlds', 'cafe.world')
-    
+
     bot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
-        description_pkg,'launch','description_xacro_sim_ros2_control.launch.py'
+            description_pkg, 'launch', 'description_xacro_sim_ros2_control.launch.py'
         )]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
@@ -26,7 +27,8 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('open_rviz'))
     )
 
-    gazebo_params_file = os.path.join(get_package_share_directory('rom2109_gazebo'), 'config', 'gazebo_params.yaml')
+    gazebo_params_file = os.path.join(get_package_share_directory(
+        'rom2109_gazebo'), 'config', 'gazebo_params.yaml')
 
     gazebo_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(
@@ -41,7 +43,7 @@ def generate_launch_description():
             "world_init_heading": "0.0",
             "gui": "true",
             "close_loop_odom": "true",
-            "extra_gazebo_args": "--ros-args --params-file " + gazebo_params_file 
+            "extra_gazebo_args": "--ros-args --params-file " + gazebo_params_file
         }.items(),
     )
 
@@ -49,9 +51,9 @@ def generate_launch_description():
         package='gazebo_ros',
         executable='spawn_entity.py',
         arguments=['-topic', 'robot_description', '-entity', 'rom2109',
-        "-x", '0.0',
-        "-y", '0.0',
-        "-z", '0.3'],
+                   "-x", '0.0',
+                   "-y", '0.0',
+                   "-z", '0.3'],
         output='screen'
     )
 
@@ -69,7 +71,8 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
-            DeclareLaunchArgument('open_rviz', default_value='true', description='Open RViz.'),
+            DeclareLaunchArgument(
+                'open_rviz', default_value='true', description='Open RViz.'),
             bot,
             gazebo_launch,
             rviz_node,
