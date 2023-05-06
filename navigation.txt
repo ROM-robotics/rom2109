@@ -71,12 +71,23 @@ ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
 # amcl အဆင်ပြေပေမဲ့ robot သည် rviz တွင် jumping ဖြစ်နေတယ်။
 # TO FIX -> duplicate map->odom publisher
 
-NAVIGATION
-sudo apt install ros-humble-twist-mux      twist-mux က inputs တွေကထုတ်မဲ့ /cmd_vel ကို /diff_cont/cmd_vel_unstamped ပြောင်းပေးဖို့
-ros2 run twist_mux twist_mux --ros-args --params_file path to twist_mux.yaml -r cmd_vel_out:=diff_cont/cmd_vel_unstamped
-ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true default param များပြောင်းလဲဖို့လိုသည်
-map အသစ်တစ်ခု ထပ်ထည့်ရန် topic တွင် global costmap ရွေးရန်
-rviz panel မှာ nagigation2 ထည့်ပြီး rviz တွင် + sign ကိုနှိပ်ပြီး gooltool ကိုနှိပ်
+
+-------------------------------------------------------------------------------
+# NAVIGATION
+# velocity topic တွေပေါင်းဖို့ twist_mux ကို သုံးသင့်တယ်။
+sudo apt install ros-humble-twist-mux ros-humble-nav2*     
+# သူ့အတွက် yaml ဖိုင်ကို rom2109_gazebo ထဲမှာထည့်ထားတယ်။  output topic ကို လည်း remap လုပ်ပြီး run ပါမယ်။
+# stamped velocity ကို သုံးမယ်ဆိုရင်တော့ ဒါကို သုံးစရာမလိုပါ။ simulation နဲ့ slam toolbox ကို run ပြီး twist_mux ကို စမ်းကြည့်ပါ။
+ros2 run twist_mux twist_mux --ros-args --params-file twist_mux.yaml -r cmd_vel_out:=diff_cont/cmd_vel_unstamped
+
+# ပြီးရင်တော့ navigation launch ကို run ပါ။
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true 
+# default param များပြောင်းလဲဖို့လိုသည် map အသစ်တစ်ခု ထပ်ထည့်ရန် topic တွင် global costmap ရွေးရန်
+# ပြီးရင် rviz မှာ 2D goal pose  ပေးပြီး စမ်းသပ်ပါ။ navigation_launch.py ရဲ့ parameter များသည် turtlebot3 အတွက်ဖြစ်ပေမဲ့ 
+# rom2109 robot အတွက် အောင်မြင်စွာ Goal ပေးသွားလာနိုင်ပါသည်။
+
+
+# rviz -> Panels မှာ nagigation2 ထည့်ပြီး rviz တွင် + sign ကိုနှိပ်ပြီး GoalTool ကိုနှိပ် ( Goal Tool plugin မရ )
 navigation2 goal ကိုနှိပ်ပြီး start navigation ကိုနှိပ်ပါ
 ros2 launch nav2_bringup localization_launch.py map:=path to map save use_sim_time:=true
 rviz မှ fixed frame ကို map ပြောင်းပြီး 2D pose estimate လုပ် 

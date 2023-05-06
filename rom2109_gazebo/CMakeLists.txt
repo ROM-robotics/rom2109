@@ -24,7 +24,6 @@ endif()
 install(
   DIRECTORY
     launch
-    params
     config
     models
     rviz2
