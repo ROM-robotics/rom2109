@@ -16,7 +16,7 @@ def generate_launch_description():
     
     bot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
-        description_pkg,'launch','description.xacro.launch.py'
+        description_pkg,'launch','description_xacro_hw.launch.py'
         )]), launch_arguments={'use_sim_time': 'false'}.items() #check true or false
     )
 

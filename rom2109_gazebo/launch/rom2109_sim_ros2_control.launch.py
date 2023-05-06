@@ -15,7 +15,7 @@ def generate_launch_description():
     
     bot = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
-        description_pkg,'launch','description.xacro.launch.py'
+        description_pkg,'launch','description_xacro_sim_ros2_control.launch.py'
         )]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
@@ -41,7 +41,7 @@ def generate_launch_description():
             "world_init_heading": "0.0",
             "gui": "true",
             "close_loop_odom": "true",
-            "extra_gazebo_args": "--ros-args --params-file " + gazebo_params_file #cause of rviz smoothing vel
+            "extra_gazebo_args": "--ros-args --params-file " + gazebo_params_file 
         }.items(),
     )
 
