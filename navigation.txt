@@ -34,30 +34,42 @@ ros2 run nav2_map_server map_saver_cli -f ~/map
 ros2 launch nav2_bringup tb3_simulation_launch.py slam:=True
 
 -------------------------------------------------------------------------------
-MAPPING
-cp /opt/ros/humble/share/slam_toolbox/config/mapper_params_online_async.yaml your_path/
+# MAPPING
+# cp /opt/ros/humble/share/slam_toolbox/config/mapper_params_online_async.yaml your_path/
 
-launch your simulation robot
+# launch your simulation robot
 ros2 launch slam_toolbox online_async_launch.py params_file:=/path/to/ use_sim_time:=true
-in rviz , add map, change fixed frame to map
+# ------သို့မဟုတ်------- #
+ros2 launch rom2109_nav2 online_async_launch_mapping_launch.py
+# in rviz , add map, change fixed frame to map
+# OR open slam.rviz
 
-drive robot
+# drive robot
 ros2 run teleop_twist_keyboard teleop_twist_keyboard /cmd_vel:=/diff_cont/cmd_vel_unstamped
 
+# to save map
+# RVIZ Panels -> add_new panel > slamtoolbox
+# map save ဖို့က format နှစ်မျိုးရှိတယ်။ တမျိုးက old style သူက ပြန်ဖွင့်ဖို့  map server လိုမယ်။ Serialize လုပ်ပြီးသိမ်းရင်တော့ slamtoolbox က ပြန်ဖွင့်ပေးနိုင်
 
-to save map
-Pandels -> add_new panel > slamtoolbox
-map save ဖို့က format နှစ်မျိုးရှိတယ်။ တမျိုးက old style သူက ပြန်ဖွင့်ဖို့  map server လိုမယ်။ Serialize လုပ်ပြီးသိမ်းရင်တော့ slamtoolbox က ပြန်ဖွင့်ပေးနိုင်
+# map ပြန်ထည့်ဖို့ yaml, map_server နည်း နှစ်ခုရှိပြီး yaml မှာဆိုရင် mapping ကို localization ပြောင်း , map path ထည့်ပေးပါ။ 
+ros2 launch rom2109_nav2 online_async_launch_localization_launch.py
+# ------သို့မဟုတ်------- #
+ros2 run nav2_util lifecycle_bringup map_server
+ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=my_mape_old.yaml -p use_sim_time:true
+# ဒါဆို rviz မှာကြည့်ရင် map တွေ့ပါလိမ့်မယ်။ မတွေ့ရင် Map ရဲ့ Topic->Durability Policy မှာ Volatile အား Transient Local ပြောင်းပေးပါ။
+# သတိပြုဖို့က map-> odom ကို slamtoolbox က ထုတ်သလို amcl ကလည်းထုတ်နေတာပါပဲ။ ဒါကြောင့် jumping ဖြစ်နေနိုင်တယ်။
+# TO FIX -> duplicate map->odom publisher
 
-map ပြန်ထည့်ဖို့ yaml, slamtool box, map_server နည်း / yaml မှာ mapping ကို localization ပြောင်း
 
-LOCALIZATION
-amcl
+-------------------------------------------------------------------------------
+# LOCALIZATION
+# အခုဆိုရင် amcl localisation ကို သုံးလို့ရပါပြီ။
 ros2 run nav2_util lifecycle_bringup amcl
 ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
-
-2D Pose estimate 
-
+# ခုဆိုရင် initial pose တစ်ခုလိုတာမို့ warning ပြပါလိမ့်မယ်။ /initial_pose ကို topic နည်းလမ်းနဲ့ ပေးနိုင်သလို RVIZ ကနေ 2D Pose Estimate ကိုနှိပ်ပြီး ပေးနိုင်ပါတယ်။
+# RViz --> 2D Pose Estimate
+# amcl အဆင်ပြေပေမဲ့ robot သည် rviz တွင် jumping ဖြစ်နေတယ်။
+# TO FIX -> duplicate map->odom publisher
 
 NAVIGATION
 sudo apt install ros-humble-twist-mux      twist-mux က inputs တွေကထုတ်မဲ့ /cmd_vel ကို /diff_cont/cmd_vel_unstamped ပြောင်းပေးဖို့
