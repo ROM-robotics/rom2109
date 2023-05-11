@@ -59,7 +59,7 @@ def generate_launch_description():
 
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
-        default_value=os.path.join(bringup_dir,'maps', 'my_map_old.yaml'),
+        default_value=os.path.join(bringup_dir,'maps', 'cafe_map_old.yaml'),
         description='Full path to map yaml file to load')
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(

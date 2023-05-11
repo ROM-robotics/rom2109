@@ -1,9 +1,4 @@
-sudo apt install ros-humble-navigation2
-sudo apt install ros-humble-nav2-brigup
-apt install ros-humble-turtlebot3*
 
-sudo apt install ros-humble-robot-localization
-sudo apt install -y ros-humble-slam-toolbox
 
 
 # simulation
@@ -12,7 +7,7 @@ ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
 
 
 (SLAM) Navigating while Mapping
-sudo apt install ros-humble-slam-toolbox
+
 
 
 # launch robot interface and robot state publisher
