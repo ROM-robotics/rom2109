@@ -20,7 +20,7 @@ rom2109_tall ကို ကိုပြည့်စုံအောင် design �
 
 <a href="https://github.com/ROM-robotics/rom2109/tree/humble-devel/rom2109_gazebo">rom2109_gazebo အသုံးပြုနည်း </a> 
 
-<a href="www.google.com">rom2109_nav2 အသုံးပြုနည်း </a> 
+<a href="https://github.com/ROM-robotics/rom2109/tree/humble-devel/rom2109_nav2">rom2109_nav2 အသုံးပြုနည်း </a> 
 
 <a href="www.google.com">rom2109_autonomy အသုံးပြုနည်း </a> 
 
