@@ -1,0 +1,5 @@
+# Define object location as [x, y, theta]
+location1: [2.59, -2.69, 90]
+location2: [-0.89,-2.37, 90]
+location3: [2.56, -4.69, 90]
+location4: [0.571, -4.917, 90]
