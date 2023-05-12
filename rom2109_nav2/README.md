@@ -81,11 +81,20 @@ wheel_separation: 0.21 instead of 0.1966, fixed OK
 ros2 launch rom2109_gazebo delayed_rom2109_sim_ros2_control_empty_world.launch.py
 ros2 run teleop_twist_keyboard teleop_twist_keyboard /cmd_vel:=/diff_cont/cmd_vel_unstamped
 ```
-# ပြင်ရန်ကျန်
+# ပြင်ပြီး
 ## controller တခါတလေနောက်ကျ၊ တက်မလာ
+gazebo_ros2_controller manager ကို အရင် launch ပြီးမှာ controller spawner များကို launch ဖိုင်အသစ်ဖြင့် gz တက်လာမှ launch ပါ။ launch ဖိုင် မခွဲချင်ရင်တော့  Delay ကို အသေးစိတ်ထပ်ရေးဖို့လိုပါတယ်။
+```
+ros2 launch rom2109_gazebo rom2109_sim_ros2_control.launch.py
+# gazebo ပွင့်ပြီး robot spawn ဖြစ်မှာ အောက်ပါ controller ကို run ပါ။
+ros2 launch rom2109_gazebo rom2109_sim_diff_controller_joint_broadcaster.launch.py
+```
+
+# ပြင်ရန်ကျန်
 ## Groot နဲ့ချိတ်ရန်
 ## nav2_params.yaml မှာ robot_radius, cost_scaling_factor, inflation_radius တို့ကိုပြင်ပါ။
 ## rom2109_nav2 မှ init_robot_pose.cpp မှာ publisher ရဲ့ get subscription count ရယူပြီး code ပြင်ရေးရန်။
 
 
 ##### Q: Robot  ရဲ့ လက်ရှိ Pose ကို ဘယ်လိုသိနိုင်မလဲ?
+##### A: ros2 topic echo /amcl_pose

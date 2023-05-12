@@ -37,17 +37,31 @@ unfinish_rom2023_sim_slam.launch.py ကတော့ စတိုင်တစ်�
 ##### rom2109_sim_ros2_control.launch.py မှာ
 rom2109_sim.launch.py မှာ ပါတာအပြင် gazebo ros2 controller ပါဝင်ပါတယ်။ ဒါအပြင် gazebo ရဲ့ controller  manager အတွက် 
 - diff_drive_controller
-- joint broadcaster controller နှစ်ခုလဲပါဝင်ပါတယ်။ controller spawner က gazebo ထက်မြန်နေရင် spawn ဖြစ်စဥ် မအောင်မြင်နိုင်တာမို့ delay နဲနဲပါးပါးခံရေးပါ။
+- joint broadcaster controller 
+နှစ်ခုလဲပါဝင်ပါတယ်။ controller spawner က gazebo ထက်မြန်နေရင် spawn ဖြစ်စဥ် မအောင်မြင်နိုင်တာမို့ delay နဲနဲပါးပါးခံရေးပါ။
+delay ရေးပြီးသား launch ကတော့ delay_rom2109_sim_ros2_control.launch.py ဖြစ်ပါတယ်။
+delay မသုံးပဲ launch ဖိုင်ခွဲရေးထားပုံကတော့
+```
+ros2 launch rom2109_gazebo rom2109_sim_ros2_control.launch.py
+# gazebo ပွင့်ပြီး robot spawn ဖြစ်မှာ အောက်ပါ controller ကို run ပါ။
+ros2 launch rom2109_gazebo rom2109_sim_diff_controller_joint_broadcaster.launch.py
+```
 
-စမ်းချင်ရင် 
-$ ros2 control list_hardware_interfaces
-$ ros2 control list_controllers
+Controller များ load ဖြစ်မဖြစ် စစ်ချင်ရင် 
+```
+ros2 control list_hardware_interfaces
+ros2 control list_controllers
+```
 
 controller spawner ကို cli မှစမ်းရန်
-$ ros2 run controller_manager spawner diff_cont
-$ ros2 run controller_manager spawner joint_broad
+```
+ros2 run controller_manager spawner diff_cont
+ros2 run controller_manager spawner joint_broad
+```
 
 မောင်းနှင်ရန်
-$ ros2 run teleop_twist_keyboard teleop_twist_keyboard –ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped 
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard –ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped 
+```
 
 <img src="launch/gz_ros2_control.png" width="613" height="299" />

@@ -84,8 +84,8 @@ def generate_launch_description():
             gazebo_launch,
             rviz_node,
             spawn_robot_node,
-            diff_drive_spawner,
-            joint_broad_spawner,
+            # diff_drive_spawner,
+            # joint_broad_spawner,
             twist_mux_node,
         ]
     )

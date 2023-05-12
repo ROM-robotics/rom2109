@@ -97,7 +97,7 @@ def generate_launch_description():
             bot,
             gazebo_launch,
             rviz_node,
-            delayed_spawn_robot_node,
+            spawn_robot_node,
             delayed_diff_drive_spawner,
             delayed_joint_broad_spawner,
             twist_mux_node,
