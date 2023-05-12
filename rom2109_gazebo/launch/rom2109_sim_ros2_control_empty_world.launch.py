@@ -23,7 +23,7 @@ def generate_launch_description():
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
-        arguments=['-d', os.path.join(gazebo_pkg, 'rviz2', 'display.rviz')],
+        arguments=['-d', os.path.join(gazebo_pkg, 'rviz2', 'odom_fix.rviz')],
         condition=IfCondition(LaunchConfiguration('open_rviz'))
     )
 
@@ -36,7 +36,6 @@ def generate_launch_description():
         launch_arguments={
             "use_sim_time": "true",
             "robot_name": "rom2109",
-            "world": default_world_path,
             "lite": "false",
             "world_init_x": "0.0",
             "world_init_y": "0.0",

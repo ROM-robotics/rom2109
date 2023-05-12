@@ -6,6 +6,9 @@
 			<GoToPose name="go_to_location2" loc="location2"/>
 			<GoToPose name="go_to_location3" loc="location3"/>
 			<GoToPose name="go_to_location4" loc="location4"/>
+			<GoToPose name="go_to_location5" loc="location5"/>
+			<GoToPose name="go_to_location6" loc="location6"/>
+			<GoToPose name="go_to_location7" loc="location7"/>
 		</Sequence>
 	</BehaviorTree>
 </root>

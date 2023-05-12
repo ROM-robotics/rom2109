@@ -95,7 +95,7 @@ def generate_launch_description():
         arguments=["-database", "rom2109_tall", "-entity", "rom2109_tall",
         "-x", '0.0',
         "-y", '0.0',
-        "-z", '0.3'],
+        "-z", '0.1'],
         output="screen"
     )
 

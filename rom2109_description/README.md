@@ -12,9 +12,9 @@ ros2 launch rom2109_description example_description.launch.py
 #### gazebo နဲ့ တွဲသုံးချင်ရင် gazebo simulation time ကို အသုံးပြုပါ။
 gazebo simulator နဲ့ တွဲပြီးအသုံးပြုမယ်ဆိုရင်တော့ description_xacro_sim_ros2_control.launch သို့မဟုတ် description_xacro_sim_gz_control.launch ကို အသုံးပြုနိုင်ပါတယ်။ ros2_control ကို အသုံးပြုသင့်ပါတယ်။ simulation ပြုလုပ်မှာမို့ ros2 node များသည် system time ကို အသုံးမပြုပဲ Gazebo time ကို အသုံးပြုသင့်တာမို့ use_sim_time ကို true ပေးပြီး run ပါ။ ပြီးရင် gazebo simulator ကို ဖွင့်ပါ။ ပြီးရင် simulator ထဲ robot ကို spawn လုပ်ပြီးထည့်ပါ။
 ```
-ros2 launch rom2109_description description_xacro_sim_ros2_control.launch use_sim_time:=true
+ros2 launch rom2109_description description_xacro_sim_ros2_control.launch.py use_sim_time:=true
 ros2 launch gazebo_ros gazebo.launch.py
-ros2 launch gazebo_ros spawn_entity.py -topic robot_description -entity rom2109
+ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity rom2109
 ```
 
 #### rom2109_gazebo 

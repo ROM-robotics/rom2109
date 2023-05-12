@@ -53,7 +53,7 @@ def generate_launch_description():
         arguments=['-topic', 'robot_description', '-entity', 'rom2109',
                    "-x", '0.0',
                    "-y", '0.0',
-                   "-z", '0.3'],
+                   "-z", '0.1'],
         output='screen'
     )
     delayed_spawn_robot_node = TimerAction(period=3.0, actions=[spawn_robot_node])
