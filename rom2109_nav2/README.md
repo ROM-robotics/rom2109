@@ -83,7 +83,10 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard /cmd_vel:=/diff_cont/cmd_ve
 ```
 # ပြင်ပြီး
 ## controller တခါတလေနောက်ကျ၊ တက်မလာ
-gazebo_ros2_controller manager ကို အရင် launch ပြီးမှာ controller spawner များကို launch ဖိုင်အသစ်ဖြင့် gz တက်လာမှ launch ပါ။ launch ဖိုင် မခွဲချင်ရင်တော့  Delay ကို အသေးစိတ်ထပ်ရေးဖို့လိုပါတယ်။
+```
+ros2 launch rom2109_gazebo delayed_rom2109_sim_ros2_control.launch.py
+```
+အပေါ်က launch ဖိုင်မျာဆိုရင် controller manager နဲ့ သက်ဆိုင်ရာ controller spawner များကို launch ထားပေမဲ့ တခါတလေ spawner များ တက်မလာတာဖြစ်တတ်တယ်။ ဒါကြောင့်  controller spawner များကို launch ဖိုင်အသစ်ဖြင့် ခွဲထားပြီး အောက်ပါအတိုင်း launch ပါ။ launch ဖိုင် မခွဲချင်ရင်တော့  Delay ကို အသေးစိတ်ထပ်ရေးဖို့လိုပါတယ်။
 ```
 ros2 launch rom2109_gazebo rom2109_sim_ros2_control.launch.py
 # gazebo ပွင့်ပြီး robot spawn ဖြစ်မှာ အောက်ပါ controller ကို run ပါ။

@@ -45,6 +45,10 @@ void AutonomyNode::create_behavior_tree()
 
   tree_ = factory.createTreeFromFile(bt_xml_dir + "/tree.xml");
   RCLCPP_INFO(get_logger(), "3");
+
+  // added by ko su san
+  //BT::Groot2Publisher publisher(tree);
+  //std::string xml_models = BT::writeTreeNodesModelXML(factory);
 }
 
 void AutonomyNode::update_behavior_tree()
