@@ -24,6 +24,7 @@ if(BUILD_TESTING)
 endif()
 
 install(DIRECTORY
+  rviz2
 	launch
 	urdf
 	meshes
