@@ -1,9 +1,9 @@
 ## rom2109 Autonomous Mobile Robot ( Start Project - Sepetmber 2021)
 
-#### ROS2 humble အတွက် packageများ
-ros2 launch rom2109_description description.xacro.launch.py use_sim_time:=true
+#### ROS2 humble အတွက် packages များ Install ပြုလုပ်ခြင်း ( Hardware Robot  ) 
 
-#### Install ပြုလုပ်ခြင်း ( Hardware Robot , Simulation Robot ) 
+
+###### အောက်ပါ packages များသွင်းပါ။ 
 ```
 sudo apt install -y ros-humble-gazebo-ros* 
 sudo apt install -y ros-humble-ros2-control*

@@ -3,7 +3,7 @@
 #### ဒါတွေ install လုပ်ထားပါ။
 ```
 sudo apt install ros-humble-navigation2
-sudo apt install ros-humble-nav2-brigup
+sudo apt install ros-humble-nav2-bringup
 sudo apt install ros-humble-turtlebot3*
 sudo apt install ros-humble-twist-mux ros-humble-nav2*     
 sudo apt install ros-humble-robot-localization
