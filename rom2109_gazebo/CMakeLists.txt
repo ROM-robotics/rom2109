@@ -25,7 +25,6 @@ install(
   DIRECTORY
     launch
     config
-    models
     rviz2
     worlds
   DESTINATION
