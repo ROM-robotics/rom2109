@@ -96,3 +96,5 @@ ros2 launch diffdrive_stm32 diffbot.launch.py
 # diffdrive_stm32
 https://control.ros.org/master/doc/ros2_control_demos/example_2/doc/userdoc.html
 
+error wheel_l_.cmd နဲ့ wheel_r_.cmd error
+
