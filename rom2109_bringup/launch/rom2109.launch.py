@@ -1,16 +1,3 @@
-# Copyright 2020 ros2_control Development Team
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 
 from launch import LaunchDescription
 from launch.actions import RegisterEventHandler
@@ -28,7 +15,7 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("ros2_control_demo_example_2"), "urdf", "diffbot.urdf.xacro"]
+                [FindPackageShare("rom2109_description"), "urdf", "robot_hw_control.urdf.xacro"]
             ),
         ]
     )
@@ -36,13 +23,13 @@ def generate_launch_description():
 
     robot_controllers = PathJoinSubstitution(
         [
-            FindPackageShare("ros2_control_demo_example_2"),
+            FindPackageShare("diffdrive_stm32"),
             "config",
             "diffbot_controllers.yaml",
         ]
     )
     rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare("ros2_control_demo_example_2"), "rviz", "diffbot.rviz"]
+        [FindPackageShare("diffdrive_stm32"), "rviz", "diffbot.rviz"]
     )
 
     control_node = Node(
@@ -100,7 +87,7 @@ def generate_launch_description():
         control_node,
         robot_state_pub_node,
         joint_state_broadcaster_spawner,
-        delay_rviz_after_joint_state_broadcaster_spawner,
+        #delay_rviz_after_joint_state_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
     ]
 
