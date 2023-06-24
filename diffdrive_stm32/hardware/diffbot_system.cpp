@@ -19,20 +19,16 @@ hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_init(const hardwar
   {
     return hardware_interface::CallbackReturn::ERROR;
   }
-
-  //RCLCPP_INFO(rclcpp::get_logger("Evil--1"), "******************************************************");
   cfg_.left_wheel_name = info_.hardware_parameters["left_wheel_name"];
   cfg_.right_wheel_name = info_.hardware_parameters["right_wheel_name"];
   cfg_.loop_rate = std::stof(info_.hardware_parameters["loop_rate"]);
-  //RCLCPP_INFO(rclcpp::get_logger("Evil--2"), "******************************************************");
   cfg_.device = info_.hardware_parameters["device"];
-  //RCLCPP_INFO(rclcpp::get_logger("Evil--3"), "******************************************************");
   cfg_.baud_rate = std::stoi(info_.hardware_parameters["baud_rate"]);
-  //RCLCPP_INFO(rclcpp::get_logger("Evil--4"), "******************************************************");
   cfg_.timeout_ms = std::stoi(info_.hardware_parameters["timeout_ms"]);
-  //RCLCPP_INFO(rclcpp::get_logger("Evil--5"), "******************************************************");
   cfg_.enc_counts_per_rev = std::stoi(info_.hardware_parameters["enc_counts_per_rev"]);
-  //RCLCPP_INFO(rclcpp::get_logger("Evil-- 99"), "******************************************************");
+  RCLCPP_INFO(rclcpp::get_logger(" ================= "), "================================");
+  RCLCPP_INFO(rclcpp::get_logger(" \033[1;36mDEEP BLUE AI LAB \033[1;0m "), " \033[1;36m& ROM Robotics is checking ... \033[1;0m");
+  RCLCPP_INFO(rclcpp::get_logger(" ================= "), "================================");
   if (info_.hardware_parameters.count("pid_p") > 0)
   {
     cfg_.pid_p = std::stoi(info_.hardware_parameters["pid_p"]);
@@ -165,7 +161,7 @@ hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_deactivate(const r
 
 hardware_interface::return_type DiffDriveStm32Hardware::read(const rclcpp::Time & /*time*/, const rclcpp::Duration & period)
 {
-  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "read()!");
+  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "read()!");
   if (!comms_.connected())
   {
     RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "comms_.connected() is false.");
@@ -184,13 +180,13 @@ hardware_interface::return_type DiffDriveStm32Hardware::read(const rclcpp::Time 
   wheel_r_.pos = wheel_r_.calc_enc_angle();
   wheel_r_.vel = (wheel_r_.pos - prev_r_pos) / delta_seconds;   // radians per delta seconds calculation OK
 
-  //RCLCPP_INFO(rclcpp::get_logger("ROMHACKED"), "wheel_l_.pos = %d, wheel_r_pos = %d", wheel_l_.pos, wheel_r_.pos);
+  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "wheel_l_.pos = %d, wheel_r_pos = %d", wheel_l_.pos, wheel_r_.pos);
   return hardware_interface::return_type::OK;
 }
 
 hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
-  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "write()!");
+  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "write()!");
   if (!comms_.connected())
   {
     RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "comms_.connected() is false.");
@@ -202,10 +198,10 @@ hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(
   int motor_r_counts_per_loop = wheel_r_.cmd / wheel_r_.rads_per_count / cfg_.loop_rate;
   comms_.set_motor_values(motor_l_counts_per_loop, motor_r_counts_per_loop);*/ /* DELETE ARTICULATED ROBOTICS's CODE */
   comms_.set_motor_values(left_rpm, right_rpm);
-  RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "left_rpm = %d, right_rpm = %d", left_rpm, right_rpm);
-  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "wheel_l_.cmd = %f, wheel_r_cmd = %f", wheel_l_.cmd, wheel_r_.cmd);
-  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "wheel_l_.enc = %d, wheel_r_enc = %d", wheel_l_.enc, wheel_r_.enc); // It's OK
-  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "motor_l_counts_per_loop = %d, motor_r_counts_per_loop = %d", motor_l_counts_per_loop, motor_r_counts_per_loop); // Error
+  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "left_rpm = %d, right_rpm = %d", left_rpm, right_rpm);
+  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "wheel_l_.cmd = %f, wheel_r_cmd = %f", wheel_l_.cmd, wheel_r_.cmd);
+  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "wheel_l_.enc = %d, wheel_r_enc = %d", wheel_l_.enc, wheel_r_.enc); // It's OK
+  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "motor_l_counts_per_loop = %d, motor_r_counts_per_loop = %d", motor_l_counts_per_loop, motor_r_counts_per_loop); // Error
 
   return hardware_interface::return_type::OK;
 }
