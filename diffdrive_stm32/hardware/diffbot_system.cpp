@@ -1,17 +1,3 @@
-// Copyright 2021 ros2_control Development Team
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 #include "diffdrive_stm32/diffbot_system.hpp"
 
 #include <chrono>
@@ -25,8 +11,7 @@
 
 namespace diffdrive_stm32
 {
-hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_init(
-  const hardware_interface::HardwareInfo & info)
+hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_init(const hardware_interface::HardwareInfo & info)
 {
   if (
     hardware_interface::SystemInterface::on_init(info) !=
@@ -70,46 +55,31 @@ hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_init(
     // DiffBotSystem has exactly two states and one command interface on each joint
     if (joint.command_interfaces.size() != 1)
     {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("DiffDriveStm32Hardware"),
-        "Joint '%s' has %zu command interfaces found. 1 expected.", joint.name.c_str(),
-        joint.command_interfaces.size());
+      RCLCPP_FATAL(rclcpp::get_logger("DiffDriveStm32Hardware"),"Joint '%s' has %zu command interfaces found. 1 expected.", joint.name.c_str(),joint.command_interfaces.size());
       return hardware_interface::CallbackReturn::ERROR;
     }
 
     if (joint.command_interfaces[0].name != hardware_interface::HW_IF_VELOCITY)
     {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("DiffDriveStm32Hardware"),
-        "Joint '%s' have %s command interfaces found. '%s' expected.", joint.name.c_str(),
-        joint.command_interfaces[0].name.c_str(), hardware_interface::HW_IF_VELOCITY);
+      RCLCPP_FATAL(rclcpp::get_logger("DiffDriveStm32Hardware"),"Joint '%s' have %s command interfaces found. '%s' expected.", joint.name.c_str(),joint.command_interfaces[0].name.c_str(), hardware_interface::HW_IF_VELOCITY);
       return hardware_interface::CallbackReturn::ERROR;
     }
 
     if (joint.state_interfaces.size() != 2)
     {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("DiffDriveStm32Hardware"),
-        "Joint '%s' has %zu state interface. 2 expected.", joint.name.c_str(),
-        joint.state_interfaces.size());
+      RCLCPP_FATAL(rclcpp::get_logger("DiffDriveStm32Hardware"),"Joint '%s' has %zu state interface. 2 expected.", joint.name.c_str(),joint.state_interfaces.size());
       return hardware_interface::CallbackReturn::ERROR;
     }
 
     if (joint.state_interfaces[0].name != hardware_interface::HW_IF_POSITION)
     {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("DiffDriveStm32Hardware"),
-        "Joint '%s' have '%s' as first state interface. '%s' expected.", joint.name.c_str(),
-        joint.state_interfaces[0].name.c_str(), hardware_interface::HW_IF_POSITION);
+      RCLCPP_FATAL(rclcpp::get_logger("DiffDriveStm32Hardware"),"Joint '%s' have '%s' as first state interface. '%s' expected.", joint.name.c_str(),joint.state_interfaces[0].name.c_str(), hardware_interface::HW_IF_POSITION);
       return hardware_interface::CallbackReturn::ERROR;
     }
 
     if (joint.state_interfaces[1].name != hardware_interface::HW_IF_VELOCITY)
     {
-      RCLCPP_FATAL(
-        rclcpp::get_logger("DiffDriveStm32Hardware"),
-        "Joint '%s' have '%s' as second state interface. '%s' expected.", joint.name.c_str(),
-        joint.state_interfaces[1].name.c_str(), hardware_interface::HW_IF_VELOCITY);
+      RCLCPP_FATAL(rclcpp::get_logger("DiffDriveStm32Hardware"),"Joint '%s' have '%s' as second state interface. '%s' expected.", joint.name.c_str(),joint.state_interfaces[1].name.c_str(), hardware_interface::HW_IF_VELOCITY);
       return hardware_interface::CallbackReturn::ERROR;
     }
   }
@@ -121,15 +91,11 @@ std::vector<hardware_interface::StateInterface> DiffDriveStm32Hardware::export_s
 {
   std::vector<hardware_interface::StateInterface> state_interfaces;
 
-  state_interfaces.emplace_back(hardware_interface::StateInterface(
-    wheel_l_.name, hardware_interface::HW_IF_POSITION, &wheel_l_.pos));
-  state_interfaces.emplace_back(hardware_interface::StateInterface(
-    wheel_l_.name, hardware_interface::HW_IF_VELOCITY, &wheel_l_.vel));
+  state_interfaces.emplace_back(hardware_interface::StateInterface(wheel_l_.name, hardware_interface::HW_IF_POSITION, &wheel_l_.pos));
+  state_interfaces.emplace_back(hardware_interface::StateInterface(wheel_l_.name, hardware_interface::HW_IF_VELOCITY, &wheel_l_.vel));
 
-  state_interfaces.emplace_back(hardware_interface::StateInterface(
-    wheel_r_.name, hardware_interface::HW_IF_POSITION, &wheel_r_.pos));
-  state_interfaces.emplace_back(hardware_interface::StateInterface(
-    wheel_r_.name, hardware_interface::HW_IF_VELOCITY, &wheel_r_.vel));
+  state_interfaces.emplace_back(hardware_interface::StateInterface(wheel_r_.name, hardware_interface::HW_IF_POSITION, &wheel_r_.pos));
+  state_interfaces.emplace_back(hardware_interface::StateInterface(wheel_r_.name, hardware_interface::HW_IF_VELOCITY, &wheel_r_.vel));
 
   return state_interfaces;
 }
@@ -147,8 +113,7 @@ std::vector<hardware_interface::CommandInterface> DiffDriveStm32Hardware::export
   return command_interfaces;
 }
 
-hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_configure(
-  const rclcpp_lifecycle::State & /*previous_state*/)
+hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_configure(const rclcpp_lifecycle::State & /*previous_state*/)
 {
   RCLCPP_INFO(rclcpp::get_logger("DiffDriveStm32Hardware"), "Configuring ...please wait...");
   if (comms_.connected())
@@ -161,8 +126,7 @@ hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_configure(
   return hardware_interface::CallbackReturn::SUCCESS;
 }
 
-hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_cleanup(
-  const rclcpp_lifecycle::State & /*previous_state*/)
+hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_cleanup(const rclcpp_lifecycle::State & /*previous_state*/)
 {
   RCLCPP_INFO(rclcpp::get_logger("DiffDriveStm32Hardware"), "Cleaning up ...please wait...");
   if (comms_.connected())
@@ -175,8 +139,7 @@ hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_cleanup(
 }
 
 
-hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_activate(
-  const rclcpp_lifecycle::State & /*previous_state*/)
+hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_activate(const rclcpp_lifecycle::State & /*previous_state*/)
 {
   RCLCPP_INFO(rclcpp::get_logger("DiffDriveStm32Hardware"), "Activating ...please wait...");
   if (!comms_.connected())
@@ -192,8 +155,7 @@ hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_activate(
   return hardware_interface::CallbackReturn::SUCCESS;
 }
 
-hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_deactivate(
-  const rclcpp_lifecycle::State & /*previous_state*/)
+hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_deactivate(const rclcpp_lifecycle::State & /*previous_state*/)
 {
   RCLCPP_INFO(rclcpp::get_logger("DiffDriveStm32Hardware"), "Deactivating ...please wait...");
   RCLCPP_INFO(rclcpp::get_logger("DiffDriveStm32Hardware"), "Successfully deactivated!");
@@ -201,10 +163,9 @@ hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_deactivate(
   return hardware_interface::CallbackReturn::SUCCESS;
 }
 
-hardware_interface::return_type DiffDriveStm32Hardware::read(
-  const rclcpp::Time & /*time*/, const rclcpp::Duration & period)
+hardware_interface::return_type DiffDriveStm32Hardware::read(const rclcpp::Time & /*time*/, const rclcpp::Duration & period)
 {
-  //RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Reading......");
+  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "read()!");
   if (!comms_.connected())
   {
     RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "comms_.connected() is false.");
@@ -214,31 +175,38 @@ hardware_interface::return_type DiffDriveStm32Hardware::read(
   comms_.read_encoder_values(wheel_l_.enc, wheel_r_.enc);
 
   double delta_seconds = period.seconds();
+  // Encoder values to wheel positions ( Author say check encoder overflows )
+  float prev_l_pos = wheel_l_.pos;
+  wheel_l_.pos = wheel_l_.calc_enc_angle();                     // radian calculation Ok, but check encoder overflow
+  wheel_l_.vel = (wheel_l_.pos - prev_l_pos) / delta_seconds;   // radians per delta seconds calculation OK
 
-  double pos_prev = wheel_l_.pos;
-  wheel_l_.pos = wheel_l_.calc_enc_angle();
-  wheel_l_.vel = (wheel_l_.pos - pos_prev) / delta_seconds;
-
-  pos_prev = wheel_r_.pos;
+  float prev_r_pos = wheel_r_.pos;
   wheel_r_.pos = wheel_r_.calc_enc_angle();
-  wheel_r_.vel = (wheel_r_.pos - pos_prev) / delta_seconds;
+  wheel_r_.vel = (wheel_r_.pos - prev_r_pos) / delta_seconds;   // radians per delta seconds calculation OK
 
+  //RCLCPP_INFO(rclcpp::get_logger("ROMHACKED"), "wheel_l_.pos = %d, wheel_r_pos = %d", wheel_l_.pos, wheel_r_.pos);
   return hardware_interface::return_type::OK;
 }
 
-hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(
-  const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
+hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
-  //RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "Writting......");
+  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "write()!");
   if (!comms_.connected())
   {
-    RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "comms_.connected() is false.");
+    RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "comms_.connected() is false.");
     return hardware_interface::return_type::ERROR;
   }
-  RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "wheel_l_.cmd = %d, wheel_r_cmd = %d", wheel_l_.cmd, wheel_r_.cmd);
-  int motor_l_counts_per_loop = wheel_l_.cmd / wheel_l_.rads_per_count / cfg_.loop_rate;
+  
+  int left_rpm = int(wheel_l_.cmd*10); int right_rpm = int(wheel_r_.cmd*10);
+  /*int motor_l_counts_per_loop = wheel_l_.cmd / wheel_l_.rads_per_count / cfg_.loop_rate;
   int motor_r_counts_per_loop = wheel_r_.cmd / wheel_r_.rads_per_count / cfg_.loop_rate;
-  comms_.set_motor_values(motor_l_counts_per_loop, motor_r_counts_per_loop);
+  comms_.set_motor_values(motor_l_counts_per_loop, motor_r_counts_per_loop);*/ /* DELETE ARTICULATED ROBOTICS's CODE */
+  comms_.set_motor_values(left_rpm, right_rpm);
+  RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "left_rpm = %d, right_rpm = %d", left_rpm, right_rpm);
+  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "wheel_l_.cmd = %f, wheel_r_cmd = %f", wheel_l_.cmd, wheel_r_.cmd);
+  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "wheel_l_.enc = %d, wheel_r_enc = %d", wheel_l_.enc, wheel_r_.enc); // It's OK
+  //RCLCPP_INFO(rclcpp::get_logger("[ Deeb Blue AI Lab ]"), "motor_l_counts_per_loop = %d, motor_r_counts_per_loop = %d", motor_l_counts_per_loop, motor_r_counts_per_loop); // Error
+
   return hardware_interface::return_type::OK;
 }
 

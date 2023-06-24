@@ -10,7 +10,7 @@
             <plugin>diffdrive_stm32/DiffDriveStm32Hardware</plugin>
             <param name="left_wheel_name">left_wheel_joint</param>
             <param name="right_wheel_name">right_wheel_joint</param>
-            <param name="loop_rate">30</param>
+            <param name="loop_rate">50</param>  <!-- CHECK LOOP RATE-->
             <!-- <param name="device">/home/mr_robot/robotController</param> -->
             <param name="device">/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0</param>
             <param name="baud_rate">115200</param>
@@ -18,18 +18,18 @@
             <param name="enc_counts_per_rev">6533</param>
         </hardware>
         <joint name="left_wheel_joint">
-            <command_interface name="velocity"/>
-                <!-- <param name="min">-50</param>
+            <command_interface name="velocity">
+                <param name="min">-50</param>
                 <param name="max">50</param>
-            </command_interface> -->
+            </command_interface> 
             <state_interface name="position"/>
             <state_interface name="velocity"/>
         </joint>
         <joint name="right_wheel_joint">
-            <command_interface name="velocity"/>
-                <!-- <param name="min">-50</param>
+            <command_interface name="velocity">
+                <param name="min">-50</param>
                 <param name="max">50</param>
-            </command_interface> -->
+            </command_interface> 
             <state_interface name="position"/>
             <state_interface name="velocity"/>
         </joint>

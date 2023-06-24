@@ -23,7 +23,7 @@ def generate_launch_description():
 
     robot_controllers = PathJoinSubstitution(
         [
-            FindPackageShare("diffdrive_stm32"),
+            FindPackageShare("rom2109_bringup"),
             "config",
             "diffbot_controllers.yaml",
         ]

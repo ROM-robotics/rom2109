@@ -25,7 +25,7 @@ LibSerial::BaudRate convert_baud_rate(int baud_rate)
     case 230400: return LibSerial::BaudRate::BAUD_230400;
     default:
       std::cout << "Error! Baud rate " << baud_rate << " not supported! Default to 57600" << std::endl;
-      return LibSerial::BaudRate::BAUD_57600;
+      return LibSerial::BaudRate::BAUD_115200;
   }
 }
 
@@ -78,6 +78,23 @@ public:
     return response;
   }
 
+  std::string read_msg()
+  {
+    serial_conn_.FlushIOBuffers(); // Just in case
+
+    std::string response = "";
+    try
+    {
+      // Responses end with \r\n so we will read up to (and including) the \n.
+      serial_conn_.ReadLine(response, '\n', timeout_ms_);
+    }
+    catch (const LibSerial::ReadTimeout&)
+    {
+        std::cerr << "The ReadByte() call has timed out." << std::endl ;
+    }
+    return response;
+  }
+
 
   void send_empty_msg()
   {
@@ -86,20 +103,21 @@ public:
 
   void read_encoder_values(int &val_1, int &val_2)
   {
-    std::string response = send_msg("e\r");
+    std::string response = read_msg();
 
     std::string delimiter = " ";
     size_t del_pos = response.find(delimiter);
     std::string token_1 = response.substr(0, del_pos);
     std::string token_2 = response.substr(del_pos + delimiter.length());
 
-    val_1 = std::atoi(token_1.c_str());
-    val_2 = std::atoi(token_2.c_str());
+    val_1 = std::atoi(token_1.c_str());     // point to left_wheel.enc
+    val_2 = std::atoi(token_2.c_str());     // point to right_wheel.enc
   }
+
   void set_motor_values(int val_1, int val_2)
   {
     std::stringstream ss;
-    ss << "m " << val_1 << " " << val_2 << "\r";
+    ss << val_1 << " " << val_2 << "\r";
     send_msg(ss.str());
   }
 
