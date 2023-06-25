@@ -17,7 +17,7 @@ ros2 launch turtlebot3_bringup robot.launch.py----------------------------------
 ros2 launch nav2_bringup navigation_launch.py
 
 # Launch SLAM, Make sure it provixes map->odom tf and /map topic. online သူက previous logged data မသုံးတာ Asynchronous ကတော့ skipping some scans
-ros2 launch slam_toolbox online_async_launch.py params_file:=/home/mr_robot/ros2/ros2_ws/src/rom2109/rom2109_bringup/config/mapper_params_online_async.yaml use_sim_time:=true
+ros2 launch slam_toolbox online_async_launch.py params_file:=/home/mr_robot/ros2/ros2_ws/src/rom2109/rom2109_controller/config/mapper_params_online_async.yaml use_sim_time:=true
 
 # Working with slam, make your robot by requesting a goal through Rviz or ROS2 CLI	
 ros2 topic pub /goal_pose geometry_msgs/PoseStamped "{header: {stamp: {sec: 0}, frame_id: 'map'}, pose: {position: {x: 0.2, y: 0.0, z: 0.0}, orientation: {w: 1.0}}}"

@@ -202,7 +202,7 @@ hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(
   //comms_.set_motor_values(0,10);
   RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "left_rpm = %d, right_rpm = %d", left_rpm, right_rpm);
   //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "wheel_l_.cmd = %f, wheel_r_cmd = %f", wheel_l_.cmd, wheel_r_.cmd);
-  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "wheel_l_.enc = %d, wheel_r_enc = %d", wheel_l_.enc, wheel_r_.enc); // It's OK
+  RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "wheel_l_.enc = %d, wheel_r_enc = %d", wheel_l_.enc, wheel_r_.enc); // It's OK
   //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "motor_l_counts_per_loop = %d, motor_r_counts_per_loop = %d", motor_l_counts_per_loop, motor_r_counts_per_loop); // Error
 
   return hardware_interface::return_type::OK;
