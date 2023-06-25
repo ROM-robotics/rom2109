@@ -167,8 +167,8 @@ hardware_interface::return_type DiffDriveStm32Hardware::read(const rclcpp::Time 
     RCLCPP_INFO(rclcpp::get_logger("DiffBotSystemHardware"), "comms_.connected() is false.");
     return hardware_interface::return_type::ERROR;
   }
-
-  comms_.read_encoder_values(wheel_l_.enc, wheel_r_.enc);
+  //comms_.read_encoder_values(wheel_l_.enc, wheel_r_.enc);
+  comms_.read_encoder_values(wheel_r_.enc, wheel_l_.enc);
 
   double delta_seconds = period.seconds();
   // Encoder values to wheel positions ( Author say check encoder overflows )
@@ -197,8 +197,10 @@ hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(
   /*int motor_l_counts_per_loop = wheel_l_.cmd / wheel_l_.rads_per_count / cfg_.loop_rate;
   int motor_r_counts_per_loop = wheel_r_.cmd / wheel_r_.rads_per_count / cfg_.loop_rate;
   comms_.set_motor_values(motor_l_counts_per_loop, motor_r_counts_per_loop);*/ /* DELETE ARTICULATED ROBOTICS's CODE */
-  comms_.set_motor_values(left_rpm, right_rpm);
-  //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "left_rpm = %d, right_rpm = %d", left_rpm, right_rpm);
+  //comms_.set_motor_values(left_rpm, right_rpm);
+  comms_.set_motor_values(right_rpm, left_rpm);
+  //comms_.set_motor_values(0,10);
+  RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "left_rpm = %d, right_rpm = %d", left_rpm, right_rpm);
   //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "wheel_l_.cmd = %f, wheel_r_cmd = %f", wheel_l_.cmd, wheel_r_.cmd);
   //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "wheel_l_.enc = %d, wheel_r_enc = %d", wheel_l_.enc, wheel_r_.enc); // It's OK
   //RCLCPP_INFO(rclcpp::get_logger(" Deeb Blue AI Lab "), "motor_l_counts_per_loop = %d, motor_r_counts_per_loop = %d", motor_l_counts_per_loop, motor_r_counts_per_loop); // Error
