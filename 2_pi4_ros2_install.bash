@@ -23,10 +23,16 @@ sudo apt -y upgrade
 sudo apt install -y ros-humble-ros-base
 sudo apt install -y ros-dev-tools
 
-echo "source /opt/ros/humble/setup.bash" ~/.bashrc
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
-alias bb='colcon build --symlink-install && clear && source install/setup.bash'
-alias delete_workspace='rm -rf build install log; echo "Done"
+echo "alias bb='colcon build --symlink-install && clear && source install/setup.bash'" >> ~/.bashrc
+echo "alias delete_workspace='rm -rf build install log; echo \"Done\"'" >> ~/.bashrc
+
+mkdir -p ~/ros2/workspace/src
+echo "source ~/rom/ros2/workspace/install/setup.bash" >> ~/.bashrc
+echo "Use ROS_DOMAIN_ID=100 on your host's .bashrc"
+echo "ROS_DOMAIN_ID=100" >> ~/.bashrc
+source ~/.bashrc
 
 sudo apt install -y ros-humble-gazebo-ros* 
 sudo apt install -y ros-humble-ros2-control*
@@ -61,5 +67,5 @@ ros-humble-force-torque-sensor-broadcaster \
 ros-humble-ackermann-* \
 ros-humble-imu-sensor-broadcaster 
 
-mkdir -p ~/ros2/workspace/src
+
 
