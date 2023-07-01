@@ -114,7 +114,7 @@ public:
     val_2 = std::atoi(token_2.c_str());     // point to right_wheel.enc
   }
 
-  void set_motor_values(int val_1, int val_2)
+  void set_motor_values(float val_1, float val_2)
   {
     std::stringstream ss;
     ss << val_1 << " " << val_2 << "\r";
