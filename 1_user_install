@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo useradd -md rom
+echo "Enter password for user rom"
+passwd rom
+
+sudo userdel -rf ubuntu
