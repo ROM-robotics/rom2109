@@ -65,6 +65,7 @@ ros-humble-joint-state-broadcaster \
 ros-humble-force-torque-sensor-broadcaster \
 ros-humble-force-torque-sensor-broadcaster \
 ros-humble-ackermann-* \
+ros-humble-rplidar-ros \
 ros-humble-imu-sensor-broadcaster 
 
 
