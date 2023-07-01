@@ -3,7 +3,7 @@
 echo ""
 echo "          ROM ROBOTICS LTD     "
 echo "      This script copies a udev rule to /etc/udev/rules.d/ "
-echo "      You Can Use /home/mr_robot/robotController instead of /dev/ttyUSB* and "
+echo "      You Can Use $HOME/robotController instead of /dev/ttyUSB* and "
 echo "      You Can Use /dev/rplidar instead of /dev/ttyUSB* and "
 echo ""
 
