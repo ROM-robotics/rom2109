@@ -11,7 +11,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 import xacro
 
 def generate_launch_description():
-
+    
     twist_mux_params = os.path.join(get_package_share_directory('rom2109_controller'), 'config', 'twist_mux.yaml')
     twist_mux_node = Node(
         package="twist_mux",
@@ -21,16 +21,15 @@ def generate_launch_description():
         #remappings=[('/cmd_vel_out', '/cmd_vel')]
     )
 
-    bot = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('rom_robotics_joy'), 'launch', 'joystick.launch.py'
-        )])
+    joystick_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory('rom_robotics_joy'), 'launch', 'joystick.launch.py')]),
+        launch_arguments={'use_joystick': 'false'}.items()
     )
 
 
     return LaunchDescription(
         [
             twist_mux_node,
-            bot,
+            joystick_launch,
         ]
     )
