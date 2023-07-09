@@ -12,7 +12,7 @@ def generate_launch_description():
         package='rom2109_controller',
         executable='go_straight',
         name='rom_robotics_go_straight_node',
-        parameters=[{'direction': 'forward'}]
+        parameters=[{'direction': 'reverse'}]
     )
     # 'right', 'left' for rotate_node
     rotate_node = Node(
@@ -23,6 +23,6 @@ def generate_launch_description():
             {'direction': 'right'} 
         ])
     return LaunchDescription([
-        straight_node,
-        #rotate_node,
+        #straight_node,
+        rotate_node,
     ])

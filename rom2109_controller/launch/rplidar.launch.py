@@ -13,7 +13,7 @@ def generate_launch_description():
                 'serial_port': '/dev/rplidar',
                 'serial_baudrate': 115200,  # A1 / A2
                 # 'serial_baudrate': 256000, # A3
-                'frame_id': 'laser',
+                'frame_id': 'lidar',
                 'inverted': False,
                 'angle_compensate': True,
             }],

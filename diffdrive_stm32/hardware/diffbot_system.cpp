@@ -193,7 +193,7 @@ hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(
   }
   
   //int left_rpm = int(wheel_l_.cmd*10); int right_rpm = int(wheel_r_.cmd*10);
-  comms_.set_motor_values(wheel_l_.cmd, wheel_r_.cmd);
+  comms_.set_motor_values(wheel_r_.cmd, wheel_l_.cmd);
   return hardware_interface::return_type::OK;
 }
 

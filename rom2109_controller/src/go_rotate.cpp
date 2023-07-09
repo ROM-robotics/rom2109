@@ -57,12 +57,14 @@ private:
         msg.linear.x = 0.00;
         msg.angular.z = 0.00;
 
-        if(rotate == "left")
+        if(rotate == "right")
         {
-          if( yaw < 3.14 ) // may be error because 2pi = - 2pi
+          if( std::abs(yaw) < 3.135 ) // may be error because 2pi = - 2pi
           { 
-            msg.angular.z = 0.01;
+            msg.angular.z = -0.08;
             publisher_->publish(msg); 
+            RCLCPP_INFO(this->get_logger(), "rotate right: , %3f",std::abs(yaw));
+            //RCLCPP_INFO(this->get_logger(), "rotate right: , %3f",std::abs(-3.543));
           }
           else 
           {
@@ -72,12 +74,13 @@ private:
           }
         } 
         
-        else if ( rotate == "right")
+        else if ( rotate == "left")
         {
           if( yaw > -3.14 ) 
           { 
-            msg.angular.z = -0.01;
+            msg.angular.z = 0.08;
             publisher_->publish(msg); 
+            RCLCPP_INFO(this->get_logger(), "rotate left: , %3f", yaw);
           }
           else 
           {

@@ -29,8 +29,8 @@ public:
 private:
   void on_timer()
   {
-    std::string fromFrameRel = "odom";
-    std::string toFrameRel = "base_link";
+    std::string fromFrameRel = "base_link";
+    std::string toFrameRel = "odom";
     std::string where_to_go = direction_.c_str();
 
     geometry_msgs::msg::TransformStamped t;
@@ -56,8 +56,15 @@ private:
         {
           if( linear_displacement<1.00 ) 
           { 
-            msg.linear.x = 0.20;
+            msg.linear.x = 0.10;
             publisher_->publish(msg); 
+            // RCLCPP_INFO(this->get_logger(), "Linear_Diaplacement: , %3f", linear_displacement);
+          }
+          else 
+          {
+          msg.linear.x = 0.00;
+          publisher_->publish(msg); 
+          rclcpp::shutdown();
           }
         } 
         
@@ -65,16 +72,19 @@ private:
         {
           if( linear_displacement>-1.00 ) 
           { 
-            msg.linear.x = -0.20;
+            msg.linear.x = -0.10;
             publisher_->publish(msg); 
+            // RCLCPP_INFO(this->get_logger(), "Linear_Diaplacement: , %3f", linear_displacement);
           }
-        } 
-
-        else {
+          else 
+          {
           msg.linear.x = 0.00;
           publisher_->publish(msg); 
           rclcpp::shutdown();
-        }
+          }
+        } 
+
+        
   }    
   rclcpp::TimerBase::SharedPtr timer_{nullptr};
   rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisher_{nullptr};

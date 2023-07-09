@@ -13,7 +13,8 @@ ros2 launch rom2109_controller rom2109.launch.py
 ros2 launch rom2109_controller z_1_wheel_test.launch.py
 ```
 
-
+ros2 launch rom2109_controller all_strart.launch.py
+ros2 launch rom2109_nav2 online_async_launch_mapping_launch.py
 ### to do
 FIRMWARE ပြင်ရေးရန်<br>
 <br>CONNECTION မရှိက DESIGN RPM ကို ZERO ထားရန်              ( not fixed)
