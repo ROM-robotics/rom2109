@@ -28,7 +28,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        DeclareLaunchArgument( 'use_joystick',default_value='false', description='Using joystick'),
+        DeclareLaunchArgument( 'use_joystick',default_value='true', description='Using joystick'),
         DeclareLaunchArgument('use_sim_time',default_value='false',description='Use sim time if true'),
         joy_node,
         teleop_node,
