@@ -119,7 +119,7 @@ TeleopTwistJoy::TeleopTwistJoy(const rclcpp::NodeOptions& options) : Node("teleo
   this->get_parameters("scale_linear_turbo", pimpl_->scale_linear_map["turbo"]);
 
   std::map<std::string, double> default_scale_angular_normal_map{
-    {"yaw", 0.5},
+    {"yaw", 0.25},
     {"pitch", 0.0},
     {"roll", 0.0},
   };
@@ -127,7 +127,7 @@ TeleopTwistJoy::TeleopTwistJoy(const rclcpp::NodeOptions& options) : Node("teleo
   this->get_parameters("scale_angular", pimpl_->scale_angular_map["normal"]);
 
   std::map<std::string, double> default_scale_angular_turbo_map{
-    {"yaw", 1.0},
+    {"yaw", 0.4},
     {"pitch", 0.0},
     {"roll", 0.0},
   };
