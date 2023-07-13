@@ -179,7 +179,7 @@ hardware_interface::return_type DiffDriveStm32Hardware::read(const rclcpp::Time 
   float prev_r_pos = wheel_r_.pos;
   wheel_r_.pos = wheel_r_.calc_enc_angle();
   wheel_r_.vel = (wheel_r_.pos - prev_r_pos) / delta_seconds;   // radians per delta seconds calculation OK
-
+  /*
   RCLCPP_INFO(rclcpp::get_logger("\033[1;36mZeroing Test"), "right wheel encoder : %d", wheel_r_.enc);
   RCLCPP_INFO(rclcpp::get_logger("Zeroing Test"), "right wheel pos : %.15f", wheel_r_.pos);
   RCLCPP_INFO(rclcpp::get_logger("Zeroing Test"), "rad_per_count : %.15f \033[1;0m", wheel_r_.rads_per_count);
@@ -187,7 +187,7 @@ hardware_interface::return_type DiffDriveStm32Hardware::read(const rclcpp::Time 
   RCLCPP_INFO(rclcpp::get_logger("\033[1;35mZeroing Test"), "left wheel encoder : %d", wheel_l_.enc);
   RCLCPP_INFO(rclcpp::get_logger("Zeroing Test"), "left wheel pos : %.15f", wheel_l_.pos);
   RCLCPP_INFO(rclcpp::get_logger("Zeroing Test"), "rad_per_count : %.15f \033[1;0m", wheel_l_.rads_per_count);
-
+  */
   return hardware_interface::return_type::OK;
 }
 
