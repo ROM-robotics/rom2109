@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="rom2109">
+
+    <xacro:arg name="prefix" default="" />
+
+    <xacro:arg name="use_ros2_control" default="true"/>
+
+    <xacro:include filename="rom2109_core.xacro" />
+    <xacro:include filename="hw_ros2_control.xacro" /> 
+
+    <xacro:diffbot_ros2_control name="DiffBot" prefix="$(arg prefix)" />
+
+</robot>
