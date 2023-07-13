@@ -23,7 +23,7 @@ def generate_launch_description():
 
     joystick_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(get_package_share_directory('rom_robotics_joy'), 'launch', 'joystick.launch.py')]),
-        launch_arguments={'use_joystick': 'false'}.items()
+        launch_arguments={'use_joystick': 'true'}.items()
     )
 
 
