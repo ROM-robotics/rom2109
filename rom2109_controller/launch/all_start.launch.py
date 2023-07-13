@@ -46,8 +46,8 @@ def generate_launch_description():
     return LaunchDescription(
         [
             DeclareLaunchArgument('use_rqt_pub', default_value='false', description='Use rqt publisher for velocity test.'),
-            DeclareLaunchArgument('use_rviz', default_value='false', description='Use rviz.'),
-            DeclareLaunchArgument('use_lidar', default_value='true', description='Use rplidar.'),
+            DeclareLaunchArgument('use_rviz', default_value='true', description='Use rviz.'),
+            DeclareLaunchArgument('use_lidar', default_value='false', description='Use rplidar.'),
             bot,
             twist_mux,
             rqt_publisher_node,

@@ -10,7 +10,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     use_joystick = LaunchConfiguration('use_joystick')
 
-    joy_params = os.path.join(get_package_share_directory('rom_robotics_joy'), 'config', 'logic_tech.yaml')
+    joy_params = os.path.join(get_package_share_directory('rom_robotics_joy'), 'config', 'joystick.yaml')
 
     joy_node = Node(
         package='joy',
