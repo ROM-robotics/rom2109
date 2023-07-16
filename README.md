@@ -14,7 +14,9 @@ controller pkg ထဲက z_test_2_move.launch.py နဲ့ ရှေ့နော
 
 
 ###### To Do ( July 9 2023 )
-simulation မှ rom2109_nav2 ကို လေ့လာပြီး Hardware robot အတွက် ပြင်ဆင်ရေးသားပါ။
-စမ်းသပ်ဆဲ
+simulation မှ rom2109_nav2 ကို လေ့လာပြီး Hardware robot အတွက် ပြင်ဆင်ခြင်း
+
+###### To Do ( July 15 )
+amcl run ရာမှာ map_server  run သော်လည်း map မထွက်
 
 
