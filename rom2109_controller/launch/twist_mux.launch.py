@@ -3,12 +3,6 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription
-from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-
-import xacro
 
 def generate_launch_description():
     
@@ -21,15 +15,10 @@ def generate_launch_description():
         #remappings=[('/cmd_vel_out', '/cmd_vel')]
     )
 
-    joystick_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(get_package_share_directory('rom_robotics_joy'), 'launch', 'joystick.launch.py')]),
-        launch_arguments={'use_joystick': 'true'}.items()
-    )
-
+    
 
     return LaunchDescription(
         [
             twist_mux_node,
-            joystick_launch,
         ]
     )
