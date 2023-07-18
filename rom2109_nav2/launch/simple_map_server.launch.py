@@ -1,13 +1,3 @@
-#/*******************************************************************************
-# *                          DeepBlue AI Lab  				    				 *
-# *  (ɔ) COPYLEFT 2023   |    romrobotics@gmail.com     |    (+95) 259 288 229	 *
-# *******************************************************************************/ 
-#
-# မြေပုံမပေါ်ရင် rviz မှာ Map -> Update Topic -> Durability Policy -> Transient Local 
-# ပြောင်းပါ။ မြေပုံမပေါ်သေးဘူးဆိုရင် lifecycle node နဲ့ ဆိုင်ပါတယ်။ amcl ကို livecycle node က launch
-# မလုပ်နိင်ခဲ့ရင် map lifecycle လည်း run မရတာမို့ map server ရှိသော်လည်း မြေပုံမထွက်တာပါ။ 
-# ဒီပြသနာကိုရှင်းဖို့ lifecycle_nodes = [] list ကို comment အုပ်ပါ။
-
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -37,7 +27,8 @@ def generate_launch_description():
     use_respawn = LaunchConfiguration('use_respawn')
     log_level = LaunchConfiguration('log_level')
 
-    lifecycle_nodes = ['map_server', 'amcl']
+    # lifecycle_nodes = ['map_server', 'amcl']
+    lifecycle_nodes = ['map_server']
 
     # Map fully qualified names to relative ones so the node's namespace can be prepended.
     # In case of the transforms (tf), currently, there doesn't seem to be a better alternative
@@ -102,10 +93,7 @@ def generate_launch_description():
         'log_level', default_value='info',
         description='log level')
 
-    load_nodes = GroupAction(
-        condition=IfCondition(PythonExpression(['not ', use_composition])),
-        actions=[
-            Node(
+    map_server_node = Node(
                 package='nav2_map_server',
                 executable='map_server',
                 name='map_server',
@@ -114,8 +102,8 @@ def generate_launch_description():
                 respawn_delay=2.0,
                 parameters=[configured_params],
                 arguments=['--ros-args', '--log-level', log_level],
-                remappings=remappings),
-            Node(
+                remappings=remappings)
+    amcl_node = Node(
                 package='nav2_amcl',
                 executable='amcl',
                 name='amcl',
@@ -124,8 +112,8 @@ def generate_launch_description():
                 respawn_delay=2.0,
                 parameters=[configured_params],
                 arguments=['--ros-args', '--log-level', log_level],
-                remappings=remappings),
-            Node(
+                remappings=remappings)
+    lifecycle_mgr = Node(
                 package='nav2_lifecycle_manager',
                 executable='lifecycle_manager',
                 name='lifecycle_manager_localization',
@@ -134,42 +122,7 @@ def generate_launch_description():
                 parameters=[{'use_sim_time': use_sim_time},
                             {'autostart': autostart},
                             {'node_names': lifecycle_nodes}])
-        ]
-    )
-
-    load_composable_nodes = LoadComposableNodes(
-        condition=IfCondition(use_composition),
-        target_container=container_name_full,
-        composable_node_descriptions=[
-            ComposableNode(
-                package='nav2_map_server',
-                plugin='nav2_map_server::MapServer',
-                name='map_server',
-                parameters=[configured_params],
-                remappings=remappings),
-            ComposableNode(
-                package='nav2_amcl',
-                plugin='nav2_amcl::AmclNode',
-                name='amcl',
-                parameters=[configured_params],
-                remappings=remappings),
-            ComposableNode(
-                package='nav2_lifecycle_manager',
-                plugin='nav2_lifecycle_manager::LifecycleManager',
-                name='lifecycle_manager_localization',
-                parameters=[{'use_sim_time': use_sim_time,
-                             'autostart': autostart,
-                             'node_names': lifecycle_nodes}]),
-        ],
-    )
-
-    init_pose_node_cmd = Node(
-        package='rom2109_nav2',
-        executable='init_robot_pose',
-        name='init_robot_pose_by_custom_node',
-        output="screen"
-    )
-
+    
     # Create the launch description and populate
     ld = LaunchDescription()
 
@@ -188,8 +141,8 @@ def generate_launch_description():
     ld.add_action(declare_log_level_cmd)
 
     # Add the actions to launch all of the localiztion nodes
-    ld.add_action(load_nodes)
-    ld.add_action(load_composable_nodes)
-    ld.add_action(init_pose_node_cmd)
+    ld.add_action(map_server_node)
+    #ld.add_action(amcl_node)
+    ld.add_action(lifecycle_mgr)
 
     return ld

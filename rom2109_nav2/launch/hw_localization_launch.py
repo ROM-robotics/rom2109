@@ -1,3 +1,13 @@
+#/*******************************************************************************
+# *                          DeepBlue AI Lab  				    				 *
+# *  (ɔ) COPYLEFT 2023   |    romrobotics@gmail.com     |    (+95) 259 288 229	 *
+# *******************************************************************************/ 
+#
+# မြေပုံမပေါ်ရင် rviz မှာ Map -> Update Topic -> Durability Policy -> Transient Local 
+# ပြောင်းပါ။ မြေပုံမပေါ်သေးဘူးဆိုရင် lifecycle node နဲ့ ဆိုင်ပါတယ်။ amcl ကို livecycle node က launch
+# မလုပ်နိင်ခဲ့ရင် map lifecycle လည်း run မရတာမို့ map server ရှိသော်လည်း မြေပုံမထွက်တာပါ။ 
+# ဒီပြသနာကိုရှင်းဖို့ lifecycle_nodes = [] list ကို comment အုပ်ပါ။
+
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -27,7 +37,8 @@ def generate_launch_description():
     use_respawn = LaunchConfiguration('use_respawn')
     log_level = LaunchConfiguration('log_level')
 
-    lifecycle_nodes = ['map_server', 'amcl']
+    #lifecycle_nodes = ['map_server', 'amcl']
+    lifecycle_nodes = ['map_server']
 
     # Map fully qualified names to relative ones so the node's namespace can be prepended.
     # In case of the transforms (tf), currently, there doesn't seem to be a better alternative
