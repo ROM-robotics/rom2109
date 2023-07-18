@@ -1,7 +1,1 @@
-SUBSYSTEM=="ttyUSB*",
-ATTRS{idVendor}=="1a86",
-ATTRS{idProduct}=="7523",
-OWNER:="root", 
-GROUP:="dialout",
-MODE:="0777",
-SYMLINK+="robotController"
+KERNEL=="ttyUSB*", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", MODE:="0777", SYMLINK+="robotController"
