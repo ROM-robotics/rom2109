@@ -9,6 +9,7 @@ echo ""
 sudo rm /etc/udev/rules.d/99-rom-robot-controller.rules
 sudo rm /etc/udev/rules.d/rplidar.rules
 sudo rm /home/$USER/robotController
+sudo rm /dev/robotController
 
 echo ""
 echo "Restarting udev"
