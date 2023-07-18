@@ -27,20 +27,20 @@ use_lidar:=true/false
 ## 2) စမ်းသပ်မောင်းနှင်ခြင်း
 ### အဆင့် ၁ Mapping ပြုလုပ်ခြင်း
 ```
-ros2 launch rom2109_controller all_start.launch.py use_joystick:=true mapping:=true use_lidar=true use_rviz=true
+ros2 launch rom2109_controller all_start.launch.py use_joystick:=true mapping:=true use_lidar:=true use_rviz:=true
 ```
 ### အဆင့် ၂ Localization ပြုလုပ်ခြင်း
 ```
-ros2 launch rom2109_controller all_start.launch.py use_joystick:=true use_lidar=true use_rviz=true amcl:=true
+ros2 launch rom2109_controller all_start.launch.py use_joystick:=true use_lidar:=true use_rviz:=true amcl:=true
 ```
 ### အဆင့် ၃ Navigation ပြုလုပ်ခြင်း
 ```
-ros2 launch rom2109_controller all_start.launch.py use_joystick:=true use_lidar=true use_rviz=true amcl:=true navigation:=true
+ros2 launch rom2109_controller all_start.launch.py use_joystick:=true use_lidar:=true use_rviz:=true amcl:=true navigation:=true
 ```
 ## 3) Server, Client တ္ငင်အသုံးပြုခြင်း
 ```
 # Server ( robot computer )
-ros2 launch rom2109_controller all_start.launch.py use_joystick:=true use_lidar=true amcl:=true navigation:=true
+ros2 launch rom2109_controller all_start.launch.py use_joystick:=true use_lidar:=true amcl:=true navigation:=true
 # Client ( user computer )
 ros2 launch rom2109_controller client.launch.py use_rviz:=true
 ```
