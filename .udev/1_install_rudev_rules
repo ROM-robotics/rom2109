@@ -8,9 +8,8 @@ echo "      You Can Use /dev/rplidar instead of /dev/ttyUSB* and "
 echo ""
 
 sudo cp 99-rom-robot-controller.rules /etc/udev/rules.d
+sudo cp rplidar.rules /etc/udev/rules.d
 sudo usermod -aG dialout $USER
-sudo cp rplidar.rules  /etc/udev/rules.d
-#ln -s /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0 /home/$USER/robotController
 
 echo ""
 echo "Restarting udev"
