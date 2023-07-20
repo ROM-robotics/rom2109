@@ -9,6 +9,7 @@ Thu Ta Zaw<br>
 Zwel Myat<br>
 Htoo Tayza Aung<br>
 Min Khant Aung<br>
+Htet Wai Yan<br>
 <a href="https://rom-robotics.gitbook.io/rom2109-amr-athonpyunilan/">Documentation </a> ကြည့်၍ လိုအပ်သော packages များ install လုပ်ပါ။
 
 ###### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
@@ -26,8 +27,8 @@ simulation မှ rom2109_nav2 ကို လေ့လာပြီး Hardware ro
 ###### To Do ( July 15 )
 amcl run ရာမှာ map_server  run သော်လည်း map မထွက် ( စမ်းသပ်ဆဲ )
 https://github.com/ros2/rmw_cyclonedds?fbclid=IwAR3El9X7-mHpWpalkILMNVcEggj1g0cggvVd_frAhYK-zibZkcoEF3rYq6o
-rmw_cyclonedds ကြောင့်လို့ပြောတယ် မစမ်းရသေး။
-apt install ros-eloquent-rmw-cyclonedds-cpp
+rmw_cyclonedds install လျှင် map topic data ရ ။(စမ်းသပ်ဆဲ)
+apt install ros-humble-rmw-cyclonedds-cpp
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ros2 doctor --report
 
