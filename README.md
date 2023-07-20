@@ -3,7 +3,8 @@
 #### Contributors List
 Min Kaung Min Lwin
 pyae phyo thant
-
+Ei Kyi Phyu Khin
+Thu Ta Zaw
 <a href="https://rom-robotics.gitbook.io/rom2109-amr-athonpyunilan/">Documentation </a> ကြည့်၍ လိုအပ်သော packages များ install လုပ်ပါ။
 
 ###### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
@@ -26,5 +27,3 @@ apt install ros-eloquent-rmw-cyclonedds-cpp
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ros2 doctor --report
 
-
-Htoo Tayza Aung
