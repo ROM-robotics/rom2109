@@ -1,8 +1,13 @@
 ## rom2109 Autonomous Mobile Robot ( Start Project - Sepetmber 2021)
 
 #### Contributors List
-Min Kaung Min Lwin
-
+Min Kaung Min Lwin<br>
+pyae phyo thant<br>
+Ei Kyi Phyu Khin<br>
+Thu Ta Zaw<br>
+Zwel Myat<br>
+Htoo Tayza Aung<br>
+Min Khant Aung<br>
 <a href="https://rom-robotics.gitbook.io/rom2109-amr-athonpyunilan/">Documentation </a> ကြည့်၍ လိုအပ်သော packages များ install လုပ်ပါ။
 
 ###### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
@@ -26,5 +31,3 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ros2 doctor --report
 
 
-Htoo Tayza Aung
-Min Khant Aung
