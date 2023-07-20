@@ -1,5 +1,8 @@
 ## rom2109 Autonomous Mobile Robot ( Start Project - Sepetmber 2021)
 
+#### Contributors List
+Min Kaung Min Lwin
+
 <a href="https://rom-robotics.gitbook.io/rom2109-amr-athonpyunilan/">Documentation </a> ကြည့်၍ လိုအပ်သော packages များ install လုပ်ပါ။
 
 ###### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
