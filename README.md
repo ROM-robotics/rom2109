@@ -23,3 +23,5 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ros2 doctor --report
 
 
+# Hello :3 
+#No war : Make love
