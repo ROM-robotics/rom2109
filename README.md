@@ -7,7 +7,8 @@ pyae phyo thant<br>
 Ei Kyi Phyu Khin<br>
 Thu Ta Zaw<br>
 Zwel Myat<br>
-
+Htoo Tayza Aung<br>
+Min Khant Aung<br>
 <a href="https://rom-robotics.gitbook.io/rom2109-amr-athonpyunilan/">Documentation </a> ကြည့်၍ လိုအပ်သော packages များ install လုပ်ပါ။
 
 ###### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
@@ -29,4 +30,5 @@ rmw_cyclonedds ကြောင့်လို့ပြောတယ် မစမ�
 apt install ros-eloquent-rmw-cyclonedds-cpp
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ros2 doctor --report
+
 
