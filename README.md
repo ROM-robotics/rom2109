@@ -15,13 +15,16 @@ Htet Wai Yan
 Hlyan Htet Nyi Nyi
 ``````
 <a href="https://rom-robotics.gitbook.io/rom2109-amr-athonpyunilan/">Documentation </a> ကြည့်၍ လိုအပ်သော packages များ install လုပ်ပါ။
+<a href="https://navigation.ros.org/"> Navigation 2</a> ကိုလေ့လာပါ။
+<a href="https://docs.ros.org/en/galactic/Concepts/About-Domain-ID.html"> ROS_DOMAIN_ID </a>
+#### pull request တင်၍ contribute လုပ်ပါ။
 
-###### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
+#### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
 ```
 alias bb='colcon build --symlink-install && clear && source install/setup.bash'
 alias delete_workspace='rm -rf build install log; echo "Done"'
 ```
-<a href="https://docs.ros.org/en/galactic/Concepts/About-Domain-ID.html"> ROS_DOMAIN_ID </a>
+
 ###### To Do ( July 8 2023 )
 controller pkg ထဲက z_test_2_move.launch.py နဲ့ ရှေ့နောက် ဘယ်ညာ တပါတ်စီ ပြည့်မှီအောင် စစ်ဆေးရန် ( စစ်ဆေးပြီး OK )
 
