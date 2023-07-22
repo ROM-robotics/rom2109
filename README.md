@@ -29,14 +29,14 @@ alias delete_workspace='rm -rf build install log; echo "Done"'
 controller pkg ထဲက z_test_2_move.launch.py နဲ့ ရှေ့နောက် ဘယ်ညာ တပါတ်စီ ပြည့်မှီအောင် စစ်ဆေးရန် ( စစ်ဆေးပြီး OK )
 
 ###### To Do ( July 9 2023 )
-simulation မှ rom2109_nav2 ကို လေ့လာပြီး Hardware robot အတွက် ပြင်ဆင်ခြင်း ( စမ်းသပ်ဆဲ )
+simulation မှ rom2109_nav2 ကို လေ့လာပြီး Hardware robot အတွက် ပြင်ဆင်ခြင်း ( စစ်ဆေးပြီး OK )
 
 ###### To Do ( July 15 )
-amcl run ရာမှာ map_server  run သော်လည်း map မထွက် ( စမ်းသပ်ဆဲ )
-https://github.com/ros2/rmw_cyclonedds?fbclid=IwAR3El9X7-mHpWpalkILMNVcEggj1g0cggvVd_frAhYK-zibZkcoEF3rYq6o
-rmw_cyclonedds install လျှင် map topic data ရ (map data transferring value size error) ။(စမ်းသပ်ဆဲ) </br>
+amcl run ရာမှာ map_server  run သော်လည်း map မထွက် ( စစ်ဆေးပြီး OK )
 apt install ros-humble-rmw-cyclonedds-cpp </br>
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp </br>
-ros2 doctor --report
+map subscribe လုပ်ရာမှာ traiscient local သုံးပါ။ lifcycle map server ကို စစ်ဆေးပါ။
+
+###### To Do ( July 22 )
+NAV 2  စတင်အလုပ်လုပ်သော်လည်းတည်ငြိမ်မှုမရှိ ( စမ်းသပ်ဆဲ )
 
 
