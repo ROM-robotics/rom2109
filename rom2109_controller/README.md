@@ -1,5 +1,5 @@
 # ROM2109 Robot Controller
-## 1) Tunning ပြုလုပ်ခြင်း
+## 1) Tuning ပြုလုပ်ခြင်း
 velocity topic ကို အနည်းဆုံး 20Hz နဲ့ publish လုပ်ပေးပါ။ 0.5s ကျော်ရင် x=0, z=0 ဖြစ်ပါတယ်။ controller ကို စမ်းရန် အောက်က command ကို run ပါ။ 
 ```
 ros2 launch rom2109_controller rom2109.launch.py
