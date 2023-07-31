@@ -26,8 +26,11 @@ Phone Myint Aung
 
 #### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
 ```
-alias bb='colcon build --symlink-install && clear && source install/setup.bash'
+alias bb='colcon build --symlink-install && source install/setup.bash'
 alias delete_workspace='rm -rf build install log; echo "Done"'
+alias auto_launch="ros2 launch rom2109_controller all_start.launch.py use_joystick:=true use_lidar:=true amcl:=true navigation:=true"
+alias client_launch="ros2 launch rom2109_controller client.launch.py use_rviz:=true"
+
 ```
 
 ###### To Do ( July 8 2023 )
