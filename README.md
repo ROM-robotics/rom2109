@@ -13,10 +13,10 @@ Thu Ta Zaw
 Zwel Myat
 Htoo Tayza Aung
 Min Khant Aung
-Htet Wai Yan
 Hlyan Htet Nyi Nyi
 Sit Ko Naing
 Phone Myint Aung
+Htet Wai Yan
 ``````
 <a href="https://rom-robotics.gitbook.io/rom2109-amr-athonpyunilan/">Documentation ကြည့်၍ လိုအပ်သော packages များ install လုပ်ပါ။ </a>  <br><br>
 <a href="https://navigation.ros.org/"> Navigation 2 ကိုလေ့လာပါ။</a>  <br><br>
