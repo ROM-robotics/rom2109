@@ -1,0 +1,47 @@
+# ./.tmuxinator.yml
+
+name: DEEP BLUE AI Lab
+root: ~/
+
+pre_window: export PS1=" \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;45m\]>>>\[$(tput sgr0)\] \[$(tput sgr0)\]"
+
+startup_window: Driver
+# startup_pane: 0
+
+windows:
+  - Driver: 
+      root: ~/ros/ros2_ws
+      panes:
+        - clear; source ~/.bashrc; ros2 launch rom2109_controller rom2109.launch.py
+  - Joy: 
+      root: ~/ros/ros2_ws
+      layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
+      panes:
+        - clear; source ~/.bashrc; ros2 launch rom2109_controller twist_mux.launch.py
+        - clear; source ~/.bashrc; ros2 launch rom_robotics_joy joystick.launch.py use_joystick:=true
+  - Lidar: 
+      root: ~/ros/ros2_ws
+      layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
+      panes:
+        - clear; source ~/.bashrc; ros2 launch rom2109_controller rplidar.launch.py
+        - clear; 
+  - Localization: 
+      root: ~/ros/ros2_ws
+      panes:
+        - clear; source ~/.bashrc; ros2 launch rom2109_nav2 hw_localization_init_pose_launch.py
+  - Navigation: 
+      root: ~/ros/ros2_ws
+      panes:
+        - clear; source ~/.bashrc; ros2 launch rom2109_nav2 hw_navigation_launch.py map_subscribe_transient_local:=true
+  - BehaviorTree: 
+      root: ~/ros/ros2_ws
+      panes:
+        - clear; source ~/.bashrc; btop 
+  - About:
+      layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
+      root: ~/ros/ros2_ws
+      panes:
+        - clear; source ~/.bashrc; cowsay Wellcome Idiots! ; echo "                              OPEN SOURCE ROBOTICS FOR MYANMAR"
+        - clear; source ~/.bashrc; neofetch
+        - clear; source ~/.bashrc; ranger ~/ros2_ws/real_bot/src/rom2109_simulation/
+  
