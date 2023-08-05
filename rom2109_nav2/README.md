@@ -106,6 +106,11 @@ ros2 launch rom2109_gazebo controller_spawner.launch.py
 ```
 ##### Q: Robot  ရဲ့ လက်ရှိ Pose ကို ဘယ်လိုသိနိုင်မလဲ?
 ##### A: ros2 topic echo /amcl_pose
+##### Q: nav2_params.yaml ဖိုင် ဘယ်လိုပြောင်းရမလဲ?
+```
+sed -i 's/nav2_params.yaml/nav2_params_collision.yaml/g' /path/to/hw_localization_init_pose_launch.py
+sed -i 's/nav2_params.yaml/nav2_params_collision.yaml/g' /path/to/hw_localization_launch.py
+```
 ## -------------------------------------------------------------------------------------------
 ## ပြင်ရန်ကျန်
 ##### Groot နဲ့ချိတ်ရန်

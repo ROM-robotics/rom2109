@@ -350,3 +350,49 @@ velocity_smoother:
     odom_duration: 0.1
     deadband_velocity: [0.0, 0.0, 0.0]
     velocity_timeout: 1.0
+
+collision_monitor:
+  ros__parameters:
+    base_frame_id: "base_footprint"
+    odom_frame_id: "odom"
+    cmd_vel_in_topic: "smoothed_cmd_vel"
+    cmd_vel_out_topic: "collision_cmd_vel"
+    state_topic: "collision_monitor_state"
+    transform_tolerance: 0.5
+    source_timeout: 5.0
+    base_shift_correction: True
+    stop_pub_timeout: 2.0
+    polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
+    PolygonStop:
+      type: "polygon"
+      points: [0.15, 0.15, 0.15, -0.15, -0.15, -0.15, -0.15, 0.15]
+      action_type: "stop"
+      min_points: 3  # max_points: 3 for Humble
+      visualize: True
+      polygon_pub_topic: "polygon_stop"
+    PolygonSlow:
+      type: "polygon"
+      points: [0.34, 0.34, 0.34, -0.34, -0.34, -0.34, -0.34, 0.34]
+      action_type: "slowdown"
+      min_points: 3  # max_points: 3 for Humble
+      slowdown_ratio: 0.3
+      visualize: True
+      polygon_pub_topic: "polygon_slowdown"
+    FootprintApproach:
+      type: "polygon"
+      action_type: "approach"
+      footprint_topic: "/local_costmap/published_footprint"
+      time_before_collision: 2.0
+      simulation_time_step: 0.02
+      min_points: 5  # max_points: 5 for Humble
+      visualize: False
+    observation_sources: ["scan"]
+    # observation_sources: ["scan", "pointcloud"]
+    scan:
+      type: "scan"
+      topic: "/scan"
+    # pointcloud:
+    #   type: "pointcloud"
+    #   topic: "/intel_realsense_r200_depth/points"
+    #   min_height: 0.1
+    #   max_height: 0.5
