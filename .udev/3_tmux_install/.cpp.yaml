@@ -1,0 +1,22 @@
+# ./.tmuxinator.yml
+
+name: D33P BLUE
+root: ~/
+
+pre_window: export PS1=" \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;45m\]>>>\[$(tput sgr0)\] \[$(tput sgr0)\]"
+
+startup_window: vim
+startup_pane: 2
+
+windows:
+  - vim:
+      layout: 5464,203x54,0,0{139x54,0,0,4,63x54,140,0[63x14,140,0,5,63x39,140,15,6]}
+      panes:
+        - clear; vim
+        - clear; cowsay Wellcome Idiots! 
+        - clear; echo "hello"
+  - Debugger: 
+      layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
+      panes:
+        - clear; gdb -q
+        - clear; octave; clc

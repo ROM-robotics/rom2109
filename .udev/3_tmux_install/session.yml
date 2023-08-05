@@ -1,0 +1,28 @@
+# ./.tmuxinator.yml
+
+name: ROM Robotics
+root: ~/
+
+pre_window: export PS1=" \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;45m\]>>>\[$(tput sgr0)\] \[$(tput sgr0)\]"
+
+startup_window: roscore
+startup_pane: 3
+
+windows:
+  - roscore:
+      layout: ab98,203x54,0,0[203x22,0,0{101x22,0,0,0,101x22,102,0,3},203x31,0,23,4]
+      panes:
+        - clear; cowsay Wellcome Idiots! ; echo "                              OPEN SOURCE ROBOTICS FOR MYANMAR"
+        - clear; roscore
+        - clear; waitForRos; echo " You can run roslaunch or rosrun or anything."
+  - Editor: 
+      layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
+      panes:
+        - clear; htop
+        - clear; vim
+  - Gazebo: 
+      layout: tiled
+      panes:
+        - clear; top
+        - clear; tail -50 ~/.bashrc
+  
