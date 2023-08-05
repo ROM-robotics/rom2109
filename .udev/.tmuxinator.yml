@@ -10,26 +10,26 @@ startup_window: Driver
 
 windows:
   - Driver: 
-      root: ~/ros/ros2_ws
+      root: ~/
       panes:
         - clear; source ~/.bashrc; ros2 launch rom2109_controller rom2109.launch.py
   - Joy: 
-      root: ~/ros/ros2_ws
+      root: ~/
       layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
       panes:
         - clear; sleep 5; source ~/.bashrc; ros2 launch rom2109_controller twist_mux.launch.py
         - clear; sleep 5; source ~/.bashrc; ros2 launch rom_robotics_joy joystick.launch.py use_joystick:=true
   - Lidar: 
-      root: ~/ros/ros2_ws
+      root: ~/
       layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
       panes:
         - clear; sleep 5; source ~/.bashrc; ros2 launch rom2109_controller rplidar.launch.py
         - clear; 
   - Localization: 
-      root: ~/ros/ros2_ws
+      root: ~/
       panes:
         - clear; sleep 15; source ~/.bashrc; ros2 launch rom2109_nav2 hw_localization_init_pose_launch.py
   - Navigation: 
-      root: ~/ros/ros2_ws
+      root: ~/
       panes:
         - clear; sleep 25; source ~/.bashrc; ros2 launch rom2109_nav2 hw_navigation_launch.py map_subscribe_transient_local:=true
