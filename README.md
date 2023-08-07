@@ -25,12 +25,35 @@ Htet Wai Yan
 #### pull request တင်၍ contribute လုပ်ပါ။
 
 #### development မြန်ဆန်အောင် alias များအသုံးပြုပါ။
+##### Robot computer 
+```
+sudo apt install -y chrony
+# Edit the /etc/chrony/chrony.conf file on server, add subnet mask
+sudo echo "allow 192.168.1.0/24" >> /etc/chrony/chrony.conf
+systemctl restart chronyd
+```
+##### ~/.bashrc for Robot, Client computers
 ```
 alias bb='colcon build --symlink-install && source install/setup.bash'
 alias delete_workspace='rm -rf build install log; echo "Done"'
 alias auto_launch="ros2 launch rom2109_controller all_start.launch.py use_joystick:=true use_lidar:=true amcl:=true navigation:=true"
 alias client_launch="ros2 launch rom2109_controller client.launch.py use_rviz:=true"
-
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+```
+##### Client computer
+```
+ssh <name>@robot_ip
+sudo apt install -y chrony
+# add robot computer ip 
+server 192.168.1.XX iburst
+systemctl restart chronyd
+# check source , you should see 192.168.1.xx as server
+chronyc sources
+```
+##### attach Robot computer's tmux session 
+```
+ssh <name>@robot_ip
+tmux a || tmux
 ```
 
 ###### To Do ( July 8 2023 )
