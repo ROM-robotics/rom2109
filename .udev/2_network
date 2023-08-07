@@ -2,5 +2,5 @@
 
 echo ""
 echo "          ROM ROBOTICS LTD     "
-echo "export ROS_DOMAIN_ID=$3" >> ~/.bashrc
-ssh $1@$2 'echo "export ROS_DOMAIN_ID=$3" >> ~/.bashrc;'
+echo "export ROS_DOMAIN_ID=88" >> ~/.bashrc
+echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
