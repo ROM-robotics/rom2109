@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'go_lite_tot = rom2109_simple_commander.go_lite_tot:main',
             'talker = rom2109_simple_commander.publisher_member_function:main',
         ],
     },
