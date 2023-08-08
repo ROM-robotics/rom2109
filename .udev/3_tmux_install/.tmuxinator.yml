@@ -24,7 +24,7 @@ windows:
       layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
       panes:
         - clear; sleep 5; source ~/.bashrc; ros2 launch rom2109_controller rplidar.launch.py
-        - clear; 
+        - clear; sleep 35; source ~/.bashrc; ros2 bag record -o subset /tf /odom /cmd_vel_smoothed
   - Localization: 
       root: ~/
       panes:
