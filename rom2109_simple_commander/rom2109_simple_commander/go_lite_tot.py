@@ -10,7 +10,7 @@ from geometry_msgs.msg import PoseStamped # Pose with ref frame and timestamp
 from rclpy.duration import Duration # Handles time for ROS 2
 import rclpy # Python client library for ROS 2
  
-from robot_navigator import BasicNavigator, NavigationResult # Helper module
+from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult # Helper module
  
 '''
 Navigates a robot from an initial pose to a goal pose.
@@ -98,11 +98,11 @@ def main():
  
   # Do something depending on the return code
   result = navigator.getResult()
-  if result == NavigationResult.SUCCEEDED:
+  if result == TaskResult.SUCCEEDED:
       print('Goal succeeded!')
-  elif result == NavigationResult.CANCELED:
+  elif result == TaskResult.CANCELED:
       print('Goal was canceled!')
-  elif result == NavigationResult.FAILED:
+  elif result == TaskResult.FAILED:
       print('Hello Idiot, Goal failed!')
   else:
       print('Goal has an invalid return status!')
