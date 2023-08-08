@@ -2,7 +2,7 @@ twist_mux:
   ros__parameters:
     topics:
       navigation:
-        topic: collision_cmd_vel # rviz goal
+        topic: cmd_vel_smoothed # rviz goal
         timeout: 0.5
         priority: 10
       behavior:
