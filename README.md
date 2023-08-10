@@ -57,7 +57,15 @@ chronyc sources
 ssh <name>@robot_ip
 tmux a || tmux
 ```
-
+#### GUI or CLI
+```
+# to disable GUI
+sudo systemctl set-default multi-user && reboot
+# to enable GUI
+sudo systemctl set-default graphical
+# to start GUI manually
+sudo systemctl start gdm3
+```
 ###### To Do ( July 8 2023 )
 controller pkg ထဲက z_test_2_move.launch.py နဲ့ ရှေ့နောက် ဘယ်ညာ တပါတ်စီ ပြည့်မှီအောင် စစ်ဆေးရန် ( စစ်ဆေးပြီး OK )
 
