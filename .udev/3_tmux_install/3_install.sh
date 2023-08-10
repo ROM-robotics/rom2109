@@ -15,4 +15,8 @@ then
 fi
 
 cp ./.tmuxinator.yml ~/
-echo "Run tmuxinator from home directory."
+echo "Now, you can run tmuxinator from $HOME/ directory."
+
+cp ./autostart.sh ~/
+chmod +x ~/autostart.sh
+echo "Copying autostart.sh to $HOME/"

@@ -31,6 +31,8 @@ sudo apt install -y chrony
 # Edit the /etc/chrony/chrony.conf file on server, add subnet mask
 sudo echo "allow 192.168.1.0/24" >> /etc/chrony/chrony.conf
 systemctl restart chronyd
+# ~/autostart.sh script ကို startup applications ထဲထည့်ခြင်းဖြင့် auto run မှာဖြစ်တယ်။
+# Client computer မှ ssh ဝင်ရောက်ပြီး "tmux a" ဖြင့် sessions များကို ပြန်လည်ရယူနိုင်ပါသည်။
 ```
 ##### ~/.bashrc for Robot, Client computers
 ```
