@@ -1,3 +1,3 @@
 #!/bin/bash
-gnome-terminal -- bash -c "tmuxinator ; exec bash -i"
+gnome-terminal --full-screen -- bash -c "tmuxinator ; exec bash -i"
 

@@ -33,3 +33,7 @@ windows:
       root: ~/
       panes:
         - clear; sleep 25; source ~/.bashrc; ros2 launch rom2109_nav2 hw_navigation_launch.py map_subscribe_transient_local:=true
+  - Behavior: 
+      root: ~/
+      panes:
+        - clear; sleep 45; source ~/.bashrc; #ros2 launch rom2109_autonomy autonomy.launch.py
