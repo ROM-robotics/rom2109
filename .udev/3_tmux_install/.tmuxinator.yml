@@ -18,7 +18,7 @@ windows:
       layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
       panes:
         - clear; sleep 5; source ~/.bashrc; ros2 launch rom2109_controller twist_mux.launch.py
-        - clear; sleep 5; source ~/.bashrc; ros2 launch rom_robotics_joy joystick.launch.py use_joystick:=true
+        - clear; sleep 5; source ~/.bashrc; #ros2 launch rom_robotics_joy joystick.launch.py use_joystick:=true check_power
   - Lidar: 
       root: ~/
       layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
