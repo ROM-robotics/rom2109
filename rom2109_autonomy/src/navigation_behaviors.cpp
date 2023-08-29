@@ -52,7 +52,7 @@ BT::NodeStatus GoToPose::onRunning()
 {
   if (done_flag_)
   {
-    RCLCPP_INFO(node_ptr_->get_logger(), "[%s] Goal reached\n", this->name());
+    RCLCPP_INFO(node_ptr_->get_logger(), "[%s] Goal reached\n", this->name().c_str());
     return BT::NodeStatus::SUCCESS;
   }
   else
