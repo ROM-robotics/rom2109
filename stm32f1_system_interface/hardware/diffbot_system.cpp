@@ -1,4 +1,4 @@
-#include "diffdrive_stm32/diffbot_system.hpp"
+#include "stm32f1_system_interface/diffbot_system.hpp"
 
 #include <chrono>
 #include <cmath>
@@ -9,8 +9,9 @@
 #include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rclcpp/rclcpp.hpp"
 
-namespace diffdrive_stm32
+namespace stm32f1_system_interface
 {
+
 hardware_interface::CallbackReturn DiffDriveStm32Hardware::on_init(const hardware_interface::HardwareInfo & info)
 {
   if (
@@ -191,7 +192,7 @@ hardware_interface::return_type DiffDriveStm32Hardware::read(const rclcpp::Time 
   return hardware_interface::return_type::OK;
 }
 
-hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
+hardware_interface::return_type stm32f1_system_interface ::DiffDriveStm32Hardware::write(const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
   if (!comms_.connected())
   {
@@ -204,8 +205,8 @@ hardware_interface::return_type diffdrive_stm32 ::DiffDriveStm32Hardware::write(
   return hardware_interface::return_type::OK;
 }
 
-}  // namespace diffdrive_stm32
+}  // namespace stm32f1_system_interface
 
 #include "pluginlib/class_list_macros.hpp"
 PLUGINLIB_EXPORT_CLASS(
-  diffdrive_stm32::DiffDriveStm32Hardware, hardware_interface::SystemInterface)
+  stm32f1_system_interface::DiffDriveStm32Hardware, hardware_interface::SystemInterface)

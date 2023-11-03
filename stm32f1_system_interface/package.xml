@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>diffdrive_stm32</name>
+  <name>stm32f1_system_interface</name>
   <version>0.0.0</version>
   <description>Demo package of `ros2_control` hardware for DiffBot.</description>
 
@@ -9,7 +9,7 @@
   <maintainer email="bence.magyar.robotics@gmail.com">Bence Magyar</maintainer>
   <maintainer email="christoph.froehlich@ait.ac.at">Christoph Froehlich</maintainer>
 
-  <author email="denis.stogl@stoglrobotics.de">Dr.-Ing. Denis Štogl</author>
+  <author email="server01.psa1981@gmail.com">ROM Robotics</author>
 
   <license>Apache-2.0</license>
 

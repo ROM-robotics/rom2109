@@ -1,8 +1,8 @@
-# diffdrive_stm32
+# stm32f1_system_interface
 
 ```
 cd your_worspace/src
-vcs import --input rom2109/diffdrive_stm32/ros2_control_demos.humble.repos
+vcs import --input rom2109/stm32f1_system_interface/ros2_control_demos.humble.repos
 cd ..
 rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install
@@ -11,12 +11,12 @@ colcon build --symlink-install
 add stm32_comms.hpp
 ##### ---------------- add this to diffbot_system.hpp ---------------------
 ```
-#include "diffdrive_stm32/stm32_comms.hpp"
-#include "diffdrive_stm32/wheel.hpp"
+#include "stm32f1_system_interface/stm32_comms.hpp"
+#include "stm32f1_system_interface/wheel.hpp"
 ```
 private: scope ထဲကအကုန်ဖျက် ဒါထည့်
 ```
-ArduinoComms comms_;
+STM32Board comms_;
 Config cfg_;
 Wheel wheel_l_;
 Wheel wheel_r_;
@@ -56,36 +56,36 @@ and so on..
 visibility_control.h ကို သွားပြီး right pane မှာ 
 ROS2_CONTROL_DEMO_EXAMPLE_2 ကို CONTROL+SHIFT+F နဲ့ရှာ CASE SENSTIVE ကိုနှိပ်
 FILTER TO က workspace/src/
-DIFFDRIVE_STM32 နဲ့ replace လုပ်ပါ။
+STM32F1_SYSTEM_INTERFACE နဲ့ replace လုပ်ပါ။
 
 ##### Renaming 2
 diffbot_system.hpp ကို သွားပြီး ros2_control_demo_example_2 နဲ့ 
-diffdrive_stm32 နဲ့ အပေါ်ကအတိုင်း အစားထိုးပါ။
+stm32f1_system_interface နဲ့ အပေါ်ကအတိုင်း အစားထိုးပါ။
 
 ##### Renaming 3
 ပြီးရင် diffbot_system.hpp ထဲက class name ဖြစ်တဲ့ 
 DiffBotSystemHardware ကို DiffDriveStm32Hardware နဲ့အပေါ်ကအတိုင်း အစားထိုး
 
 ##### Renaming 4
-ပြီးရင် hardware/include directory ထဲက ros2_control_demo_example_2 dir ကို diffdrive_stm32 နဲ့အစားထိုး
+ပြီးရင် hardware/include directory ထဲက ros2_control_demo_example_2 dir ကို stm32f1_system_interface နဲ့အစားထိုး
 
 ##### Renaming 5
-workspace/src ထဲက pkg name example_2 ကိုလည်း diffdrive_stm32 လို့ rename 
+workspace/src ထဲက pkg name example_2 ကိုလည်း stm32f1_system_interface လို့ rename 
 
 ##### Renaming 6
 ros2_control_demo_example_2.xml ကိုလည်း အောက်ပါအတိုင်း rename လုပ်ပါ။
 ```
-diffdrive_stm32.xml
+stm32f1_system_interface.xml
 ```
 
 ပြီးရင် run ကြည့်
 ```
-ros2 launch diffdrive_stm32 diffbot.launch.py
+ros2 launch stm32f1_system_interface diffbot.launch.py
 ```
 
 
 
-# diffdrive_stm32
+# stm32f1_system_interface
 https://control.ros.org/master/doc/ros2_control_demos/example_2/doc/userdoc.html
 
 error wheel_l_.cmd နဲ့ wheel_r_.cmd error

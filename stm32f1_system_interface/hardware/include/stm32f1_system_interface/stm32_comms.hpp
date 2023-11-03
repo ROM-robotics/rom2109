@@ -1,5 +1,5 @@
-#ifndef DIFFDRIVE_STM32_ARDUINO_COMMS_HPP
-#define DIFFDRIVE_STM32_ARDUINO_COMMS_HPP
+#ifndef STM32F1_SYSTEM_INTERFACE_COMMS_HPP
+#define STM32F1_SYSTEM_INTERFACE_COMMS_HPP
 
 // #include <cstring>
 #include <sstream>
@@ -29,12 +29,12 @@ LibSerial::BaudRate convert_baud_rate(int baud_rate)
   }
 }
 
-class ArduinoComms
+class STM32Board
 {
 
 public:
 
-  ArduinoComms() = default;
+  STM32Board() = default;
 
   void connect(const std::string &serial_device, int32_t baud_rate, int32_t timeout_ms)
   {  
@@ -114,10 +114,10 @@ public:
     left_enc_ticks = std::atoi(token_2.c_str());     
   }
 
-  void set_motor_values(float val_1, float val_2)
+  void set_motor_values(float right_wheel_rds, float left_wheel_rds)
   {
     std::stringstream ss;
-    ss << val_1 << " " << val_2 << "\r";
+    ss << right_wheel_rds << " " << left_wheel_rds << "\r";
     send_msg(ss.str());
   }
 
@@ -133,4 +133,4 @@ private:
     int timeout_ms_;
 };
 
-#endif // DIFFDRIVE_STM32_ARDUINO_COMMS_HPP
+#endif // STM32F1_SYSTEM_INTERFACE_COMMS_HPP

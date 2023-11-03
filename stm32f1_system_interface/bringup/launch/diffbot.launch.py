@@ -14,7 +14,7 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("diffdrive_stm32"), "urdf", "diffbot.urdf.xacro"]
+                [FindPackageShare("stm32f1_system_interface"), "urdf", "diffbot.urdf.xacro"]
             ),
         ]
     )
@@ -28,7 +28,7 @@ def generate_launch_description():
         ]
     )
     rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare("diffdrive_stm32"), "rviz", "diffbot.rviz"]
+        [FindPackageShare("stm32f1_system_interface"), "rviz", "diffbot.rviz"]
     )
 
     control_node = Node(

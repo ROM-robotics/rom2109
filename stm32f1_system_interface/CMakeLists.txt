@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(diffdrive_stm32 LANGUAGES CXX)
+project(stm32f1_system_interface LANGUAGES CXX)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
   add_compile_options(-Wall -Wextra)
@@ -22,44 +22,44 @@ endforeach()
 
 ## COMPILE
 add_library(
-  diffdrive_stm32
+  stm32f1_system_interface
   SHARED
   hardware/diffbot_system.cpp
 )
-target_compile_features(diffdrive_stm32 PUBLIC cxx_std_17)
-target_include_directories(diffdrive_stm32 PUBLIC
+target_compile_features(stm32f1_system_interface PUBLIC cxx_std_17)
+target_include_directories(stm32f1_system_interface PUBLIC
 $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/hardware/include>
-$<INSTALL_INTERFACE:include/diffdrive_stm32>
+$<INSTALL_INTERFACE:include/stm32f1_system_interface>
 )
 ament_target_dependencies(
-  diffdrive_stm32 PUBLIC
+  stm32f1_system_interface PUBLIC
   ${THIS_PACKAGE_INCLUDE_DEPENDS}
 )
 
-target_link_libraries(diffdrive_stm32 PUBLIC serial)
+target_link_libraries(stm32f1_system_interface PUBLIC serial)
 
 # Causes the visibility macros to use dllexport rather than dllimport,
 # which is appropriate when building the dll but not consuming it.
-target_compile_definitions(${PROJECT_NAME} PRIVATE "DIFFDRIVE_STM32_BUILDING_DLL")
+target_compile_definitions(${PROJECT_NAME} PRIVATE "STM32F1_SYSTEM_INTERFACE_BUILDING_DLL")
 
 # Export hardware plugins
-pluginlib_export_plugin_description_file(hardware_interface diffdrive_stm32.xml)
+pluginlib_export_plugin_description_file(hardware_interface stm32f1_system_interface.xml)
 
 # INSTALL
 install(
   DIRECTORY hardware/include/
-  DESTINATION include/diffdrive_stm32
+  DESTINATION include/stm32f1_system_interface
 )
 install(
   DIRECTORY description/launch description/ros2_control description/urdf description/rviz
-  DESTINATION share/diffdrive_stm32
+  DESTINATION share/stm32f1_system_interface
 )
 install(
   DIRECTORY bringup/launch bringup/config
-  DESTINATION share/diffdrive_stm32
+  DESTINATION share/stm32f1_system_interface
 )
-install(TARGETS diffdrive_stm32
-  EXPORT export_diffdrive_stm32
+install(TARGETS stm32f1_system_interface
+  EXPORT export_stm32f1_system_interface
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
@@ -70,6 +70,6 @@ if(BUILD_TESTING)
 endif()
 
 ## EXPORTS
-ament_export_targets(export_diffdrive_stm32 HAS_LIBRARY_TARGET)
+ament_export_targets(export_stm32f1_system_interface HAS_LIBRARY_TARGET)
 ament_export_dependencies(${THIS_PACKAGE_INCLUDE_DEPENDS})
 ament_package()

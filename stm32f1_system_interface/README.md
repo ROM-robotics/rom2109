@@ -1,8 +1,9 @@
-# diffdrive_stm32
+# stm32f1_system_interface
+### diffbot ros2_controls example 2 ကို မှီငြမ်းရေးသည်။
 
 ```
 cd your_worspace/src
-vcs import --input rom2109/diffdrive_stm32/ros2_control_demos.humble.repos
+vcs import --input rom2109/stm32f1_system_interface/ros2_control_demos.humble.repos
 cd ..
 rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install

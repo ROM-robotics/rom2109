@@ -5,7 +5,7 @@
 
     <ros2_control name="${name}" type="system">
       <hardware>
-        <plugin>diffdrive_stm32/DiffDriveStm32Hardware</plugin>
+        <plugin>stm32f1_system_interface/DiffDriveStm32Hardware</plugin>
         <param name="left_wheel_name">left_wheel_joint</param>
         <param name="right_wheel_name">right_wheel_joint</param>
         <param name="loop_rate">30</param>

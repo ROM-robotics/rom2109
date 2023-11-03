@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef DIFFDRIVE_STM32__DIFFBOT_SYSTEM_HPP_
-#define DIFFDRIVE_STM32__DIFFBOT_SYSTEM_HPP_
+#ifndef STM32F1_SYSTEM_INTERFACE__DIFFBOT_SYSTEM_HPP_
+#define STM32F1_SYSTEM_INTERFACE__DIFFBOT_SYSTEM_HPP_
 
 #include <memory>
 #include <string>
@@ -29,12 +29,12 @@
 #include "rclcpp/time.hpp"
 #include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
 #include "rclcpp_lifecycle/state.hpp"
-#include "diffdrive_stm32/visibility_control.h"
+#include "stm32f1_system_interface/visibility_control.h"
 
-#include "diffdrive_stm32/stm32_comms.hpp"
-#include "diffdrive_stm32/wheel.hpp"
+#include "stm32f1_system_interface/stm32_comms.hpp"
+#include "stm32f1_system_interface/wheel.hpp"
 
-namespace diffdrive_stm32
+namespace stm32f1_system_interface
 {
 class DiffDriveStm32Hardware : public hardware_interface::SystemInterface
 {
@@ -58,49 +58,49 @@ struct Config
 public:
   RCLCPP_SHARED_PTR_DEFINITIONS(DiffDriveStm32Hardware);
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   hardware_interface::CallbackReturn on_init(
     const hardware_interface::HardwareInfo & info) override;
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   std::vector<hardware_interface::StateInterface> export_state_interfaces() override;
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   std::vector<hardware_interface::CommandInterface> export_command_interfaces() override;
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   hardware_interface::CallbackReturn on_configure(
     const rclcpp_lifecycle::State & previous_state) override;
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   hardware_interface::CallbackReturn on_cleanup(
     const rclcpp_lifecycle::State & previous_state) override;
 
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   hardware_interface::CallbackReturn on_activate(
     const rclcpp_lifecycle::State & previous_state) override;
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   hardware_interface::CallbackReturn on_deactivate(
     const rclcpp_lifecycle::State & previous_state) override;
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   hardware_interface::return_type read(
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
-  DIFFDRIVE_STM32_PUBLIC
+  STM32F1_SYSTEM_INTERFACE_PUBLIC
   hardware_interface::return_type write(
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
 private:
 
-  ArduinoComms comms_;
+  STM32Comms comms_;
   Config cfg_;
   Wheel wheel_l_;
   Wheel wheel_r_;
 };
 
-}  // namespace diffdrive_stm32
+}  // namespace stm32f1_system_interface
 
-#endif  // DIFFDRIVE_STM32__DIFFBOT_SYSTEM_HPP_
+#endif  // STM32F1_SYSTEM_INTERFACE__DIFFBOT_SYSTEM_HPP_

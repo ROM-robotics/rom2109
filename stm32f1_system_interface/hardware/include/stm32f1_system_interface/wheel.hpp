@@ -1,5 +1,5 @@
-#ifndef DIFFDRIVE_STM32_WHEEL_HPP
-#define DIFFDRIVE_STM32_WHEEL_HPP
+#ifndef STM32F1_SYSTEM_INTERFACE_WHEEL_HPP
+#define STM32F1_SYSTEM_INTERFACE_WHEEL_HPP
 
 #include <string>
 #include <cmath>
@@ -40,4 +40,4 @@ class Wheel
 };
 
 
-#endif // DIFFDRIVE_STM32_WHEEL_HPP
+#endif // STM32F1_SYSTEM_INTERFACE_WHEEL_HPP

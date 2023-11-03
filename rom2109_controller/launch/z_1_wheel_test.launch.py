@@ -31,7 +31,7 @@ def generate_launch_description():
     )
 
     rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare("diffdrive_stm32"), "rviz", "diffbot.rviz"]
+        [FindPackageShare("stm32f1_system_interface"), "rviz", "diffbot.rviz"]
     )
     rviz_node = Node(
         package="rviz2",

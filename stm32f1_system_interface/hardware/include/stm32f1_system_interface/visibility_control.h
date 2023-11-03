@@ -19,38 +19,38 @@
  * library cannot have, but the consuming code must have inorder to link.
  */
 
-#ifndef DIFFDRIVE_STM32__VISIBILITY_CONTROL_H_
-#define DIFFDRIVE_STM32__VISIBILITY_CONTROL_H_
+#ifndef STM32F1_SYSTEM_INTERFACE__VISIBILITY_CONTROL_H_
+#define STM32F1_SYSTEM_INTERFACE__VISIBILITY_CONTROL_H_
 
 // This logic was borrowed (then namespaced) from the examples on the gcc wiki:
 //     https://gcc.gnu.org/wiki/Visibility
 
 #if defined _WIN32 || defined __CYGWIN__
 #ifdef __GNUC__
-#define DIFFDRIVE_STM32_EXPORT __attribute__((dllexport))
-#define DIFFDRIVE_STM32_IMPORT __attribute__((dllimport))
+#define STM32F1_SYSTEM_INTERFACE_EXPORT __attribute__((dllexport))
+#define STM32F1_SYSTEM_INTERFACE_IMPORT __attribute__((dllimport))
 #else
-#define DIFFDRIVE_STM32_EXPORT __declspec(dllexport)
-#define DIFFDRIVE_STM32_IMPORT __declspec(dllimport)
+#define STM32F1_SYSTEM_INTERFACE_EXPORT __declspec(dllexport)
+#define STM32F1_SYSTEM_INTERFACE_IMPORT __declspec(dllimport)
 #endif
-#ifdef DIFFDRIVE_STM32_BUILDING_DLL
-#define DIFFDRIVE_STM32_PUBLIC DIFFDRIVE_STM32_EXPORT
+#ifdef STM32F1_SYSTEM_INTERFACE_BUILDING_DLL
+#define STM32F1_SYSTEM_INTERFACE_PUBLIC STM32F1_SYSTEM_INTERFACE_EXPORT
 #else
-#define DIFFDRIVE_STM32_PUBLIC DIFFDRIVE_STM32_IMPORT
+#define STM32F1_SYSTEM_INTERFACE_PUBLIC STM32F1_SYSTEM_INTERFACE_IMPORT
 #endif
-#define DIFFDRIVE_STM32_PUBLIC_TYPE DIFFDRIVE_STM32_PUBLIC
-#define DIFFDRIVE_STM32_LOCAL
+#define STM32F1_SYSTEM_INTERFACE_PUBLIC_TYPE STM32F1_SYSTEM_INTERFACE_PUBLIC
+#define STM32F1_SYSTEM_INTERFACE_LOCAL
 #else
-#define DIFFDRIVE_STM32_EXPORT __attribute__((visibility("default")))
-#define DIFFDRIVE_STM32_IMPORT
+#define STM32F1_SYSTEM_INTERFACE_EXPORT __attribute__((visibility("default")))
+#define STM32F1_SYSTEM_INTERFACE_IMPORT
 #if __GNUC__ >= 4
-#define DIFFDRIVE_STM32_PUBLIC __attribute__((visibility("default")))
-#define DIFFDRIVE_STM32_LOCAL __attribute__((visibility("hidden")))
+#define STM32F1_SYSTEM_INTERFACE_PUBLIC __attribute__((visibility("default")))
+#define STM32F1_SYSTEM_INTERFACE_LOCAL __attribute__((visibility("hidden")))
 #else
-#define DIFFDRIVE_STM32_PUBLIC
-#define DIFFDRIVE_STM32_LOCAL
+#define STM32F1_SYSTEM_INTERFACE_PUBLIC
+#define STM32F1_SYSTEM_INTERFACE_LOCAL
 #endif
-#define DIFFDRIVE_STM32_PUBLIC_TYPE
+#define STM32F1_SYSTEM_INTERFACE_PUBLIC_TYPE
 #endif
 
-#endif  // DIFFDRIVE_STM32__VISIBILITY_CONTROL_H_
+#endif  // STM32F1_SYSTEM_INTERFACE__VISIBILITY_CONTROL_H_
