@@ -95,7 +95,7 @@ public:
 
 private:
 
-  STM32Comms comms_;
+  STM32Board comms_;
   Config cfg_;
   Wheel wheel_l_;
   Wheel wheel_r_;
