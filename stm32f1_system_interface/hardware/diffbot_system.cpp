@@ -189,6 +189,7 @@ hardware_interface::return_type DiffDriveStm32Hardware::read(const rclcpp::Time 
   RCLCPP_INFO(rclcpp::get_logger("Zeroing Test"), "left wheel pos : %.15f", wheel_l_.pos);
   RCLCPP_INFO(rclcpp::get_logger("Zeroing Test"), "rad_per_count : %.15f \033[1;0m", wheel_l_.rads_per_count);
   */
+ 
   return hardware_interface::return_type::OK;
 }
 
@@ -201,6 +202,8 @@ hardware_interface::return_type stm32f1_system_interface ::DiffDriveStm32Hardwar
   }
   
   //int left_rpm = int(wheel_l_.cmd*10); int right_rpm = int(wheel_r_.cmd*10);
+  // RCLCPP_INFO(rclcpp::get_logger("\033[1;36m1 meter test"), "right wheel rpm : %.5f", wheel_r_.cmd);
+//  RCLCPP_INFO(rclcpp::get_logger("\033[1;35m1 meter test"), "left rpm : %.5f", wheel_l_.cmd);
   comms_.set_motor_values(wheel_r_.cmd, wheel_l_.cmd);
   return hardware_interface::return_type::OK;
 }

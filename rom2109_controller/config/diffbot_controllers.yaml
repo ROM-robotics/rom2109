@@ -17,7 +17,7 @@ base_controller:
     #wheels_per_side: 1  # actually 2, but both are controlled by 1 signal
     wheel_radius: 0.0332
 
-    wheel_separation_multiplier: 1.0000
+    wheel_separation_multiplier: 1.114325
     left_wheel_radius_multiplier: 1.00000
     right_wheel_radius_multiplier: 1.00000
 

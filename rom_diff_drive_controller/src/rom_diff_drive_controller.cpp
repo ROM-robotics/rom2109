@@ -256,19 +256,21 @@ controller_interface::return_type DiffDriveController::update(
   }
 
   // Compute wheels velocities:
-  /*
+  
   const double velocity_left =
     ((linear_command - angular_command * wheel_separation / 2.0) / left_wheel_radius);
   const double velocity_right =
     ((linear_command + angular_command * wheel_separation / 2.0) / right_wheel_radius);
-  */
+  
 
   // ROM ROBOTICS ADD
   // Radian per second to Revolute per minute ( 60/2PI = 30/PI)
+  /*
   const double velocity_left =
     ((linear_command - angular_command * wheel_separation / 2.0) / left_wheel_radius) * 9.549296586;
   const double velocity_right =
     ((linear_command + angular_command * wheel_separation / 2.0) / right_wheel_radius)* 9.549296586;
+    */
   // ROM ROBOTICS END
 
   // Set wheels velocities:
