@@ -1,6 +1,6 @@
 # ./.tmuxinator.yml
 
-name: DEEP BLUE AI Lab
+name: ROM ROBOTICS Co,.Ltd
 root: ~/
 
 pre_window: export PS1=" \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;45m\]>>>\[$(tput sgr0)\] \[$(tput sgr0)\]"
@@ -24,7 +24,7 @@ windows:
       layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
       panes:
         - clear; sleep 5; source ~/.bashrc; ros2 launch rom2109_controller rplidar.launch.py
-        - clear; sleep 35; source ~/.bashrc; ros2 bag record -o subset /tf /odom /cmd_vel_smoothed
+        - clear; sleep 35; source ~/.bashrc; #ros2 bag record -o subset /tf /odom /cmd_vel_smoothed
   - Localization: 
       root: ~/
       panes:
