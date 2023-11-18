@@ -201,6 +201,9 @@ hardware_interface::return_type stm32f1_system_interface ::DiffDriveStm32Hardwar
     return hardware_interface::return_type::ERROR;
   }
   
+  RCLCPP_INFO(rclcpp::get_logger("\033[1;36mZeroing Test"), "right wheel encoder : %d", wheel_r_.enc);
+  RCLCPP_INFO(rclcpp::get_logger("\033[1;36mZeroing Test"), "left wheel encoder : %d", wheel_l_.enc);
+
   //int left_rpm = int(wheel_l_.cmd*10); int right_rpm = int(wheel_r_.cmd*10);
   // RCLCPP_INFO(rclcpp::get_logger("\033[1;36m1 meter test"), "right wheel rpm : %.5f", wheel_r_.cmd);
 //  RCLCPP_INFO(rclcpp::get_logger("\033[1;35m1 meter test"), "left rpm : %.5f", wheel_l_.cmd);
