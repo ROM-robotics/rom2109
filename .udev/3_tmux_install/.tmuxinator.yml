@@ -1,6 +1,6 @@
 # ./.tmuxinator.yml
 
-name: ROM ROBOTICS Co,.Ltd
+name: ROM ROBOTICS
 root: ~/
 
 pre_window: export PS1=" \[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;45m\]>>>\[$(tput sgr0)\] \[$(tput sgr0)\]"
@@ -18,22 +18,22 @@ windows:
       layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
       panes:
         - clear; sleep 5; source ~/.bashrc; ros2 launch rom2109_controller twist_mux.launch.py
-        - clear; sleep 5; source ~/.bashrc; #ros2 launch rom_robotics_joy joystick.launch.py use_joystick:=true check_power
+        - clear; #sleep 5; source ~/.bashrc; ros2 launch rom_robotics_joy joystick.launch.py use_joystick:=true check_power
   - Lidar: 
       root: ~/
       layout: 0a91,122x31,0,0{61x31,0,0,0,60x31,62,0,1}
       panes:
         - clear; sleep 5; source ~/.bashrc; ros2 launch rom2109_controller rplidar.launch.py
-        - clear; sleep 35; source ~/.bashrc; #ros2 bag record -o subset /tf /odom /cmd_vel_smoothed
+        - clear; cowsay "welcome idiot" #sleep 35; source ~/.bashrc; ros2 bag record -o subset /tf /odom /cmd_vel_smoothed
   - Localization: 
       root: ~/
       panes:
-        - clear; sleep 15; source ~/.bashrc; ros2 launch rom2109_nav2 hw_localization_init_pose_launch.py
+        - clear; #sleep 15; source ~/.bashrc; ros2 launch rom2109_nav2 hw_localization_init_pose_launch.py
   - Navigation: 
       root: ~/
       panes:
-        - clear; sleep 25; source ~/.bashrc; ros2 launch rom2109_nav2 hw_navigation_launch.py map_subscribe_transient_local:=true
+        - clear; #sleep 25; source ~/.bashrc; ros2 launch rom2109_nav2 hw_navigation_launch.py map_subscribe_transient_local:=true
   - Behavior: 
       root: ~/
       panes:
-        - clear; sleep 45; source ~/.bashrc; #ros2 launch rom2109_autonomy autonomy.launch.py
+        - clear; #sleep 45; source ~/.bashrc; ros2 launch rom2109_autonomy autonomy.launch.py
