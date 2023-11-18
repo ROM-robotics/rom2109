@@ -23,3 +23,9 @@ echo "Copying autostart.sh to $HOME/"
 
 echo "Copying enable_gui, disable_gui scrpts to $HOME/"
 cp ./enable_gui ./disable_gui ~/
+
+
+echo "Please add startup script"
+echo "Example"
+echo "$ crontab -e"
+echo "@reboot /home/username/autostart.sh"
