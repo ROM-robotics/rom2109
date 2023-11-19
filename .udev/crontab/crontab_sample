@@ -1,0 +1,4 @@
+ SHELL=/bin/bash
+ PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin
+ @reboot /bin/bash /home/rom/autostart.bash
+
