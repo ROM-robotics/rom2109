@@ -1,0 +1,2 @@
+#!/bin/bash
+ros2 launch rom2109_controller all_start.launch.py use_joystick:=true mapping:=true use_lidar:=true use_rviz:=true use_rqt_pub:=false
